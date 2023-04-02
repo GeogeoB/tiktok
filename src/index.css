@@ -5,8 +5,13 @@
   --is-showing-image: none;
 
   --primary-color: #dddddd;
-  --secondary-color: #9b9b9b;
-  --button-color: red;
+  --secondary-color: white;
+  --ternaire-color: rgb(97, 97, 97);
+  --button-color: #764fb1;
+  --button-color-hover: #654595;
+  --red: #e51010;
+  --red-hover: #c91818;
+  --background-color : #efefef;
 }
 
 * {
@@ -21,6 +26,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
 }
 
 .videoPlayer {
@@ -125,7 +134,7 @@ body {
   overflow: hidden;
   width: 70%;
   aspect-ratio: 1;
-  background-color: var(--secondary-color);
+  background-color: var(--red);
   border-radius: 100%;
   margin: auto;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -141,7 +150,7 @@ body {
 .littleCircle {
   width: 24px;
   aspect-ratio: 1;
-  background-color: var(--button-color);
+  background-color: var(--red);
   margin: auto;
   border-radius: 100%;
   margin-top: -14px;
@@ -154,13 +163,19 @@ body {
   0% {
     transform: rotate(0deg);
   }
-  10% {
+  5% {
     transform: rotate(5deg);
   }
-  20% {
+  10% {
     transform: rotate(-5deg);
   }
-  30% {
+  20% {
+    transform: rotate(0deg);
+  }
+  21% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(0deg);
   }
 }
@@ -217,7 +232,7 @@ body {
 }
 
 .red {
-  fill: #e51010;
+  fill: var(--red);
 }
 
 .heartAnimation {
@@ -237,10 +252,202 @@ body {
   }
   40% {
     transform: rotate3d(0, 1, 0, 180deg);
-    translate: 0px -10px;
+    translate: 0px -12px;
   }
   60% {
     transform: rotate3d(0, 1, 0, 260deg);
     translate: 0px -10px;
   }
+}
+
+/* -------------------------------------- */
+
+.LoginView{
+  height: 40vh;
+  aspect-ratio: 4/5;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.loginButton {
+  background-color: var(--button-color); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.loginButton:hover {
+  background-color: var(--button-color-hover);
+  cursor: pointer;
+}
+
+.loginCheckbox {
+  height: 15px;
+  border: none;
+  border-radius: 2px;
+}
+
+.loginCheckbox:hover {
+  cursor: pointer;
+  background-color: lightskyblue;
+}
+
+.div--keepLoged input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.Login-container-Keep {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 400;
+  color: var(--ternaire-color);
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.Login-container-Keep p {
+  padding: 1px;
+}
+
+/* Hide the browser's default checkbox */
+.Login-container-Keep input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* On mouse-over, add a grey background color */
+.Login-container-Keep:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.Login-container-Keep input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.Login-container-Keep input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.Login-container-Keep .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.login-box {
+  margin-bottom: 12px;
+}
+
+.input-login {
+  width: 100%;
+  text-indent: 18px;
+  padding: 10px 0 10px 0;
+  border: none;
+  border-radius: 4px;
+}
+
+.input-login:focus {
+  border: none;
+  outline: 3px solid var(--button-color)
+}
+
+.login-label-input{
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--ternaire-color)
+}
+
+.login-title {
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.close-button {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: var(--button-color);
+  cursor: pointer;
+  border-radius: 100%;
+
+  align-self: end;
+}
+
+.close-button:hover {
+  background-color: var(--button-color-hover);
+}
+
+.close-button:before {
+  content: "x";
+  position: absolute;
+  top: 41%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  font-family: monospace;
+  color: white;
+}
+
+.loginFooter {
+  margin-top: auto;
+}
+
+.login-input{
+  margin-top: 20px;
 }
