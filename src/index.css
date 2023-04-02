@@ -1,3 +1,19 @@
+:root {
+  --animation-translate : -100vh;
+  --animation-delay: 300ms;
+  --is-showing: block;
+  --is-showing-image: none;
+
+  --primary-color: #dddddd;
+  --secondary-color: #9b9b9b;
+  --button-color: red;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +23,224 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.videoPlayer {
+  height: 100vh;
+  aspect-ratio: 9/16;
+  background-color: black;
+
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.videoContainer {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.videoSlider {
+  width: 100%;
+  translate: 0px var(--animation-translate);
+}
+
+.videoSliderTranslate {
+  transition: translate var(--animation-delay)cubic-bezier(0.38, 0.84, 0.79, 0.97);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  display: var(--is-showing);
+  z-index: 0;
+}
+
+.imageVideo {
+  width: 100%;
+  height: 100vh;
+  z-index: 40;
+  user-select: none;
+  -webkit-user-drag: none;
+  position: absolute;
+  display: var(--is-showing-image);
+}
+
+.videoItems{
+  height: 50vh;
+  width: 20%;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+}
+
+.blur {
+  z-index: 200;
+    user-select: none;
+    pointer-events: none;
+
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 50;
+}
+
+.blurRadial {
+    background-image: radial-gradient(rgba(255, 255, 255, 0) 69%, rgba(0, 0, 0, 0.8) 130%);
+}
+
+.blurVertical {
+  background-image: linear-gradient(to bottom, #ffffff00, #0000004f);
+}
+
+.items {
+  margin-bottom: 2vh;
+  text-align: center;
+  font-weight: 400;
+  
+  color: var(--primary-color);
+  fill: var(--primary-color);
+}
+
+.items:hover {
+  color: var(--secondary-color);
+  fill: var(--secondary-color);
+
+  cursor: pointer;
+}
+
+.circleitem {
+  margin-bottom: 30%;
+}
+
+.items p {
+  user-select: none;
+  font-size: clamp(10px, 1.4vw, 17px);
+}
+
+.icone {
+  width: 40%;
+}
+.circle {
+  overflow: hidden;
+  width: 70%;
+  aspect-ratio: 1;
+  background-color: var(--secondary-color);
+  border-radius: 100%;
+  margin: auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.circle img {
+  width: 100%;
+  aspect-ratio: 1;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.littleCircle {
+  width: 24px;
+  aspect-ratio: 1;
+  background-color: var(--button-color);
+  margin: auto;
+  border-radius: 100%;
+  margin-top: -14px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Définition de l'animation */
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(5deg);
+  }
+  20% {
+    transform: rotate(-5deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+}
+
+
+.circleitem:hover{
+  animation-name: rotate360;
+  animation-duration: 0.5s; /* Durée de l'animation */
+  animation-timing-function: linear; /* Fonction de timing (facultatif) */
+  animation-iteration-count: infinite; /* Nombre d'itérations (infini ici) */
+}
+
+.descriptionVideo{
+  user-select: none;
+  -webkit-user-drag: none;
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 100;
+
+  margin-bottom: 5vh;
+
+  color: var(--primary-color);
+}
+
+.description-text p {
+  margin-bottom: 5px;
+}
+
+.descriptionVideo-pseudo {
+    user-select: none;
+    -webkit-user-drag: none;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: clamp(10px, 1.7vw, 25px);
+    margin-bottom: 20px;
+}
+
+.descriptionVideo-pseudo:hover {
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+.description-readmore {
+  text-decoration: underline;
+  text-underline-offset: 1px;
+}
+
+.description-readmore:hover {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.red {
+  fill: #e51010;
+}
+
+.heartAnimation {
+  animation-name: heartAnnim;
+  animation-duration: 0.5s; /* Durée de l'animation */
+  animation-timing-function: linear; /* Fonction de timing (facultatif) */
+}
+
+/* Définition de l'animation */
+@keyframes heartAnnim {
+  0% {
+    transform: rotate3d(0, 1, 0, 45deg);
+    translate: 0px 0px;
+  }
+  10% {
+    translate: 0px -10px;
+  }
+  40% {
+    transform: rotate3d(0, 1, 0, 180deg);
+    translate: 0px -10px;
+  }
+  60% {
+    transform: rotate3d(0, 1, 0, 260deg);
+    translate: 0px -10px;
+  }
 }
