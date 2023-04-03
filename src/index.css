@@ -12,6 +12,10 @@
   --red: #e51010;
   --red-hover: #c91818;
   --background-color : #efefef;
+
+  --position-video1: 0vh;
+  --position-video2: 100vh;
+  --position-video3: 200vh;
 }
 
 * {
@@ -44,16 +48,17 @@ body {
 .videoContainer {
   width: 100%;
   height: 100vh;
-  position: relative;
+  position: absolute;
 }
 
 .videoSlider {
   width: 100%;
   translate: 0px var(--animation-translate);
+  position: relative;
 }
 
 .videoSliderTranslate {
-  transition: translate var(--animation-delay)cubic-bezier(0.38, 0.84, 0.79, 0.97);
+  transition: translate var(--animation-delay) cubic-bezier(0.38, 0.84, 0.79, 0.97);
 }
 
 .video {
@@ -450,4 +455,16 @@ body {
 
 .login-input{
   margin-top: 20px;
+}
+
+#video1 {
+  top: var(--position-video1);
+}
+
+#video2 {
+  top: var(--position-video2);
+}
+
+#video3 {
+  top: var(--position-video3);
 }

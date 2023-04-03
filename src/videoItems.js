@@ -3,7 +3,7 @@ import Chatbox from './icones/chatbox';
 import Heart from './icones/heart';
 import ShareIcone from './icones/shareIcone';
 
-function VideoItems({info, setVideoInfos}) {
+function VideoItems({info, setVideoInfos, k}) {
     return (
         <div className="videoItems">
             <div className="items circleitem">
@@ -13,7 +13,7 @@ function VideoItems({info, setVideoInfos}) {
                 <div className="littleCircle"></div>
             </div>
             <div className="items">
-                <Heart info={info} setVideoInfos={setVideoInfos}></Heart>
+                <Heart info={info} setVideoInfos={setVideoInfos} k={k}></Heart>
                 <p>38.2k</p>
             </div>
             <div className="items">

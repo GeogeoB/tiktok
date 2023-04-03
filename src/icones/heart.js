@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 
-function Heart({info, setVideoInfos}) {
+function Heart({info, setVideoInfos, k}) {
 
     const heart = useRef(null)
 
@@ -9,8 +9,23 @@ function Heart({info, setVideoInfos}) {
             if(!heart.current.classList.contains("red")) {
                 heart.current.classList.add("heartAnimation");
                 heart.current.classList.add("red");
+
+                let k_ = ((k % 3) + 3) % 3;
     
-                setVideoInfos((oldInfo) => [oldInfo[0], {...oldInfo[1], "like": 1}, oldInfo[2]])
+                setVideoInfos((oldInfo) => {
+
+                    let newInfo = [{... oldInfo[0]}, {... oldInfo[1]}, {... oldInfo[2]}]
+
+                    if (k_ == 1) {
+                        newInfo[0].like =  !newInfo[0].like
+                    } else if (k_ == 0) {
+                        newInfo[1].like =  !newInfo[1].like
+                    } else if (k == 2) {
+                        newInfo[2].like =  !newInfo[2].like
+                    }
+
+                    return newInfo
+                })
     
                 setTimeout(() => {
                     heart.current.classList.remove("heartAnimation");

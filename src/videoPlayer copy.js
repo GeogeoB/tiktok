@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Video from './Video';
 
 function VideoPlayer(numbertoVH) {
@@ -7,29 +7,21 @@ function VideoPlayer(numbertoVH) {
             "src": "./videos/video1",
             "play": false,
             "user": "@mia.aroundtheworld",
-            "like": 0,
-            "id": 0,
-            "pos": 0,
+            "like": 0
         }, 
         {
             "src": "./videos/video2",
             "play": true,
             "user": "@geogeoLeRigolo",
-            "like": 0,
-            "id": 1,
-            "pos": 1,
+            "like": 0
         },
         {
             "src": "./videos/video1",
             "play": false,
             "user": "@ceMecLa",
-            "like": 0,
-            "id": 2,
-            "pos": 2,
+            "like": 0
         }
     ]);
-
-    const [k, setk] = useState(0);
 
     const [isDragging, setIsDragging] = useState(false);
 
@@ -37,40 +29,57 @@ function VideoPlayer(numbertoVH) {
 
         document.getElementById("Slider").className = "videoSlider videoSliderTranslate"
         document.documentElement.style.setProperty('--animation-translate', numbertoVH);
-        let k_;
             
         setTimeout(() => {
 
             if (type == "Up") {
-                setk((k) => k-1)
-                k_ = k - 1
-                k_ = ((k_ % 3) + 3) % 3;
-                setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
+                setVideoInfos((oldInfo) => [{...oldInfo[1], "play": false}, {...oldInfo[2], "play": true}, {...oldInfo[0], "play": false}]);
             } else if (type == "Down") {
-                setk((k) => k+1)
-                k_ = k + 1
-                k_ = ((k_ % 3) + 3) % 3;
-                setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
+                setVideoInfos((oldInfo) => [{...oldInfo[2], "play": false}, {...oldInfo[0], "play": true}, {...oldInfo[1], "play": false}]);
             }
 
-            console.log(k_)
-
-            document.documentElement.style.setProperty('--position-video1',   k_     *100 % 300 + 'vh')
-            document.documentElement.style.setProperty('--position-video2',  (k_ + 1)*100 % 300 + 'vh')
-            document.documentElement.style.setProperty('--position-video3',  (k_ + 2)*100 % 300 + 'vh')
-
             document.getElementById("Slider").className = "videoSlider"
-            
             document.documentElement.style.setProperty('--animation-translate',  '-100vh')
-            // document.documentElement.style.setProperty('--is-showing-image', "block");
-            // document.documentElement.style.setProperty('--is-showing', "none");
+            document.documentElement.style.setProperty('--is-showing-image', "block");
+            document.documentElement.style.setProperty('--is-showing', "none");
         }, delay)
 
-        // setTimeout(() => {
-        //     document.documentElement.style.setProperty('--is-showing', "block");
-        //     document.documentElement.style.setProperty('--is-showing-image', "none");
-        // }, delay + 500)
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--is-showing', "block");
+            document.documentElement.style.setProperty('--is-showing-image', "none");
+        }, delay + 500)
     }
+
+    useEffect(() => {
+        let delay = 300;
+        let isToucheABloquee = false;
+
+        document.documentElement.style.setProperty('--animation-delay', delay + "ms");
+
+        function slide(numbertoVH, type) {
+            isToucheABloquee = true;
+
+            setTimeout(() => {
+                isToucheABloquee = false;
+            }, delay + 20);
+
+            animationSlide(numbertoVH, type, delay);
+        }
+
+        const handleClick = (event) => {
+            if (event.key == "ArrowUp" && !isToucheABloquee) {
+                slide('-200vh', "Up")
+            } else if (event.key == "ArrowDown" && !isToucheABloquee) {
+                slide('0vh', "Down")
+            }
+        };
+    
+        document.addEventListener("keydown", handleClick);
+    
+        return () => {
+          document.removeEventListener('keydown', handleClick);
+        };
+      }, []);
 
       useEffect(() => {
         if (isDragging) {
@@ -97,6 +106,8 @@ function VideoPlayer(numbertoVH) {
 
         let diff = - window.innerHeight - parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--animation-translate'));
 
+        console.log("diff", diff,  window.innerHeight * 0.20);
+
         if (Math.abs(diff) > window.innerHeight * 0.20) {
             if (diff > 0) {
                 animationSlide(-2*window.innerHeight + "px", "Up");
@@ -118,9 +129,9 @@ function VideoPlayer(numbertoVH) {
     return (
         <div className='videoPlayer' id='myComponent'>
             <div className='videoSlider videoSliderTranslate' id='Slider' onMouseDown={handleMouseDown}>
-                <Video info={videoInfos[0]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video1"} k={k}></Video>
-                <Video info={videoInfos[1]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video2"} k={k}></Video>
-                <Video info={videoInfos[2]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video3"} k={k}></Video>
+                <Video info={videoInfos[0]} animationSlide={animationSlide} setVideoInfos={setVideoInfos}></Video>
+                <Video info={videoInfos[1]} animationSlide={animationSlide} setVideoInfos={setVideoInfos}></Video>
+                <Video info={videoInfos[2]} animationSlide={animationSlide} setVideoInfos={setVideoInfos}></Video>
             </div>
         </div>
     )

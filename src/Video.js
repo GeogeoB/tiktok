@@ -2,7 +2,7 @@ import React,  { useEffect, useRef, useState } from 'react';
 import VideoItems from './videoItems';
 import Description from './description';
 
-function Video({info, animationSlide, setVideoInfos}) {
+function Video({info, animationSlide, setVideoInfos, id, k}) {
     let className = "videoContainer ";
     const videoRef = useRef(null);
 
@@ -29,13 +29,13 @@ function Video({info, animationSlide, setVideoInfos}) {
     }, [])
 
     return (
-        <div className={className}>
+        <div className={className} id={id}>
             <div className="blur blurRadial"></div>
             <div className="blur blurVertical"></div>
-            <VideoItems info={info} setVideoInfos={setVideoInfos}></VideoItems>
+            <VideoItems info={info} setVideoInfos={setVideoInfos} k={k}></VideoItems>
             <Description user={info.user}></Description>
             <div className="carree"></div>
-            <img src={info.src + ".PNG"} className="imageVideo" draggable="false"/>
+            {/* <img src={info.src + ".PNG"} className="imageVideo" draggable="false"/> */}
             {videoRef && <video ref={videoRef} src={info.src + ".mp4"} className='video' controls></video>}
         </div>
     )
