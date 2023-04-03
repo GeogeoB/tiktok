@@ -36,7 +36,7 @@ function Video({info, animationSlide, setVideoInfos, id, k}) {
             <Description user={info.user}></Description>
             <div className="carree"></div>
             {/* <img src={info.src + ".PNG"} className="imageVideo" draggable="false"/> */}
-            {videoRef && <video ref={videoRef} src={info.src + ".mp4"} className='video' controls></video>}
+            {videoRef && <video ref={videoRef} src={info.src} className='video' controls></video>}
         </div>
     )
 }

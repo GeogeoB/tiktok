@@ -5,35 +5,34 @@ function Heart({info, setVideoInfos, k}) {
     const heart = useRef(null)
 
     const heartClick = () => {
+        let k_ = ((k % 3) + 3) % 3;
+
         if (heart != null) {
             if(!heart.current.classList.contains("red")) {
-                heart.current.classList.add("heartAnimation");
                 heart.current.classList.add("red");
-
-                let k_ = ((k % 3) + 3) % 3;
-    
-                setVideoInfos((oldInfo) => {
-
-                    let newInfo = [{... oldInfo[0]}, {... oldInfo[1]}, {... oldInfo[2]}]
-
-                    if (k_ == 1) {
-                        newInfo[0].like =  !newInfo[0].like
-                    } else if (k_ == 0) {
-                        newInfo[1].like =  !newInfo[1].like
-                    } else if (k == 2) {
-                        newInfo[2].like =  !newInfo[2].like
-                    }
-
-                    return newInfo
-                })
+                heart.current.classList.add("heartAnimation");
     
                 setTimeout(() => {
                     heart.current.classList.remove("heartAnimation");
                 }, 1000)
             } else {
                 heart.current.classList.remove("red");
-                setVideoInfos((oldInfo) => [oldInfo[0], {...oldInfo[1], "like": 0}, oldInfo[2]])
             }
+
+            setVideoInfos((oldInfo) => {
+
+                let newInfo = [{... oldInfo[0]}, {... oldInfo[1]}, {... oldInfo[2]}]
+
+                if (k_ == 1) {
+                    newInfo[0].like = !newInfo[0].like
+                } else if (k_ == 0) {
+                    newInfo[1].like =  !newInfo[1].like
+                } else if (k == 2) {
+                    newInfo[2].like =  !newInfo[2].like
+                }
+
+                return newInfo
+            })
         }
     }
 
@@ -43,7 +42,7 @@ function Heart({info, setVideoInfos, k}) {
         } else {
             heart.current.classList.remove("red");
         }
-    }, [info])
+    }, [info.like])
 
     return (
         <svg ref={heart} xmlns="http://www.w3.org/2000/svg" className="icone" viewBox="0 0 512 512" onClick={heartClick}>

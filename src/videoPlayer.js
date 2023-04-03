@@ -4,7 +4,7 @@ import Video from './Video';
 function VideoPlayer(numbertoVH) {
     const [videoInfos, setVideoInfos] = useState([
         {
-            "src": "./videos/video1",
+            "src": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
             "play": false,
             "user": "@mia.aroundtheworld",
             "like": 0,
@@ -12,7 +12,7 @@ function VideoPlayer(numbertoVH) {
             "pos": 0,
         }, 
         {
-            "src": "./videos/video2",
+            "src": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
             "play": true,
             "user": "@geogeoLeRigolo",
             "like": 0,
@@ -20,7 +20,7 @@ function VideoPlayer(numbertoVH) {
             "pos": 1,
         },
         {
-            "src": "./videos/video1",
+            "src": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
             "play": false,
             "user": "@ceMecLa",
             "like": 0,
