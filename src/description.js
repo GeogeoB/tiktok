@@ -1,16 +1,26 @@
 import React,  { useEffect, useRef, useState } from 'react';
 
-function Description({user}) {
+function Description({info}) {
+
+    console.log(info.hastags)
+
+    const hastags = info.hastags.map((hastag) => (
+        <p>#{hastag}</p>
+    ))
+
     return (
-        <div className="descriptionVideo">
-            <p className='descriptionVideo-pseudo'>{user}</p>
-            <div className="description-text">
-                <p>Eiffel Tower View, Paris, France</p>
-                <p>#France #Paris #Architecture</p>
-                <p className="description-readmore">Read More</p>
-                <p>Edith Piaf - Sous le ciel de Paris</p>
+        <>
+            <div className="descriptionVideo">
+                <p className='descriptionVideo-pseudo'>{info.user}</p>
+                <div className="description-text">
+                    <p>{info.place}</p>
+                    <div className="hastags">
+                        {hastags}
+                    </div>
+                    <p className="description-readmore">Read More</p>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

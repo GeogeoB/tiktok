@@ -4,28 +4,40 @@ import Video from './Video';
 function VideoPlayer(numbertoVH) {
     const [videoInfos, setVideoInfos] = useState([
         {
-            "src": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-            "play": false,
-            "user": "@mia.aroundtheworld",
-            "like": 0,
-            "id": 0,
-            "pos": 0,
-        }, 
-        {
-            "src": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "play": true,
-            "user": "@geogeoLeRigolo",
-            "like": 0,
-            "id": 1,
-            "pos": 1,
+            src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+            play: false,
+            user: "@mia.aroundtheworld",
+            userPicture: "",
+            like: 100,
+            id: 0,
+            pos: 0,
+            place: "Eiffel Tower View, Paris, France",
+            hastags: ["France", "Paris", "Architecture"],
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
         },
         {
-            "src": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-            "play": false,
-            "user": "@ceMecLa",
-            "like": 0,
-            "id": 2,
-            "pos": 2,
+            src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            play: true,
+            user: "@geogeoLeRigolo",
+            userPicture: "",
+            like: 0,
+            id: 1,
+            pos: 1,
+            place: "Ici",
+            hastags: ["France", "Paris", "Architecture"],
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
+        },
+        {
+            src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+            play: false,
+            user: "@ceMecLa",
+            userPicture: "",
+            like: 9,
+            id: 2,
+            pos: 2,
+            place: "Toulouse",
+            hastags: ["France", "Paris", "Architecture"],
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
         }
     ]);
 
@@ -34,42 +46,41 @@ function VideoPlayer(numbertoVH) {
     const [isDragging, setIsDragging] = useState(false);
 
     const animationSlide = (numbertoVH, type, delay = 400) => {
-
-        document.getElementById("Slider").className = "videoSlider videoSliderTranslate"
-        document.documentElement.style.setProperty('--animation-translate', numbertoVH);
-        let k_;
-            
-        setTimeout(() => {
-
-            if (type == "Up") {
-                setk((k) => k-1)
-                k_ = k - 1
-                k_ = ((k_ % 3) + 3) % 3;
-                setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
-            } else if (type == "Down") {
-                setk((k) => k+1)
-                k_ = k + 1
-                k_ = ((k_ % 3) + 3) % 3;
-                setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
-            }
-
-            console.log(k_)
-
-            document.documentElement.style.setProperty('--position-video1',   k_     *100 % 300 + 'vh')
-            document.documentElement.style.setProperty('--position-video2',  (k_ + 1)*100 % 300 + 'vh')
-            document.documentElement.style.setProperty('--position-video3',  (k_ + 2)*100 % 300 + 'vh')
-
-            document.getElementById("Slider").className = "videoSlider"
-            
-            document.documentElement.style.setProperty('--animation-translate',  '-100vh')
-            // document.documentElement.style.setProperty('--is-showing-image', "block");
-            // document.documentElement.style.setProperty('--is-showing', "none");
-        }, delay)
-
-        // setTimeout(() => {
-        //     document.documentElement.style.setProperty('--is-showing', "block");
-        //     document.documentElement.style.setProperty('--is-showing-image', "none");
-        // }, delay + 500)
+            document.getElementById("Slider").className = "videoSlider videoSliderTranslate"
+            document.documentElement.style.setProperty('--animation-translate', numbertoVH);
+            let k_;
+                
+            setTimeout(() => {
+    
+                if (type == "Up") {
+                    k_ = k - 1
+                    setk((k) => k_)
+                    k_ = ((k_ % 3) + 3) % 3;
+                    setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
+                } else if (type == "Down") {
+                    k_ = k + 1
+                    setk((k) => k_)
+                    k_ = ((k_ % 3) + 3) % 3;
+                    setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
+                }
+    
+                console.log(k_)
+    
+                document.documentElement.style.setProperty('--position-video1',   k_     *100 % 300 + 'vh')
+                document.documentElement.style.setProperty('--position-video2',  (k_ + 1)*100 % 300 + 'vh')
+                document.documentElement.style.setProperty('--position-video3',  (k_ + 2)*100 % 300 + 'vh')
+    
+                document.getElementById("Slider").className = "videoSlider"
+                
+                document.documentElement.style.setProperty('--animation-translate',  '-100vh')
+                // document.documentElement.style.setProperty('--is-showing-image', "block");
+                // document.documentElement.style.setProperty('--is-showing', "none");
+            }, delay)
+    
+            // setTimeout(() => {
+            //     document.documentElement.style.setProperty('--is-showing', "block");
+            //     document.documentElement.style.setProperty('--is-showing-image', "none");
+            // }, delay + 500)
     }
 
       useEffect(() => {

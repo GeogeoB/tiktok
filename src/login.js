@@ -2,19 +2,23 @@ import React,  { useEffect, useRef, useState } from 'react';
 
 function Login() { 
 
+    const [erreur, setErreur] = useState("Votre identifiant et/ou votre mot de passe n'est pas le bon");
+
     return (
         <div className='LoginView'>
             <div className='close-button'></div>
             <p className='login-title'>Login</p>
             <div className="login-input">
                 <div className="login-box">
-                    <p className='login-label-input'>EMAIL</p>
-                    <input type="text" placeholder="📧 Email" className='input-login'/>
+                    <p className='login-label-input'>PSEUDO</p>
+                    <input type="text" placeholder="pseudo" className='input-login'/>
                 </div>
                 <div className="login-box">
                     <p className='login-label-input'>PASSWORD</p>
-                    <input type="text" placeholder="🔒 At least 8 characters" className='input-login'/>
+                    <input type="password" placeholder="password " className='input-login'/>
                 </div>
+                
+                {erreur && <p className="text_erreur">{erreur}</p>}                
 
             </div>
             <div className='loginFooter'>
@@ -23,7 +27,7 @@ function Login() {
                     <input type="checkbox" />
                     <span class="checkmark"></span>
                 </label>
-                <button className='loginButton'>Login</button>
+                <button className='Button'>Login</button>
             </div>
         </div>
     )

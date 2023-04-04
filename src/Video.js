@@ -33,7 +33,7 @@ function Video({info, animationSlide, setVideoInfos, id, k}) {
             <div className="blur blurRadial"></div>
             <div className="blur blurVertical"></div>
             <VideoItems info={info} setVideoInfos={setVideoInfos} k={k}></VideoItems>
-            <Description user={info.user}></Description>
+            <Description info={info}></Description>
             <div className="carree"></div>
             {/* <img src={info.src + ".PNG"} className="imageVideo" draggable="false"/> */}
             {videoRef && <video ref={videoRef} src={info.src} className='video' controls></video>}
