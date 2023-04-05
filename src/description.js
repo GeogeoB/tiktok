@@ -2,7 +2,6 @@ import React,  { useEffect, useRef, useState } from 'react';
 
 function Description({info}) {
 
-    console.log(info.hastags)
 
     const hastags = info.hastags.map((hastag) => (
         <p>#{hastag}</p>

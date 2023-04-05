@@ -47,6 +47,7 @@ function VideoPlayer(numbertoVH) {
 
     const animationSlide = (numbertoVH, type, delay = 400) => {
             document.getElementById("Slider").className = "videoSlider videoSliderTranslate"
+            console.log(numbertoVH)
             document.documentElement.style.setProperty('--animation-translate', numbertoVH);
             let k_;
                 
@@ -63,8 +64,6 @@ function VideoPlayer(numbertoVH) {
                     k_ = ((k_ % 3) + 3) % 3;
                     setVideoInfos((oldInfo) => [{...oldInfo[0], "play": k_ == 1}, {...oldInfo[1], "play": k_ == 0}, {...oldInfo[2], "play": k_ == 2}]);
                 }
-    
-                console.log(k_)
     
                 document.documentElement.style.setProperty('--position-video1',   k_     *100 % 300 + 'vh')
                 document.documentElement.style.setProperty('--position-video2',  (k_ + 1)*100 % 300 + 'vh')
@@ -109,20 +108,30 @@ function VideoPlayer(numbertoVH) {
         let diff = - window.innerHeight - parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--animation-translate'));
 
         if (Math.abs(diff) > window.innerHeight * 0.20) {
+            console.log("oui")
             if (diff > 0) {
                 animationSlide(-2*window.innerHeight + "px", "Up");
             } else {
                 animationSlide('0px', "Down");
             }
         } else {
-            document.documentElement.style.setProperty('--animation-translate', "-100vh");
+            // Attendre quelque ms pour ne pas superposé avec les MouseMose
+            setTimeout(() => {
+                document.documentElement.style.setProperty('--animation-translate', "-100vh");
+            }, 50)
         }
 
       }
 
       function handleMouseMove(event) {
         if (isDragging) {
-            document.documentElement.style.setProperty('--animation-translate', parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--animation-translate')) + parseInt(event.movementY) + "px")
+            let a = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--animation-translate')) + parseInt(event.movementY)
+            let b = - 2 * window.innerHeight;
+
+            a = a<0 ? Math.max(a,b) : 0
+            
+
+            document.documentElement.style.setProperty('--animation-translate', a + "px")
         }
       }
 
