@@ -650,3 +650,19 @@ body {
   width: 20px;
   margin-right: 10px;
 }
+
+.ButtonUpload:hover > svg {
+  animation-name: tourne;
+  animation-duration: 0.5s; /* Durée de l'animation */
+  animation-timing-function: linear; /* Fonction de timing (facultatif) */
+}
+
+/* Définition de l'animation */
+@keyframes tourne {
+  0% {
+    transform: rotate3d(0, 1, 0, 45deg);
+  }
+  60% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+}
