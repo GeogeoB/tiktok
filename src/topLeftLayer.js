@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Upload from './icones/upload';
+import urlJboss from './config';
 
 function TopLeftLayer({ user }) {
 
@@ -20,15 +21,13 @@ function TopLeftLayer({ user }) {
     const fichierChange = async () => {
         let formData = new FormData();
         formData.append("file", inputUpload.current.files[0]);
+        formData.append("op", "upload");
+        
 
-        console.log("couocou")
-
-       await fetch('http://192.168.1.91:8080/Application_Web_Projet_Backend/TestServlet', {
+       await fetch(urlJboss + '/Application_Web_Projet_Backend/TestServlet', {
+        mode: 'no-cors',
         method: "POST",
-        body: JSON.stringify({
-            file: formData,
-            op: "upload"
-        })
+        body: formData,
        })
     }
 
