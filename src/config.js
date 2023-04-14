@@ -1,3 +1,3 @@
-const urlJboss = "http://192.168.1.91:8080"
+const urlJboss = "http://127.0.0.1:8080/TiktokBackend";
 
-export default urlJboss
+export default urlJboss;
