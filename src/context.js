@@ -13,7 +13,7 @@ export const MyContextProvider = ({children}) => {
 
     const [user, setUser] = useState(null);
     const [loginOpen, setLoginOpen] = useState(false);
-    const [commentOpen, setcommentOpen] = useState(true);
+    const [commentOpen, setcommentOpen] = useState(false);
 
     
   

@@ -271,7 +271,7 @@ body {
 
 .LoginView{
   height: fit-content;
-  width: fit-content;
+  width: 350px;
   aspect-ratio: 4/5;
   background-color: var(--background-color);
   border-radius: 10px;
@@ -290,7 +290,7 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  width: fit-content;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -698,4 +698,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.dontaccount {
+  margin-top: 8px;
+  size: 12px;
+  color: var(--ternaire-color);
+}
+
+.Signup:hover {
+  cursor: pointer;
+  color: black;
 }
