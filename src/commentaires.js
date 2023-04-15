@@ -4,7 +4,7 @@ import { appContext } from './context';
 
 function Commentaires() {
 
-    const [erreur, setErreur] = useState("Commentaire vide")
+    const [erreur, setErreur] = useState("")
 
     let context = useContext(appContext);
     let user = context.user;
@@ -28,18 +28,20 @@ function Commentaires() {
         date: "2023-04-04T15:30:45.500Z"
       }
 
-    const userInput = () => {
-        <div className="sendComment">
-                <div className="pp_comments">
-                    <div class="pp_comments_circle">
-                        <img src={user.pp} alt="" />
+    const UserInput = () => {
+        return (
+            <div className="sendComment">
+                    <div className="pp_comments">
+                        <div class="pp_comments_circle">
+                            <img src={user.pp} alt="" />
+                        </div>
+                    </div>
+                    <div className='comment_input'>
+                        <input type="text" className='input_comment' placeholder='Ajoutez un commentaire...'/>
+                        {erreur && <p className='text_erreur'>{erreur}</p>}
                     </div>
                 </div>
-                <div className='comment_input'>
-                    <input type="text" className='input_comment' placeholder='Ajoutez un commentaire...'/>
-                    {erreur && <p className='text_erreur'>{erreur}</p>}
-                </div>
-            </div>
+        )
     }
 
     const closeCommentaire = () => {
@@ -53,7 +55,7 @@ function Commentaires() {
                 <div className="commentaire-close-but">
                     <div className='close-button' onClick={closeCommentaire}></div>
                 </div>
-                {user && userInput}
+                {user && <UserInput></UserInput>}
                 <Commentaire  userComments={userComments}></Commentaire>
                 <Commentaire  userComments={userComments}></Commentaire>
                 <Commentaire  userComments={userComments}></Commentaire>

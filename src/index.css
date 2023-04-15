@@ -279,7 +279,22 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  animation-name: pop;
+  animation-duration: 0.23s; /* Durée de l'animation */
+  animation-timing-function: ease-out; /* Fonction de timing (facultatif) */
 }
+
+/* Définition de l'animation */
+@keyframes pop {
+  0% {
+    transform: scale(0.5)
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+
 
 .Button {
   background-color: var(--button-color); /* Green */
@@ -620,7 +635,6 @@ body {
 .sendComment {
   display: flex;
   margin-bottom: 30px;
-  margin-top: 30px;
   align-items: center;
 }
 
