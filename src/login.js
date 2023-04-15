@@ -53,6 +53,27 @@ function Login() {
     }
 
     const login = () => {
+        const data = new URLSearchParams({
+            op: "login",
+            name: pseudo,
+            password: mdp
+        });
+
+        fetch(urlJboss + "/AuthenticationServlet?" + data, {method: 'GET'}).then(response => {
+            if (!response.ok) {
+                setErreur("Login ou Mot de passe invalide")
+            } else {
+                let userSetup = {
+                    id: 0,
+                    pseudo: pseudo,
+                    pp: "./pp.jpg",
+                  }
+                
+                console.log(response.cookie);
+                setUser(userSetup);
+                setLoginOpen(false);
+            }
+        })
     }
 
     const registerlog = async () => {
@@ -84,6 +105,9 @@ function Login() {
                           pseudo: pseudo,
                           pp: "./pp.jpg",
                         }
+
+                        setUser(userSetup);
+                        setLoginOpen(false);
                     }
                 })
             }
