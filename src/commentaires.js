@@ -1,9 +1,24 @@
-import React,  { useEffect, useRef, useState } from 'react';
+import React,  { useEffect, useRef, useState, useContext} from 'react';
 import Commentaire from './commentaire';
+import { appContext } from './context';
 
-function Commentaires({user}) {
+function Commentaires() {
 
     const [erreur, setErreur] = useState("Commentaire vide")
+
+    let context = useContext(appContext);
+    let user = context.user;
+    let setUser = context.setUser;
+    let setOpencommentaire = context.setcommentOpen;
+    let commentOpen = context.commentOpen;
+
+
+    useEffect(() => {
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--commentaire-translate', '0vh');
+        }, 100)
+    }, commentOpen)
+
 
     let userComments = {
         id: 0,
@@ -13,12 +28,8 @@ function Commentaires({user}) {
         date: "2023-04-04T15:30:45.500Z"
       }
 
-    return (
-        <div className="commentaires">
-            <div className="commentaire-close-but">
-                <div className='close-button'></div>
-            </div>
-            <div className="sendComment">
+    const userInput = () => {
+        <div className="sendComment">
                 <div className="pp_comments">
                     <div class="pp_comments_circle">
                         <img src={user.pp} alt="" />
@@ -29,23 +40,38 @@ function Commentaires({user}) {
                     {erreur && <p className='text_erreur'>{erreur}</p>}
                 </div>
             </div>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
-            <Commentaire  userComments={userComments}></Commentaire>
+    }
+
+    const closeCommentaire = () => {
+        setOpencommentaire(old => !old)
+        document.documentElement.style.setProperty('--commentaire-translate', '75vh');
+    }
+
+    return (
+        <div className="commentairesOverflow">
+            <div className="commentaires">
+                <div className="commentaire-close-but">
+                    <div className='close-button' onClick={closeCommentaire}></div>
+                </div>
+                {user && userInput}
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+                <Commentaire  userComments={userComments}></Commentaire>
+            </div>
         </div>
     )
 }

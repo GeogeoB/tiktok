@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Video from './Video';
+import { appContext } from './context';
+import Commentaires from './commentaires';
 
 function VideoPlayer(numbertoVH) {
     const [videoInfos, setVideoInfos] = useState([
@@ -42,10 +44,13 @@ function VideoPlayer(numbertoVH) {
     ]);
 
     const [k, setk] = useState(0);
-
     const [isDragging, setIsDragging] = useState(false);
+    let context = useContext(appContext);
+    let commentOpen = context.commentOpen;
 
     const animationSlide = (numbertoVH, type, delay = 400) => {
+            if (commentOpen) return;
+
             document.getElementById("Slider").className = "videoSlider videoSliderTranslate"
             console.log(numbertoVH)
             document.documentElement.style.setProperty('--animation-translate', numbertoVH);
@@ -99,6 +104,7 @@ function VideoPlayer(numbertoVH) {
       }, [isDragging]);
 
       function handleMouseDown(event) {
+        if (commentOpen) return;
         setIsDragging(true);
       }
 
@@ -142,6 +148,7 @@ function VideoPlayer(numbertoVH) {
                 <Video info={videoInfos[1]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video2"} k={k}></Video>
                 <Video info={videoInfos[2]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video3"} k={k}></Video>
             </div>
+            {commentOpen && <Commentaires></Commentaires>}
         </div>
     )
 }

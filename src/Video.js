@@ -1,10 +1,14 @@
-import React,  { useEffect, useRef, useState } from 'react';
+import React,  { useEffect, useRef, useState, useContext } from 'react';
 import VideoItems from './videoItems';
 import Description from './description';
+import { appContext } from './context';
 
 function Video({info, animationSlide, setVideoInfos, id, k}) {
     let className = "videoContainer ";
     const videoRef = useRef(null);
+
+    let context = useContext(appContext);
+    let commentOpen = context.commentOpen;
 
     useEffect(() => {
         if(videoRef && info.play) {

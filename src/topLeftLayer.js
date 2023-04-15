@@ -1,14 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import Upload from "./icones/upload";
 import urlJboss from "./config";
+import { appContext } from './context';
 
-function TopLeftLayer({ user }) {
+function TopLeftLayer() {
   const inputUpload = useRef(null);
+
+  let context = useContext(appContext);
+  let user = context.user;
+  let setUser = context.setUser;
+  // let loginOpen  = context.loginOpen;
+  let setLoginOpen = context.setLoginOpen;
+
+  const loginChange = () => {
+    setLoginOpen(old => !old);
+  }
 
   if (!user) {
     return (
       <div className="topleftLayer">
-        <button className="Button redButton">Se connecter</button>
+        <button className="Button redButton" onClick={loginChange}>Se connecter</button>
       </div>
     );
   }

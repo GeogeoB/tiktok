@@ -1,28 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, createContext, useContext } from 'react';
 import './index.css';
 import VideoPlayer from './videoPlayer';
 import Login from './login';
 import TopLeftLayer from './topLeftLayer';
 import Commentaires from './commentaires';
+import { appContext } from './context';
 
 function App() {
 
-  useEffect(() => {
-    console.log("App")
-  }, [])
+  let context = useContext(appContext);
+  let loginOpen = context.loginOpen;
+  let commentOpen = context.commentOpen;
 
-  let user = {
-    id: 0,
-    pseudo: "geogeo",
-    pp: "./pp.jpg",
-  }
+  console.log("commentOpen", commentOpen)
 
   return (
     <div className="App">
-      <VideoPlayer></VideoPlayer>
-      <Login></Login>
-      <TopLeftLayer user={user}></TopLeftLayer>
-      <Commentaires user={user}></Commentaires>
+        <VideoPlayer></VideoPlayer>
+        {loginOpen && <Login></Login>}
+        <TopLeftLayer></TopLeftLayer>
     </div>
   );
 }
