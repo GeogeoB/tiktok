@@ -58,41 +58,23 @@ function Login() {
 
     const registerlog = async () => {
 
-        const data = {
+        const data = new URLSearchParams({
             op: "createCompte",
             name: pseudo,
             password: mdp
-          };
-          
-          // Options de la requête POST
-          const options = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json' // Définir le type de contenu comme JSON
-            },
-            body: JSON.stringify(data) // Convertir l'objet en chaîne JSON
-          };
+          });
 
-          fetch(urlJboss + "/AuthenticationServlet", options).then(response => {
+          fetch(urlJboss + "/AuthenticationServlet?" + data, {method: 'POST'}).then(response => {
             if (!response.ok) {
               setErreur("Il y a eu un probleme")
             } else {
-                const datalog = {
+                const datalog = new URLSearchParams({
                     op: "login",
                     name: pseudo,
                     password: mdp
-                };
+                });
 
-                // Options de la requête POST
-                const optionslog = {
-                    method: 'GET',
-                    headers: {
-                    'Content-Type': 'application/json' // Définir le type de contenu comme JSON
-                    },
-                    body: JSON.stringify(datalog) // Convertir l'objet en chaîne JSON
-                };
-
-                fetch(urlJboss + "/AuthenticationServlet", optionslog).then(response => {
+                fetch(urlJboss + "/AuthenticationServlet?" + datalog, {method: 'GET'}).then(response => {
                     if (!response.ok) {
                         setErreur("Login ou Mot de passe invalide")
                     } else {
@@ -134,7 +116,7 @@ function Login() {
                         <span class="checkmark"></span>
                     </label>
                     <button className='Button' onClick={sendFormulaire}>{titre}</button>
-                    <p className='dontaccount'>Don't have account? <b className='Signup' onClick={register}>Sign Up</b></p>
+                    {titre == "Login" && <p className='dontaccount'>Don't have account? <b className='Signup' onClick={register}>Sign Up</b></p>}
                 </div>
             </div>
         </div>
