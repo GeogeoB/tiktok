@@ -1,149 +1,170 @@
-import React,  { useEffect, useRef, useState, useContext} from 'react';
-import { appContext } from './context';
-import urlJboss from './config';
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { appContext } from "./context";
+import urlJboss from "./config";
 
-function Login() { 
+function Login() {
+  const [erreur, setErreur] = useState("");
+  const [titre, settitre] = useState("Login");
+  const [pseudo, setpseudo] = useState("");
+  const [mdp, setmdp] = useState("");
 
-    const [erreur, setErreur] = useState("");
-    const [titre, settitre] = useState("Login");
-    const [pseudo, setpseudo] = useState("");
-    const [mdp, setmdp] = useState("");
+  let context = useContext(appContext);
+  let setLoginOpen = context.setLoginOpen;
+  let setUser = context.setUser;
 
-    let context = useContext(appContext);
-    let setLoginOpen = context.setLoginOpen;
-    let setUser = context.setUser;
+  const loginChange = () => {
+    setLoginOpen((old) => !old);
+  };
 
-    const loginChange = () => {
-        setLoginOpen(old => !old);
+  const register = () => {
+    settitre("Register");
+    setErreur("");
+  };
+
+  const changePseudo = (e) => {
+    setpseudo(e.target.value);
+  };
+
+  const changeMdp = (e) => {
+    setmdp(e.target.value);
+  };
+
+  const sendFormulaire = () => {
+    if (pseudo == "") {
+      setErreur("Votre Pseudo est vide");
+      return;
     }
 
-    const register = () => {
-        settitre("Register")
-        setErreur("")
+    if (mdp == "") {
+      setErreur("Votre mot de passe est vide");
+      return;
     }
 
-    const changePseudo = (e) => {
-        setpseudo(e.target.value)
+    if (titre == "Login") {
+      login();
+    } else if (titre == "Register") {
+      registerlog();
+    } else {
+      setErreur("Il y a eu un problème");
     }
+  };
 
-    const changeMdp = (e) => {
-        setmdp(e.target.value)
-    }
+  const login = () => {
+    const data = new URLSearchParams({
+      op: "login",
+      name: pseudo,
+      password: mdp,
+    });
 
-    const sendFormulaire = () => {
-        if (pseudo == "") {
-            setErreur("Votre Pseudo est vide")
-            return;
-        }
+    fetch(urlJboss + "/AuthenticationServlet?" + data, {
+      method: "GET",
+      credentials: "include",
+    }).then((response) => {
+      if (!response.ok) {
+        setErreur("Login ou Mot de passe invalide");
+      } else {
+        let userSetup = {
+          id: 0,
+          pseudo: pseudo,
+          pp: "./pp.jpg",
+        };
 
-        if (mdp == "") {
-            setErreur("Votre mot de passe est vide")
-            return;
-        }
+        console.log(response.cookie);
+        setUser(userSetup);
+        setLoginOpen(false);
+      }
+    });
+  };
 
-        if (titre == "Login") {
-            login()
-        }
-        else if (titre == "Register") {
-            registerlog()
-        }
-        else {
-            setErreur("Il y a eu un problème")
-        }
-    }
+  const registerlog = async () => {
+    const data = new URLSearchParams({
+      op: "createCompte",
+      name: pseudo,
+      password: mdp,
+    });
 
-    const login = () => {
-        const data = new URLSearchParams({
+    fetch(urlJboss + "/AuthenticationServlet?" + data, { method: "POST" }).then(
+      (response) => {
+        if (!response.ok) {
+          setErreur("Il y a eu un probleme");
+        } else {
+          const datalog = new URLSearchParams({
             op: "login",
             name: pseudo,
-            password: mdp
-        });
-
-        fetch(urlJboss + "/AuthenticationServlet?" + data, {method: 'GET'}).then(response => {
-            if (!response.ok) {
-                setErreur("Login ou Mot de passe invalide")
-            } else {
-                let userSetup = {
-                    id: 0,
-                    pseudo: pseudo,
-                    pp: "./pp.jpg",
-                  }
-                
-                console.log(response.cookie);
-                setUser(userSetup);
-                setLoginOpen(false);
-            }
-        })
-    }
-
-    const registerlog = async () => {
-
-        const data = new URLSearchParams({
-            op: "createCompte",
-            name: pseudo,
-            password: mdp
+            password: mdp,
           });
 
-          fetch(urlJboss + "/AuthenticationServlet?" + data, {method: 'POST'}).then(response => {
+          fetch(urlJboss + "/AuthenticationServlet?" + datalog, {
+            method: "GET",
+          }).then((response) => {
             if (!response.ok) {
-              setErreur("Il y a eu un probleme")
+              setErreur("Login ou Mot de passe invalide");
             } else {
-                const datalog = new URLSearchParams({
-                    op: "login",
-                    name: pseudo,
-                    password: mdp
-                });
+              let rep = response.json();
 
-                fetch(urlJboss + "/AuthenticationServlet?" + datalog, {method: 'GET'}).then(response => {
-                    if (!response.ok) {
-                        setErreur("Login ou Mot de passe invalide")
-                    } else {
-                        let rep = response.json();
+              let userSetup = {
+                id: 0,
+                pseudo: pseudo,
+                pp: "./pp.jpg",
+              };
 
-                        let userSetup = {
-                          id: 0,
-                          pseudo: pseudo,
-                          pp: "./pp.jpg",
-                        }
-
-                        setUser(userSetup);
-                        setLoginOpen(false);
-                    }
-                })
+              setUser(userSetup);
+              setLoginOpen(false);
             }
-          })
-    }
+          });
+        }
+      }
+    );
+  };
 
-    return (
-        <div className="loginbg">
-            <div className='LoginView'>
-                <div className='close-button' onClick={loginChange}></div>
-                <p className='login-title'>{titre}</p>
-                <div className="login-input">
-                    <div className="login-box">
-                        <p className='login-label-input'>PSEUDO</p>
-                        <input type="text" placeholder="pseudo" className='input-login' onChange={changePseudo}/>
-                    </div>
-                    <div className="login-box">
-                        <p className='login-label-input'>PASSWORD</p>
-                        <input type="password" placeholder="password " className='input-login' onChange={changeMdp}/>
-                    </div>
-                    
-                    {erreur && <p className="text_erreur">{erreur}</p>}        
+  return (
+    <div className="loginbg">
+      <div className="LoginView">
+        <div className="close-button" onClick={loginChange}></div>
+        <p className="login-title">{titre}</p>
+        <div className="login-input">
+          <div className="login-box">
+            <p className="login-label-input">PSEUDO</p>
+            <input
+              type="text"
+              placeholder="pseudo"
+              className="input-login"
+              onChange={changePseudo}
+            />
+          </div>
+          <div className="login-box">
+            <p className="login-label-input">PASSWORD</p>
+            <input
+              type="password"
+              placeholder="password "
+              className="input-login"
+              onChange={changeMdp}
+            />
+          </div>
 
-                </div>
-                <div className='loginFooter'>
-                    <label class="Login-container-Keep">
-                        <p>Keep me signed in</p>
-                        <input type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                    <button className='Button' onClick={sendFormulaire}>{titre}</button>
-                    {titre == "Login" && <p className='dontaccount'>Don't have account? <b className='Signup' onClick={register}>Sign Up</b></p>}
-                </div>
-            </div>
+          {erreur && <p className="text_erreur">{erreur}</p>}
         </div>
-    )
+        <div className="loginFooter">
+          <label class="Login-container-Keep">
+            <p>Keep me signed in</p>
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
+          <button className="Button" onClick={sendFormulaire}>
+            {titre}
+          </button>
+          {titre == "Login" && (
+            <p className="dontaccount">
+              Don't have account?{" "}
+              <b className="Signup" onClick={register}>
+                Sign Up
+              </b>
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Login;

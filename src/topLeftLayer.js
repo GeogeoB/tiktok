@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import Upload from "./icones/upload";
 import urlJboss from "./config";
-import { appContext } from './context';
+import { appContext } from "./context";
 
 function TopLeftLayer() {
   const inputUpload = useRef(null);
@@ -13,13 +13,15 @@ function TopLeftLayer() {
   let setLoginOpen = context.setLoginOpen;
 
   const loginChange = () => {
-    setLoginOpen(old => !old);
-  }
+    setLoginOpen((old) => !old);
+  };
 
   if (!user) {
     return (
       <div className="topleftLayer">
-        <button className="Button redButton" onClick={loginChange}>Se connecter</button>
+        <button className="Button redButton" onClick={loginChange}>
+          Se connecter
+        </button>
       </div>
     );
   }
@@ -36,6 +38,7 @@ function TopLeftLayer() {
     await fetch(urlJboss + "/TestServlet", {
       //mode: "no-cors",
       method: "POST",
+      credentials: "include",
       body: formData,
     });
   };
