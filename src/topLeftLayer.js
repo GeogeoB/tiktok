@@ -35,7 +35,7 @@ function TopLeftLayer() {
     formData.append("file", inputUpload.current.files[0]);
     formData.append("op", "upload");
 
-    await fetch(urlJboss + "/TestServlet", {
+    await fetch(urlJboss + "/DataServlet", {
       //mode: "no-cors",
       method: "POST",
       credentials: "include",
