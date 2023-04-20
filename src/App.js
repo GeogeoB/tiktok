@@ -12,8 +12,6 @@ function App() {
   let loginOpen = context.loginOpen;
   let commentOpen = context.commentOpen;
 
-  console.log("commentOpen", commentOpen)
-
   return (
     <div className="App">
         <VideoPlayer></VideoPlayer>

@@ -21,16 +21,20 @@ function Video({info, animationSlide, setVideoInfos, id, k}) {
     useEffect(() => {
         if(videoRef) {
             videoRef.current.addEventListener('ended', function() {
-                animationSlide(-2*window.innerHeight + "px", "Up");
+                if (!context.commentOpen) {
+                    animationSlide(-2*window.innerHeight + "px", "Up");
+                }
             });
         }
 
         return () => {
             document.removeEventListener('ended', function() {
-                animationSlide(-2*window.innerHeight + "px", "Up");
+                if (!context.commentOpen) {
+                    animationSlide(-2*window.innerHeight + "px", "Up");
+                }
             });
           }; 
-    }, [])
+    }, [context.commentOpen])
 
     return (
         <div className={className} id={id}>

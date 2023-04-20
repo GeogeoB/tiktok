@@ -219,8 +219,8 @@ body {
     -webkit-user-drag: none;
     font-weight: 600;
     color: var(--primary-color);
-    font-size: clamp(10px, 1.7vw, 25px);
     margin-bottom: 20px;
+    font-size: 25px;
 }
 
 .descriptionVideo-pseudo:hover {

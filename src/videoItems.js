@@ -10,7 +10,7 @@ function VideoItems({info, setVideoInfos, k}) {
     let setcommentOpen = context.setcommentOpen;
 
     const openComment = () => {
-        setcommentOpen(old => !old)
+        setcommentOpen(true);
     }
 
     return (

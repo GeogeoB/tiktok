@@ -9,10 +9,9 @@ function VideoPlayer(numbertoVH) {
     const [k, setk] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     let context = useContext(appContext);
-    let commentOpen = context.commentOpen;
 
     const animationSlide = (numbertoVH, type, delay = 400) => {
-        if (commentOpen) return;
+        if (context.commentOpen) return;
 
         document.getElementById("Slider").className = "videoSlider videoSliderTranslate"
         console.log(numbertoVH)
@@ -25,12 +24,23 @@ function VideoPlayer(numbertoVH) {
                 k_ = k - 1
                 setk((k) => k_)
                 k_ = ((k_ % 3) + 3) % 3;
-                console.log("UP", k_);
 
                 getRandomVideo().then((video) => {
-                    setVideoInfos((oldInfo) => [{ ...oldInfo[0], play: k_ == 1, src: k_== 2 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[0].src },
-                                                { ...oldInfo[1], play: k_ == 0, src: k_== 1 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[1].src }, 
-                                                { ...oldInfo[2], play: k_ == 2, src: k_== 0 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[2].src}]);
+                    setVideoInfos((oldInfo) => [{   ...oldInfo[0], 
+                                                    play: k_ == 1, 
+                                                    src: k_== 2 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[0].src,
+                                                    user: k==2 ? video.compteUploader.nom : oldInfo[0].user
+                                                },
+                                                {   ...oldInfo[1],
+                                                    play: k_ == 0,
+                                                    src: k_== 1 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[1].src,
+                                                    user: k==1 ? video.compteUploader.nom : oldInfo[1].user,
+                                                }, 
+                                                {   ...oldInfo[2],
+                                                    play: k_ == 2,
+                                                    src: k_== 0 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[2].src,
+                                                    user: k==0 ? video.compteUploader.nom : oldInfo[2].user
+                                                }]);
                 })
 
             } else if (type == "Down") {
@@ -116,15 +126,28 @@ function VideoPlayer(numbertoVH) {
 
     useEffect(() => {
         getRandomVideo().then((video) => {
-            setVideoInfos((oldInfo) => [{ ...oldInfo[0], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id }, { ...oldInfo[1]}, { ...oldInfo[2]}]);
+            setVideoInfos((oldInfo) => [{ ...oldInfo[0],
+                                         src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                         user: video.compteUploader.nom
+                                        },
+                                        { ...oldInfo[1]}, { ...oldInfo[2]}]);
         })
 
         getRandomVideo().then((video) => {
-            setVideoInfos((oldInfo) => [{ ...oldInfo[0]}, { ...oldInfo[1], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id}, { ...oldInfo[2]}]);
+            setVideoInfos((oldInfo) => [{ ...oldInfo[0]},
+                                        { ...oldInfo[1], 
+                                          src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                          user: video.compteUploader.nom
+                                        },
+                                        { ...oldInfo[2]}]);
         })
 
         getRandomVideo().then((video) => {
-            setVideoInfos((oldInfo) => [{ ...oldInfo[0]}, { ...oldInfo[1]}, { ...oldInfo[2], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id}]);
+            setVideoInfos((oldInfo) => [{ ...oldInfo[0]},
+                                        { ...oldInfo[1]},
+                                        { ...oldInfo[2], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                        user: video.compteUploader.nom
+                                    }]);
         })
     }, [])
 
@@ -145,7 +168,7 @@ function VideoPlayer(numbertoVH) {
     }, [isDragging]);
 
     function handleMouseDown(event) {
-        if (commentOpen) return;
+        if (context.commentOpen) return;
         setIsDragging(true);
     }
 
@@ -189,7 +212,7 @@ function VideoPlayer(numbertoVH) {
                 <Video info={videoInfos[1]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video2"} k={k}></Video>
                 <Video info={videoInfos[2]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video3"} k={k}></Video>
             </div>
-            {commentOpen && <Commentaires></Commentaires>}
+            {context.commentOpen && <Commentaires></Commentaires>}
         </div>
     )
 }

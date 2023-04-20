@@ -17,7 +17,7 @@ function Commentaires() {
         setTimeout(() => {
             document.documentElement.style.setProperty('--commentaire-translate', '0vh');
         }, 100)
-    }, commentOpen)
+    }, [commentOpen])
 
 
     let userComments = {
