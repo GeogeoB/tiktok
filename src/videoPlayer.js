@@ -28,9 +28,9 @@ function VideoPlayer(numbertoVH) {
                 console.log("UP", k_);
 
                 getRandomVideo().then((video) => {
-                    setVideoInfos((oldInfo) => [{ ...oldInfo[0], play: k_ == 1, src: k_== 2 ? urlJboss + "/TestServlet?op=getVideo&id=" + video.id : oldInfo[0].src },
-                                                { ...oldInfo[1], play: k_ == 0, src: k_== 1 ? urlJboss + "/TestServlet?op=getVideo&id=" + video.id : oldInfo[1].src }, 
-                                                { ...oldInfo[2], play: k_ == 2, src: k_== 0 ? urlJboss + "/TestServlet?op=getVideo&id=" + video.id : oldInfo[2].src}]);
+                    setVideoInfos((oldInfo) => [{ ...oldInfo[0], play: k_ == 1, src: k_== 2 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[0].src },
+                                                { ...oldInfo[1], play: k_ == 0, src: k_== 1 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[1].src }, 
+                                                { ...oldInfo[2], play: k_ == 2, src: k_== 0 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[2].src}]);
                 })
 
             } else if (type == "Down") {
@@ -38,9 +38,9 @@ function VideoPlayer(numbertoVH) {
                 setk((k) => k_)
                 k_ = ((k_ % 3) + 3) % 3;
                 getRandomVideo().then((video) => {
-                    setVideoInfos((oldInfo) => [{ ...oldInfo[0], play: k_ == 1, src: k_== 0 ? urlJboss + "/TestServlet?op=getVideo&id=" + video.id : oldInfo[0].src },
-                                                { ...oldInfo[1], play: k_ == 0, src: k_== 2 ? urlJboss + "/TestServlet?op=getVideo&id=" + video.id : oldInfo[1].src }, 
-                                                { ...oldInfo[2], play: k_ == 2, src: k_== 1 ? urlJboss + "/TestServlet?op=getVideo&id=" + video.id : oldInfo[2].src}]);
+                    setVideoInfos((oldInfo) => [{ ...oldInfo[0], play: k_ == 1, src: k_== 0 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[0].src },
+                                                { ...oldInfo[1], play: k_ == 0, src: k_== 2 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[1].src }, 
+                                                { ...oldInfo[2], play: k_ == 2, src: k_== 1 ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id : oldInfo[2].src}]);
                 })
             }
 
@@ -103,7 +103,7 @@ function VideoPlayer(numbertoVH) {
     const getRandomVideo = async () => {
         let video;
 
-        await fetch(urlJboss + "/TestServlet?" +  new URLSearchParams({
+        await fetch(urlJboss + "/DataServlet?" +  new URLSearchParams({
             op: "getRandomVideo"
           }), {method: 'GET'}).then((response) => {
             return response.json();
@@ -116,15 +116,15 @@ function VideoPlayer(numbertoVH) {
 
     useEffect(() => {
         getRandomVideo().then((video) => {
-            setVideoInfos((oldInfo) => [{ ...oldInfo[0], src: urlJboss + "/TestServlet?op=getVideo&id=" + video.id }, { ...oldInfo[1]}, { ...oldInfo[2]}]);
+            setVideoInfos((oldInfo) => [{ ...oldInfo[0], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id }, { ...oldInfo[1]}, { ...oldInfo[2]}]);
         })
 
         getRandomVideo().then((video) => {
-            setVideoInfos((oldInfo) => [{ ...oldInfo[0]}, { ...oldInfo[1], src: urlJboss + "/TestServlet?op=getVideo&id=" + video.id}, { ...oldInfo[2]}]);
+            setVideoInfos((oldInfo) => [{ ...oldInfo[0]}, { ...oldInfo[1], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id}, { ...oldInfo[2]}]);
         })
 
         getRandomVideo().then((video) => {
-            setVideoInfos((oldInfo) => [{ ...oldInfo[0]}, { ...oldInfo[1]}, { ...oldInfo[2], src: urlJboss + "/TestServlet?op=getVideo&id=" + video.id}]);
+            setVideoInfos((oldInfo) => [{ ...oldInfo[0]}, { ...oldInfo[1]}, { ...oldInfo[2], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id}]);
         })
     }, [])
 
