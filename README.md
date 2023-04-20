@@ -61,3 +61,6 @@ Puis lancer le serveur
 ```sh
 npm start
 ```
+
+## Adresse du backend 
+Pour changer l'adresse du backend, il faut modifier le fichier `src/config.js`
