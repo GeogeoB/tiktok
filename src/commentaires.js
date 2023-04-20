@@ -1,10 +1,12 @@
 import React,  { useEffect, useRef, useState, useContext} from 'react';
 import Commentaire from './commentaire';
 import { appContext } from './context';
+import urlJboss from './config';
 
-function Commentaires() {
+function Commentaires({idvideo, comments}) {
 
     const [erreur, setErreur] = useState("")
+    const inputComment = useRef(null);
 
     let context = useContext(appContext);
     let user = context.user;
@@ -15,9 +17,13 @@ function Commentaires() {
 
     useEffect(() => {
         setTimeout(() => {
-            document.documentElement.style.setProperty('--commentaire-translate', '0vh');
+            document.documentElement.style.setProperty('--popup-translate', '0vh');
         }, 100)
     }, [commentOpen])
+
+    useEffect(() => {
+        console.log("HHH")
+    }, [])
 
 
     let userComments = {
@@ -28,6 +34,23 @@ function Commentaires() {
         date: "2023-04-04T15:30:45.500Z"
       }
 
+    const commentSubmit = (e) => {
+        e.preventDefault();
+        let comment = inputComment.current.value;
+
+        const data = new URLSearchParams({
+            op: "addCommentaire",
+            videoID: idvideo,
+            text: comment,
+        });
+
+        fetch(urlJboss + "/DataServlet?" + data, { method: "POST" }).then(response => {
+            if (!response.ok) {
+                setErreur("Il y a eu une erreur");
+            }
+        });
+    }
+
     const UserInput = () => {
         return (
             <div className="sendComment">
@@ -37,8 +60,10 @@ function Commentaires() {
                         </div>
                     </div>
                     <div className='comment_input'>
-                        <input type="text" className='input_comment' placeholder='Ajoutez un commentaire...'/>
-                        {erreur && <p className='text_erreur'>{erreur}</p>}
+                        <form onSubmit={commentSubmit}>
+                            <input ref={inputComment} type="text" className='input_comment' placeholder='Ajoutez un commentaire...'/>
+                            {erreur && <p className='text_erreur'>{erreur}</p>}
+                        </form>
                     </div>
                 </div>
         )
@@ -46,7 +71,7 @@ function Commentaires() {
 
     const closeCommentaire = () => {
         setOpencommentaire(old => !old)
-        document.documentElement.style.setProperty('--commentaire-translate', '75vh');
+        document.documentElement.style.setProperty('--popup-translate', '75vh');
     }
 
     return (

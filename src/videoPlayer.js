@@ -97,7 +97,7 @@ function VideoPlayer(numbertoVH) {
             desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
         },
         {
-            src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+            src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/couscous.mp4",
             play: false,
             user: "@ceMecLa",
             userPicture: "",
@@ -130,7 +130,8 @@ function VideoPlayer(numbertoVH) {
                                          src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
                                          user: video.compteUploader.nom
                                         },
-                                        { ...oldInfo[1]}, { ...oldInfo[2]}]);
+                                        { ...oldInfo[1]},
+                                        { ...oldInfo[2]}]);
         })
 
         getRandomVideo().then((video) => {
@@ -200,9 +201,18 @@ function VideoPlayer(numbertoVH) {
 
             a = a < 0 ? Math.max(a, b) : 0
 
-
             document.documentElement.style.setProperty('--animation-translate', a + "px")
         }
+    }
+
+    const getActualVideoId = () => {
+        if (((k % 3) + 3) % 3 == 1) return videoInfos[0].id;
+        else if (((k % 3) + 3) % 3 == 0) return videoInfos[1].id;
+        else if (((k % 3) + 3) % 3 == 2) return videoInfos[2].id;
+    }
+
+    const getActualComments = () => {
+        
     }
 
     return (
@@ -212,7 +222,7 @@ function VideoPlayer(numbertoVH) {
                 <Video info={videoInfos[1]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video2"} k={k}></Video>
                 <Video info={videoInfos[2]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video3"} k={k}></Video>
             </div>
-            {context.commentOpen && <Commentaires></Commentaires>}
+            {context.commentOpen && <Commentaires idvideo={getActualVideoId()} comments={k}></Commentaires>}
         </div>
     )
 }

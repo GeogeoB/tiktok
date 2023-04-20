@@ -16,7 +16,7 @@
   --position-video1: 0vh;
   --position-video2: 100vh;
   --position-video3: 200vh;
-  --commentaire-translate: 75vh;
+  --popup-translate: 75vh;
 }
 
 * {
@@ -607,7 +607,7 @@ body {
   border-radius: 20px 20px 0 0;
   overflow: hidden;
 
-  translate: 0px var(--commentaire-translate);
+  translate: 0px var(--popup-translate);
   transition: translate 200ms ease-out;
 }
 
