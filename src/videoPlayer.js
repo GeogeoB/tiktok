@@ -212,7 +212,7 @@ function VideoPlayer(numbertoVH) {
     }
 
     const getActualComments = () => {
-        
+        return null;
     }
 
     return (
@@ -222,7 +222,7 @@ function VideoPlayer(numbertoVH) {
                 <Video info={videoInfos[1]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video2"} k={k}></Video>
                 <Video info={videoInfos[2]} animationSlide={animationSlide} setVideoInfos={setVideoInfos} id={"video3"} k={k}></Video>
             </div>
-            {context.commentOpen && <Commentaires idvideo={getActualVideoId()} comments={k}></Commentaires>}
+            {context.commentOpen && <Commentaires idvideo={getActualVideoId()} comments={getActualComments()}></Commentaires>}
         </div>
     )
 }
