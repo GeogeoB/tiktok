@@ -1,5 +1,5 @@
 import { useEffect, createContext, useContext } from 'react';
-import './index.css';
+import './css/index.css';
 import VideoPlayer from './videoPlayer';
 import Login from './login';
 import TopLeftLayer from './topLeftLayer';
