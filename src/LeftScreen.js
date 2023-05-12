@@ -1,10 +1,13 @@
-import React from 'react';
-import './css/leftScreen.css'; // We will create this file later for styling
+import React from "react";
+import "./css/leftScreen.css";
+import Home from "./icones/home";
 
 const SidebarWidget = () => {
   return (
     <div className="sidebar-widget">
-      <button className="sidebar-button">Pour toi</button>
+      <button className="sidebar-button">
+        <Home></Home>Pour toi
+      </button>
       <button className="sidebar-button">Abonnement</button>
       <button className="sidebar-button">Explorer</button>
       <div className="suggested-accounts">
