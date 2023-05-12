@@ -14,7 +14,7 @@ export const MyContextProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loginOpen, setLoginOpen] = useState(false);
     const [commentOpen, setcommentOpen] = useState(false);
-    const [window, setWindow] = useState("pourToi");
+    const [window, setWindow] = useState("PourToi");
     
   
     return (

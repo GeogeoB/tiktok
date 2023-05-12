@@ -12,37 +12,40 @@ const SidebarWidget = () => {
 
   let context = useContext(appContext);
   let window = context.window;
-  let useWindow = context.useWindow;
+  let setWindow = context.setWindow;
 
   // Event handlers for the buttons
   const handlePourToiClick = () => {
     console.log("Loading recommended videos...");
+    setWindow(() => "PourToi");
     // Here, you'll implement the functionality to load the recommended videos
   };
 
   const handleAbonnementClick = () => {
     console.log("Loading subscribed accounts...");
+    setWindow(() => "Abonnement");
     // Here, implement the functionality to load subscribed accounts
   };
 
   const handleExplorerClick = () => {
     console.log("Loading random videos...");
+    setWindow(() => "Explorer");
     // Here, implement the functionality to load random videos
   };
 
   return (
     <div className="sidebar-widget">
-      <button className={(window == "pourToi" && "sidebar-button-active") + " Button sidebar-button"} onClick={handlePourToiClick}>
+      <button className={(window == "PourToi" && "sidebar-button-active") + " Button sidebar-button"} onClick={handlePourToiClick}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <Home /> Pour toi
         </div>
       </button>
-      <button className="Button sidebar-button" onClick={handleAbonnementClick}>
+      <button className={(window == "Abonnement" && "sidebar-button-active") + " Button sidebar-button"} onClick={handleAbonnementClick}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <Abonnement /> Abonnement
         </div>
       </button>
-      <button className="Button sidebar-button" onClick={handleExplorerClick}>
+      <button className={(window == "Explorer" && "sidebar-button-active") + " Button sidebar-button"} onClick={handleExplorerClick}>
       <div style={{ display: "flex", alignItems: "center" }}>
           <Explorer /> Explorer
         </div>

@@ -7,6 +7,8 @@ import TopLeftLayer from './topLeftLayer';
 import Commentaires from './commentaires';
 import { appContext } from './context';
 import LeftScreen from './LeftScreen';
+import Abonnements from './Abonnements';
+import Explorer from './Explorer';
 
 function App() {
 
@@ -20,7 +22,9 @@ function App() {
   return (
     <div className="App">
         <LeftScreen></LeftScreen>
-        {window == "pourToi" && <VideoPlayer></VideoPlayer>}
+        {window == "PourToi" && <VideoPlayer></VideoPlayer>}
+        {window == "Abonnement" && <Abonnements></Abonnements>}
+        {window == "Explorer" && <Explorer></Explorer>}
         {loginOpen && <Login></Login>}
         <TopLeftLayer></TopLeftLayer>
     </div>
