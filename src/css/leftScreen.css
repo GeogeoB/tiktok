@@ -1,0 +1,20 @@
+.sidebar-widget {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 20px;
+  }
+  
+  .sidebar-button {
+    margin-bottom: 10px;
+    padding: 10px;
+    color: white;
+    background-color: blue;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .suggested-accounts, .top-hashtags {
+    margin-top: 20px;
+  }
+  
