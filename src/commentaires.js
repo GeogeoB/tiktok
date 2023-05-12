@@ -7,6 +7,7 @@ function Commentaires({idvideo, comments}) {
 
     const [erreur, setErreur] = useState("")
     const inputComment = useRef(null);
+    const [commentaires, setCommentaires] = useState([])
 
     let context = useContext(appContext);
     let user = context.user;
@@ -22,7 +23,30 @@ function Commentaires({idvideo, comments}) {
     }, [commentOpen])
 
     useEffect(() => {
-        console.log("HHH")
+        const data = new URLSearchParams({
+            op: "getVideoInfos",
+            id: idvideo,
+          });
+
+        fetch(urlJboss + "/DataServlet?" + data, { method: "GET" }).then(response => {
+            return response.json();
+        }).then(data => {
+            let commentaires_ = data.message.commentaires;
+            
+            let _commentaires = commentaires_.map(commentaire => {
+                let userComments = {
+                    id: commentaire.id,
+                    pseudo: commentaire.compteUploader.nom,
+                    pp: "./pp.jpg",
+                    comments: commentaire.text,
+                    date: commentaire.date
+                  }
+
+                return (<Commentaire  userComments={userComments}></Commentaire>)
+            });
+
+            setCommentaires(() => _commentaires);
+        });
     }, [])
 
 
@@ -81,23 +105,7 @@ function Commentaires({idvideo, comments}) {
                     <div className='close-button' onClick={closeCommentaire}></div>
                 </div>
                 {user && <UserInput></UserInput>}
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
-                <Commentaire  userComments={userComments}></Commentaire>
+                {commentaires}
             </div>
         </div>
     )
