@@ -437,7 +437,7 @@ body {
 .close-button:before {
   content: "x";
   position: absolute;
-  top: 41%;
+  top: 10px;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 16px;
