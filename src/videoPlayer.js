@@ -128,6 +128,7 @@ function VideoPlayer(numbertoVH) {
         getRandomVideo().then((video) => {
             setVideoInfos((oldInfo) => [{ ...oldInfo[0],
                                          src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                         id: video.id,
                                          user: video.compteUploader.nom
                                         },
                                         { ...oldInfo[1]},
@@ -138,6 +139,7 @@ function VideoPlayer(numbertoVH) {
             setVideoInfos((oldInfo) => [{ ...oldInfo[0]},
                                         { ...oldInfo[1], 
                                           src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                          id: video.id,
                                           user: video.compteUploader.nom
                                         },
                                         { ...oldInfo[2]}]);
@@ -147,6 +149,7 @@ function VideoPlayer(numbertoVH) {
             setVideoInfos((oldInfo) => [{ ...oldInfo[0]},
                                         { ...oldInfo[1]},
                                         { ...oldInfo[2], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                        id: video.id,
                                         user: video.compteUploader.nom
                                     }]);
         })

@@ -30,6 +30,7 @@ function Login() {
   };
 
   const sendFormulaire = () => {
+    console.log("test");
     if (pseudo == "") {
       setErreur("Votre Pseudo est vide");
       return;
