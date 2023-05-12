@@ -8,7 +8,7 @@
 }
 
 .Button {
-    background-color: var(--button-color); /* Green */
+    background-color: var(--button-color);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -43,6 +43,11 @@
     border: none;
     cursor: pointer;
 }
+
+.leftWidgetIcone {
+    width: 20px;
+    margin-right: 10px;
+  }
 
 .suggested-accounts, .top-hashtags {
     margin-top: 20px;
