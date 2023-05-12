@@ -62,6 +62,8 @@ function Commentaires({idvideo, comments}) {
         e.preventDefault();
         let comment = inputComment.current.value;
 
+        console.log(comment);
+
         const data = new URLSearchParams({
             op: "addCommentaire",
             videoID: idvideo,

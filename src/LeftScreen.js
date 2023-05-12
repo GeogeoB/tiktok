@@ -27,7 +27,7 @@ const SidebarWidget = () => {
 
   return (
     <div className="sidebar-widget">
-      <button className="Button sidebar-button" onClick={handlePourToiClick}>
+      <button className="sidebar-button-active Button sidebar-button" onClick={handlePourToiClick}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <Home /> Pour toi
         </div>

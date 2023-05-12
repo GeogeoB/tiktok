@@ -3,9 +3,6 @@
     padding: 0;
 }
 
-.icone {
-}
-
 .Button--leftScreen {
     background-color: var(--button-color);
     border: none;
@@ -37,11 +34,32 @@
 .sidebar-button {
     margin-bottom: 10px;
     padding: 10px;
-    color: white;
-    background-color: blue;
+    color: grey;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     cursor: pointer;
     font-weight: 700;
+}
+
+.sidebar-button > div > .leftWidgetIcone {
+    fill: grey;
+}
+
+.sidebar-button-active > div > .leftWidgetIcone {
+    fill: white;
+}
+
+.sidebar-button:hover {
+    background-color: rgb(248, 248, 248);
+}
+
+.sidebar-button-active {
+    background-color: var(--button-color);
+    color: white;
+}
+
+.sidebar-button-active:hover {
+    background-color: var(--button-color-hover);
 }
 
 .leftWidgetIcone {
