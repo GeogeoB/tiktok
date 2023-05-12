@@ -4,10 +4,9 @@
 }
 
 .icone {
-    width: 40%;
 }
 
-.Button {
+.Button--leftScreen {
     background-color: var(--button-color);
     border: none;
     color: white;
