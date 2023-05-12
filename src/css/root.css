@@ -1,0 +1,20 @@
+:root {
+    --animation-translate : -100vh;
+    --animation-delay: 300ms;
+    --is-showing: block;
+    --is-showing-image: none;
+  
+    --primary-color: #dddddd;
+    --secondary-color: white;
+    --ternaire-color: rgb(97, 97, 97);
+    --button-color: #6f19c5;
+    --button-color-hover: #51008f;
+    --red: #e51010;
+    --red-hover: #c91818;
+    --background-color : #efefef;
+  
+    --position-video1: 0vh;
+    --position-video2: 100vh;
+    --position-video3: 200vh;
+    --popup-translate: 75vh;
+}
