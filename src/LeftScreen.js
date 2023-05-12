@@ -1,13 +1,18 @@
-import React from "react";
+import {React, useContext} from "react";
 import "./css/leftScreen.css";
 import Home from "./icones/home";
 import Abonnement from "./icones/abonnement";
 import Explorer from "./icones/explorer";
+import { appContext } from './context';
 
 const SidebarWidget = () => {
   // Let's define some mock data for the demonstration
   const suggestedAccounts = ["account1", "account2", "account3"];
   const topHashtags = ["#hashtag1", "#hashtag2", "#hashtag3"];
+
+  let context = useContext(appContext);
+  let window = context.window;
+  let useWindow = context.useWindow;
 
   // Event handlers for the buttons
   const handlePourToiClick = () => {
@@ -27,7 +32,7 @@ const SidebarWidget = () => {
 
   return (
     <div className="sidebar-widget">
-      <button className="sidebar-button-active Button sidebar-button" onClick={handlePourToiClick}>
+      <button className={(window == "pourToi" && "sidebar-button-active") + " Button sidebar-button"} onClick={handlePourToiClick}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <Home /> Pour toi
         </div>

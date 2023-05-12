@@ -14,10 +14,11 @@ export const MyContextProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loginOpen, setLoginOpen] = useState(false);
     const [commentOpen, setcommentOpen] = useState(false);
+    const [window, setWindow] = useState("pourToi");
     
   
     return (
-      <appContext.Provider value={{user, setUser, loginOpen, setLoginOpen, commentOpen, setcommentOpen}}>
+      <appContext.Provider value={{user, setUser, loginOpen, setLoginOpen, commentOpen, setcommentOpen, window, setWindow}}>
         {children}
       </appContext.Provider>
     );

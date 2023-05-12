@@ -13,11 +13,14 @@ function App() {
   let context = useContext(appContext);
   let loginOpen = context.loginOpen;
   let commentOpen = context.commentOpen;
+  let window = context.window;
+
+  console.log(window)
 
   return (
     <div className="App">
         <LeftScreen></LeftScreen>
-        <VideoPlayer></VideoPlayer>
+        {window == "pourToi" && <VideoPlayer></VideoPlayer>}
         {loginOpen && <Login></Login>}
         <TopLeftLayer></TopLeftLayer>
     </div>
