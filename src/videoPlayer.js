@@ -28,6 +28,7 @@ function VideoPlayer(numbertoVH) {
         k_ = ((k_ % 3) + 3) % 3;
 
         getRandomVideo().then((video) => {
+          let hashtags = video.hashtags.map((h) => h.hashTagName);
           setVideoInfos((oldInfo) => [
             {
               ...oldInfo[0],
@@ -37,6 +38,8 @@ function VideoPlayer(numbertoVH) {
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[0].src,
               user: k === 2 ? video.compteUploader.nom : oldInfo[0].user,
+              place: k === 2 ? video.lieu : oldInfo[0].place,
+              hashtags: k === 2 ? hashtags : oldInfo[0].hashtags,
             },
             {
               ...oldInfo[1],
@@ -46,6 +49,8 @@ function VideoPlayer(numbertoVH) {
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[1].src,
               user: k === 1 ? video.compteUploader.nom : oldInfo[1].user,
+              place: k === 1 ? video.lieu : oldInfo[1].place,
+              hashtags: k === 1 ? hashtags : oldInfo[1].hashtags,
             },
             {
               ...oldInfo[2],
@@ -55,6 +60,8 @@ function VideoPlayer(numbertoVH) {
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[2].src,
               user: k === 0 ? video.compteUploader.nom : oldInfo[2].user,
+              place: k === 0 ? video.lieu : oldInfo[2].place,
+              hashtags: k === 0 ? hashtags : oldInfo[2].hashtags,
             },
           ]);
         });
@@ -200,6 +207,7 @@ function VideoPlayer(numbertoVH) {
           nb_commentaire: video.commentaires.length,
           desc: video.description,
           hashtags: video.hashtags.map((h) => h.hashTagName),
+          place: video.lieu,
         },
         { ...oldInfo[1] },
         { ...oldInfo[2] },
@@ -219,6 +227,7 @@ function VideoPlayer(numbertoVH) {
           nb_commentaire: video.commentaires.length,
           desc: video.description,
           hashtags: video.hashtags.map((h) => h.hashTagName),
+          place: video.lieu,
         },
         { ...oldInfo[2] },
       ]);
@@ -238,6 +247,7 @@ function VideoPlayer(numbertoVH) {
           nb_commentaire: video.commentaires.length,
           desc: video.description,
           hashtags: video.hashtags.map((h) => h.hashTagName),
+          place: video.lieu,
         },
       ]);
     });
