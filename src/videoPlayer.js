@@ -37,14 +37,16 @@ function VideoPlayer(numbertoVH) {
                 k_ === 2
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[0].src,
-              user: k === 2 ? video.compteUploader.nom : oldInfo[0].user,
-              like: k === 2 ? video.liked : oldInfo[0].like,
-              nb_like: k === 2 ? video.nb_like : oldInfo[0].nb_like,
+              user: k_ === 2 ? video.compteUploader.nom : oldInfo[0].user,
+              like: k_ === 2 ? video.liked : oldInfo[0].like,
+              nb_like: k_ === 2 ? video.nb_like : oldInfo[0].nb_like,
               nb_commentaire:
-                k === 2 ? video.commentaires.length : oldInfo[0].nb_commentaire,
-              desc: k === 2 ? video.description : oldInfo[0].desc,
-              place: k === 2 ? video.lieu : oldInfo[0].place,
-              hashtags: k === 2 ? hashtags : oldInfo[0].hashtags,
+                k_ === 2
+                  ? video.commentaires.length
+                  : oldInfo[0].nb_commentaire,
+              desc: k_ === 2 ? video.description : oldInfo[0].desc,
+              place: k_ === 2 ? video.lieu : oldInfo[0].place,
+              hashtags: k_ === 2 ? hashtags : oldInfo[0].hashtags,
             },
             {
               ...oldInfo[1],
@@ -53,14 +55,16 @@ function VideoPlayer(numbertoVH) {
                 k_ === 1
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[1].src,
-              user: k === 1 ? video.compteUploader.nom : oldInfo[1].user,
-              like: k === 1 ? video.liked : oldInfo[1].like,
-              nb_like: k === 1 ? video.nb_like : oldInfo[1].nb_like,
+              user: k_ === 1 ? video.compteUploader.nom : oldInfo[1].user,
+              like: k_ === 1 ? video.liked : oldInfo[1].like,
+              nb_like: k_ === 1 ? video.nb_like : oldInfo[1].nb_like,
               nb_commentaire:
-                k === 1 ? video.commentaires.length : oldInfo[1].nb_commentaire,
-              desc: k === 1 ? video.description : oldInfo[1].desc,
-              place: k === 1 ? video.lieu : oldInfo[1].place,
-              hashtags: k === 1 ? hashtags : oldInfo[1].hashtags,
+                k_ === 1
+                  ? video.commentaires.length
+                  : oldInfo[1].nb_commentaire,
+              desc: k_ === 1 ? video.description : oldInfo[1].desc,
+              place: k_ === 1 ? video.lieu : oldInfo[1].place,
+              hashtags: k_ === 1 ? hashtags : oldInfo[1].hashtags,
             },
             {
               ...oldInfo[2],
@@ -69,14 +73,16 @@ function VideoPlayer(numbertoVH) {
                 k_ === 0
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[2].src,
-              user: k === 0 ? video.compteUploader.nom : oldInfo[2].user,
-              like: k === 0 ? video.liked : oldInfo[2].like,
-              nb_like: k === 0 ? video.nb_like : oldInfo[2].nb_like,
+              user: k_ === 0 ? video.compteUploader.nom : oldInfo[2].user,
+              like: k_ === 0 ? video.liked : oldInfo[2].like,
+              nb_like: k_ === 0 ? video.nb_like : oldInfo[2].nb_like,
               nb_commentaire:
-                k === 0 ? video.commentaires.length : oldInfo[2].nb_commentaire,
-              desc: k === 0 ? video.description : oldInfo[2].desc,
-              place: k === 0 ? video.lieu : oldInfo[2].place,
-              hashtags: k === 0 ? hashtags : oldInfo[2].hashtags,
+                k_ === 0
+                  ? video.commentaires.length
+                  : oldInfo[2].nb_commentaire,
+              desc: k_ === 0 ? video.description : oldInfo[2].desc,
+              place: k_ === 0 ? video.lieu : oldInfo[2].place,
+              hashtags: k_ === 0 ? hashtags : oldInfo[2].hashtags,
             },
           ]);
         });
@@ -94,14 +100,16 @@ function VideoPlayer(numbertoVH) {
                 k_ === 0
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[0].src,
-              user: k === 0 ? video.compteUploader.nom : oldInfo[0].user,
-              like: k === 0 ? video.liked : oldInfo[0].like,
-              nb_like: k === 0 ? video.nb_like : oldInfo[0].nb_like,
+              user: k_ === 0 ? video.compteUploader.nom : oldInfo[0].user,
+              like: k_ === 0 ? video.liked : oldInfo[0].like,
+              nb_like: k_ === 0 ? video.nb_like : oldInfo[0].nb_like,
               nb_commentaire:
-                k === 0 ? video.commentaires.length : oldInfo[0].nb_commentaire,
-              desc: k === 0 ? video.description : oldInfo[0].desc,
-              place: k === 0 ? video.lieu : oldInfo[0].place,
-              hashtags: k === 0 ? hashtags : oldInfo[0].hashtags,
+                k_ === 0
+                  ? video.commentaires.length
+                  : oldInfo[0].nb_commentaire,
+              desc: k_ === 0 ? video.description : oldInfo[0].desc,
+              place: k_ === 0 ? video.lieu : oldInfo[0].place,
+              hashtags: k_ === 0 ? hashtags : oldInfo[0].hashtags,
             },
             {
               ...oldInfo[1],
@@ -110,14 +118,16 @@ function VideoPlayer(numbertoVH) {
                 k_ === 2
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[1].src,
-              user: k === 2 ? video.compteUploader.nom : oldInfo[1].user,
-              like: k === 2 ? video.liked : oldInfo[1].like,
-              nb_like: k === 2 ? video.nb_like : oldInfo[1].nb_like,
+              user: k_ === 2 ? video.compteUploader.nom : oldInfo[1].user,
+              like: k_ === 2 ? video.liked : oldInfo[1].like,
+              nb_like: k_ === 2 ? video.nb_like : oldInfo[1].nb_like,
               nb_commentaire:
-                k === 2 ? video.commentaires.length : oldInfo[1].nb_commentaire,
-              desc: k === 2 ? video.description : oldInfo[1].desc,
-              place: k === 2 ? video.lieu : oldInfo[1].place,
-              hashtags: k === 2 ? hashtags : oldInfo[1].hashtags,
+                k_ === 2
+                  ? video.commentaires.length
+                  : oldInfo[1].nb_commentaire,
+              desc: k_ === 2 ? video.description : oldInfo[1].desc,
+              place: k_ === 2 ? video.lieu : oldInfo[1].place,
+              hashtags: k_ === 2 ? hashtags : oldInfo[1].hashtags,
             },
             {
               ...oldInfo[2],
@@ -126,14 +136,16 @@ function VideoPlayer(numbertoVH) {
                 k_ === 1
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[2].src,
-              user: k === 1 ? video.compteUploader.nom : oldInfo[2].user,
-              like: k === 1 ? video.liked : oldInfo[2].like,
-              nb_like: k === 1 ? video.nb_like : oldInfo[2].nb_like,
+              user: k_ === 1 ? video.compteUploader.nom : oldInfo[2].user,
+              like: k_ === 1 ? video.liked : oldInfo[2].like,
+              nb_like: k_ === 1 ? video.nb_like : oldInfo[2].nb_like,
               nb_commentaire:
-                k === 1 ? video.commentaires.length : oldInfo[2].nb_commentaire,
-              desc: k === 1 ? video.description : oldInfo[2].desc,
-              place: k === 1 ? video.lieu : oldInfo[2].place,
-              hashtags: k === 1 ? hashtags : oldInfo[2].hashtags,
+                k_ === 1
+                  ? video.commentaires.length
+                  : oldInfo[2].nb_commentaire,
+              desc: k_ === 1 ? video.description : oldInfo[2].desc,
+              place: k_ === 1 ? video.lieu : oldInfo[2].place,
+              hashtags: k_ === 1 ? hashtags : oldInfo[2].hashtags,
             },
           ]);
         });
