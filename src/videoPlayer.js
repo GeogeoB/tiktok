@@ -77,36 +77,42 @@ function VideoPlayer(numbertoVH) {
             play: false,
             user: "@mia.aroundtheworld",
             userPicture: "",
-            like: 100,
+            like: false,
             id: 0,
             pos: 0,
             place: "Eiffel Tower View, Paris, France",
             hastags: ["France", "Paris", "Architecture"],
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
+            nb_like: 500,
+            nb_commentaire: 500,
         },
         {
             src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
             play: true,
             user: "@geogeoLeRigolo",
             userPicture: "",
-            like: 0,
+            like: false,
             id: 1,
             pos: 1,
             place: "Ici",
             hastags: ["France", "Paris", "Architecture"],
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
+            nb_like: 500,
+            nb_commentaire: 500,
         },
         {
             src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/couscous.mp4",
             play: false,
             user: "@ceMecLa",
             userPicture: "",
-            like: 9,
+            like: false,
             id: 2,
             pos: 2,
             place: "Toulouse",
             hastags: ["France", "Paris", "Architecture"],
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis"
+            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
+            nb_like: 500,
+            nb_commentaire: 500,
         }
     ]);
 
@@ -129,7 +135,12 @@ function VideoPlayer(numbertoVH) {
             setVideoInfos((oldInfo) => [{ ...oldInfo[0],
                                          src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
                                          id: video.id,
-                                         user: video.compteUploader.nom
+                                         user: video.compteUploader.nom,
+                                         like: video.liked,
+                                         nb_like: video.nbLikes,
+                                         nb_commentaire: video.commentaires.length,
+                                         desc: video.description,
+                                         hastags: video.hastags.map(h => h.hashTagName),
                                         },
                                         { ...oldInfo[1]},
                                         { ...oldInfo[2]}]);
@@ -140,7 +151,12 @@ function VideoPlayer(numbertoVH) {
                                         { ...oldInfo[1], 
                                           src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
                                           id: video.id,
-                                          user: video.compteUploader.nom
+                                          user: video.compteUploader.nom,
+                                          like: video.liked,
+                                          nb_like: video.nbLikes,
+                                          nb_commentaire: video.commentaires.length,
+                                          desc: video.description,
+                                          hastags: video.hastags.map(h => h.hashTagName),
                                         },
                                         { ...oldInfo[2]}]);
         })
@@ -148,9 +164,15 @@ function VideoPlayer(numbertoVH) {
         getRandomVideo().then((video) => {
             setVideoInfos((oldInfo) => [{ ...oldInfo[0]},
                                         { ...oldInfo[1]},
-                                        { ...oldInfo[2], src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                                        { ...oldInfo[2], 
+                                        src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
                                         id: video.id,
-                                        user: video.compteUploader.nom
+                                        user: video.compteUploader.nom,
+                                        like: video.liked,
+                                        nb_like: video.nbLikes,
+                                        nb_commentaire: video.commentaires.length,
+                                        desc: video.description,
+                                        hastags: video.hastags.map(h => h.hashTagName),
                                     }]);
         })
     }, [])

@@ -23,11 +23,11 @@ function VideoItems({info, setVideoInfos, k}) {
             </div>
             <div className="items">
                 <Heart info={info} setVideoInfos={setVideoInfos} k={k}></Heart>
-                <p>38.2k</p>
+                <p>{info.nb_like}</p>
             </div>
             <div className="items" onClick={openComment}>
                 <Chatbox></Chatbox>
-                <p>8.6k</p>
+                <p>{info.nb_commentaire}</p>
             </div>
             <div className="items">
                 <ShareIcone></ShareIcone>

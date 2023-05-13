@@ -1,11 +1,16 @@
-import React,  { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-function Description({info}) {
+function Description({ info }) {
 
+    const [descOpen, setDescOpen] = useState(false);
 
     const hastags = info.hastags.map((hastag) => (
         <p>#{hastag}</p>
     ))
+
+    const ReadMore = () => {
+        setDescOpen((old) => !old)
+    }
 
     return (
         <>
@@ -16,7 +21,8 @@ function Description({info}) {
                     <div className="hastags">
                         {hastags}
                     </div>
-                    <p className="description-readmore">Read More</p>
+                    {descOpen && <p className="description-text">{info.desc}</p>}
+                    <p className="description-readmore" onClick={ReadMore}>Read {!descOpen ? "More" : "Less"}</p>
                 </div>
             </div>
         </>
