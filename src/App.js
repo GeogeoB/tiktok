@@ -19,12 +19,12 @@ function App() {
 
   return (
     <div className="App">
-      <LeftScreen></LeftScreen>
-      {window === "PourToi" && <VideoPlayer></VideoPlayer>}
-      {window === "Abonnement" && <Abonnements></Abonnements>}
-      {window === "Explorer" && <Explorer></Explorer>}
-      {loginOpen && <Login></Login>}
-      <TopLeftLayer></TopLeftLayer>
+      <LeftScreen />
+      {window === "PourToi" && <VideoPlayer />}
+      {window === "Abonnement" && <Abonnements />}
+      {window === "Explorer" && <Explorer />}
+      {loginOpen && <Login />}
+      <TopLeftLayer />
     </div>
   );
 }
