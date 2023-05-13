@@ -496,11 +496,11 @@ body {
   font-size: 12px;
 }
 
-.hastags {
+.hashtags {
   display: flex;
 }
 
-.hastags p {
+.hashtags p {
   margin-right: 5px;
 }
 

@@ -3,8 +3,8 @@ import React, { useState } from "react";
 function Description({ info }) {
   const [descOpen, setDescOpen] = useState(false);
 
-  const hastags = info.hastags.map((hastag, index) => (
-    <p key={index}>#{hastag}</p>
+  const hashtags = info.hashtags.map((hashtag, index) => (
+    <p key={index}>#{hashtag}</p>
   ));
 
   const ReadMore = () => {
@@ -16,7 +16,7 @@ function Description({ info }) {
       <p className="descriptionVideo-pseudo">{info.user}</p>
       <div className="description-text">
         <p>{info.place}</p>
-        <div className="hastags">{hastags}</div>
+        <div className="hashtags">{hashtags}</div>
         {descOpen && <p className="description-text">{info.desc}</p>}
         <p className="description-readmore" onClick={ReadMore}>
           Read {!descOpen ? "More" : "Less"}
