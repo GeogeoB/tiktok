@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 function Description({ info }) {
   const [descOpen, setDescOpen] = useState(false);

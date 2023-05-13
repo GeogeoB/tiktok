@@ -1,4 +1,3 @@
-import { useEffect, createContext, useContext } from "react";
 import "./css/index.css";
 
 function Explorer() {

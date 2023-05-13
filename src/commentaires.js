@@ -3,14 +3,13 @@ import Commentaire from "./commentaire";
 import { appContext } from "./context";
 import urlJboss from "./config";
 
-function Commentaires({ idvideo, comments }) {
+function Commentaires({ idvideo }) {
   const [erreur, setErreur] = useState("");
   const inputComment = useRef(null);
   const [commentaires, setCommentaires] = useState([]);
 
   let context = useContext(appContext);
   let user = context.user;
-  let setUser = context.setUser;
   let setOpencommentaire = context.setcommentOpen;
   let commentOpen = context.commentOpen;
 
@@ -47,7 +46,7 @@ function Commentaires({ idvideo, comments }) {
 
         setCommentaires(() => _commentaires);
       });
-  }, []);
+  }, [idvideo]);
 
   let userComments = {
     id: 0,

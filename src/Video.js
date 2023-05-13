@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import VideoItems from "./videoItems";
 import Description from "./description";
 import { appContext } from "./context";
@@ -34,7 +34,7 @@ function Video({ info, animationSlide, setVideoInfos, id, k }) {
         }
       });
     };
-  }, [context.commentOpen]);
+  }, [context.commentOpen, animationSlide]);
 
   return (
     <div className={className} id={id}>

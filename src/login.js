@@ -31,19 +31,19 @@ function Login() {
 
   const sendFormulaire = () => {
     console.log("test");
-    if (pseudo == "") {
+    if (pseudo === "") {
       setErreur("Votre Pseudo est vide");
       return;
     }
 
-    if (mdp == "") {
+    if (mdp === "") {
       setErreur("Votre mot de passe est vide");
       return;
     }
 
-    if (titre == "Login") {
+    if (titre === "Login") {
       login();
-    } else if (titre == "Register") {
+    } else if (titre === "Register") {
       registerlog();
     } else {
       setErreur("Il y a eu un problème");
@@ -154,7 +154,7 @@ function Login() {
           <button className="Button" onClick={sendFormulaire}>
             {titre}
           </button>
-          {titre == "Login" && (
+          {titre === "Login" && (
             <p className="dontaccount">
               Don't have account?{" "}
               <b className="Signup" onClick={register}>

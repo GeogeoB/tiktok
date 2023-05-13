@@ -1,5 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
-
 function Commentaire({ userComments }) {
   function getReadableTimeDiff(date1, date2) {
     const diff = Math.abs(date2 - date1);

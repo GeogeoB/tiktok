@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useContext } from "react";
 import Chatbox from "./icones/chatbox";
 import Heart from "./icones/heart";
 import ShareIcone from "./icones/shareIcone";

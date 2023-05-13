@@ -22,7 +22,7 @@ function VideoPlayer(numbertoVH) {
     let k_;
 
     setTimeout(() => {
-      if (type == "Up") {
+      if (type === "Up") {
         k_ = k - 1;
         setk((k) => k_);
         k_ = ((k_ % 3) + 3) % 3;
@@ -31,34 +31,34 @@ function VideoPlayer(numbertoVH) {
           setVideoInfos((oldInfo) => [
             {
               ...oldInfo[0],
-              play: k_ == 1,
+              play: k_ === 1,
               src:
-                k_ == 2
+                k_ === 2
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[0].src,
-              user: k == 2 ? video.compteUploader.nom : oldInfo[0].user,
+              user: k === 2 ? video.compteUploader.nom : oldInfo[0].user,
             },
             {
               ...oldInfo[1],
-              play: k_ == 0,
+              play: k_ === 0,
               src:
-                k_ == 1
+                k_ === 1
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[1].src,
-              user: k == 1 ? video.compteUploader.nom : oldInfo[1].user,
+              user: k === 1 ? video.compteUploader.nom : oldInfo[1].user,
             },
             {
               ...oldInfo[2],
-              play: k_ == 2,
+              play: k_ === 2,
               src:
-                k_ == 0
+                k_ === 0
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[2].src,
-              user: k == 0 ? video.compteUploader.nom : oldInfo[2].user,
+              user: k === 0 ? video.compteUploader.nom : oldInfo[2].user,
             },
           ]);
         });
-      } else if (type == "Down") {
+      } else if (type === "Down") {
         k_ = k + 1;
         setk((k) => k_);
         k_ = ((k_ % 3) + 3) % 3;
@@ -66,25 +66,25 @@ function VideoPlayer(numbertoVH) {
           setVideoInfos((oldInfo) => [
             {
               ...oldInfo[0],
-              play: k_ == 1,
+              play: k_ === 1,
               src:
-                k_ == 0
+                k_ === 0
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[0].src,
             },
             {
               ...oldInfo[1],
-              play: k_ == 0,
+              play: k_ === 0,
               src:
-                k_ == 2
+                k_ === 2
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[1].src,
             },
             {
               ...oldInfo[2],
-              play: k_ == 2,
+              play: k_ === 2,
               src:
-                k_ == 1
+                k_ === 1
                   ? urlJboss + "/DataServlet?op=getVideo&id=" + video.id
                   : oldInfo[2].src,
             },
@@ -316,9 +316,9 @@ function VideoPlayer(numbertoVH) {
   }
 
   const getActualVideoId = () => {
-    if (((k % 3) + 3) % 3 == 1) return videoInfos[0].id;
-    else if (((k % 3) + 3) % 3 == 0) return videoInfos[1].id;
-    else if (((k % 3) + 3) % 3 == 2) return videoInfos[2].id;
+    if (((k % 3) + 3) % 3 === 1) return videoInfos[0].id;
+    else if (((k % 3) + 3) % 3 === 0) return videoInfos[1].id;
+    else if (((k % 3) + 3) % 3 === 2) return videoInfos[2].id;
   };
 
   const getActualComments = () => {

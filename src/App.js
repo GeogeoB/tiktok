@@ -1,10 +1,9 @@
-import { useEffect, createContext, useContext } from "react";
+import { useContext } from "react";
 import "./css/root.css";
 import "./css/index.css";
 import VideoPlayer from "./videoPlayer";
 import Login from "./login";
 import TopLeftLayer from "./topLeftLayer";
-import Commentaires from "./commentaires";
 import { appContext } from "./context";
 import LeftScreen from "./LeftScreen";
 import Abonnements from "./Abonnements";
@@ -21,9 +20,9 @@ function App() {
   return (
     <div className="App">
       <LeftScreen></LeftScreen>
-      {window == "PourToi" && <VideoPlayer></VideoPlayer>}
-      {window == "Abonnement" && <Abonnements></Abonnements>}
-      {window == "Explorer" && <Explorer></Explorer>}
+      {window === "PourToi" && <VideoPlayer></VideoPlayer>}
+      {window === "Abonnement" && <Abonnements></Abonnements>}
+      {window === "Explorer" && <Explorer></Explorer>}
       {loginOpen && <Login></Login>}
       <TopLeftLayer></TopLeftLayer>
     </div>

@@ -37,7 +37,7 @@ const SidebarWidget = () => {
     <div className="sidebar-widget">
       <button
         className={
-          (window == "PourToi" && "sidebar-button-active") +
+          (window === "PourToi" && "sidebar-button-active") +
           " Button sidebar-button"
         }
         onClick={handlePourToiClick}
@@ -48,7 +48,7 @@ const SidebarWidget = () => {
       </button>
       <button
         className={
-          (window == "Abonnement" && "sidebar-button-active") +
+          (window === "Abonnement" && "sidebar-button-active") +
           " Button sidebar-button"
         }
         onClick={handleAbonnementClick}
@@ -59,7 +59,7 @@ const SidebarWidget = () => {
       </button>
       <button
         className={
-          (window == "Explorer" && "sidebar-button-active") +
+          (window === "Explorer" && "sidebar-button-active") +
           " Button sidebar-button"
         }
         onClick={handleExplorerClick}
