@@ -1,9 +1,9 @@
-import {React, useContext} from "react";
+import { React, useContext } from "react";
 import "./css/leftScreen.css";
 import Home from "./icones/home";
 import Abonnement from "./icones/abonnement";
 import Explorer from "./icones/explorer";
-import { appContext } from './context';
+import { appContext } from "./context";
 
 const SidebarWidget = () => {
   // Let's define some mock data for the demonstration
@@ -35,18 +35,36 @@ const SidebarWidget = () => {
 
   return (
     <div className="sidebar-widget">
-      <button className={(window == "PourToi" && "sidebar-button-active") + " Button sidebar-button"} onClick={handlePourToiClick}>
+      <button
+        className={
+          (window == "PourToi" && "sidebar-button-active") +
+          " Button sidebar-button"
+        }
+        onClick={handlePourToiClick}
+      >
         <div style={{ display: "flex", alignItems: "center" }}>
           <Home /> Pour toi
         </div>
       </button>
-      <button className={(window == "Abonnement" && "sidebar-button-active") + " Button sidebar-button"} onClick={handleAbonnementClick}>
+      <button
+        className={
+          (window == "Abonnement" && "sidebar-button-active") +
+          " Button sidebar-button"
+        }
+        onClick={handleAbonnementClick}
+      >
         <div style={{ display: "flex", alignItems: "center" }}>
           <Abonnement /> Abonnement
         </div>
       </button>
-      <button className={(window == "Explorer" && "sidebar-button-active") + " Button sidebar-button"} onClick={handleExplorerClick}>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <button
+        className={
+          (window == "Explorer" && "sidebar-button-active") +
+          " Button sidebar-button"
+        }
+        onClick={handleExplorerClick}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Explorer /> Explorer
         </div>
       </button>

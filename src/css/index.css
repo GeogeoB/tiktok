@@ -5,8 +5,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,7 +40,8 @@ body {
 }
 
 .videoSliderTranslate {
-  transition: translate var(--animation-delay) cubic-bezier(0.38, 0.84, 0.79, 0.97);
+  transition: translate var(--animation-delay)
+    cubic-bezier(0.38, 0.84, 0.79, 0.97);
 }
 
 .video {
@@ -61,7 +62,7 @@ body {
   display: var(--is-showing-image);
 }
 
-.videoItems{
+.videoItems {
   height: 50vh;
   width: 20%;
   position: absolute;
@@ -72,17 +73,20 @@ body {
 
 .blur {
   z-index: 200;
-    user-select: none;
-    pointer-events: none;
+  user-select: none;
+  pointer-events: none;
 
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    z-index: 50;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 50;
 }
 
 .blurRadial {
-    background-image: radial-gradient(rgba(255, 255, 255, 0) 69%, rgba(0, 0, 0, 0.8) 130%);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0) 69%,
+    rgba(0, 0, 0, 0.8) 130%
+  );
 }
 
 .blurVertical {
@@ -93,7 +97,7 @@ body {
   margin-bottom: 2vh;
   text-align: center;
   font-weight: 400;
-  
+
   color: var(--primary-color);
   fill: var(--primary-color);
 }
@@ -166,15 +170,14 @@ body {
   }
 }
 
-
-.circleitem:hover{
+.circleitem:hover {
   animation-name: rotate360;
   animation-duration: 0.5s; /* Durée de l'animation */
   animation-timing-function: linear; /* Fonction de timing (facultatif) */
   animation-iteration-count: infinite; /* Nombre d'itérations (infini ici) */
 }
 
-.descriptionVideo{
+.descriptionVideo {
   user-select: none;
   -webkit-user-drag: none;
   position: absolute;
@@ -194,12 +197,12 @@ body {
 }
 
 .descriptionVideo-pseudo {
-    user-select: none;
-    -webkit-user-drag: none;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 25px;
+  user-select: none;
+  -webkit-user-drag: none;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 25px;
 }
 
 .descriptionVideo-pseudo:hover {
@@ -243,12 +246,12 @@ body {
   60% {
     transform: rotate3d(0, 1, 0, 260deg);
     translate: 0px -10px;
-  } 
+  }
 }
 
 /* -------------------------------------- */
 
-.LoginView{
+.LoginView {
   height: fit-content;
   width: 350px;
   aspect-ratio: 4/5;
@@ -267,13 +270,12 @@ body {
 /* Définition de l'animation */
 @keyframes pop {
   0% {
-    transform: scale(0.5)
+    transform: scale(0.5);
   }
   100% {
-    transform: scale(1)
+    transform: scale(1);
   }
 }
-
 
 .Button {
   background-color: var(--button-color); /* Green */
@@ -358,7 +360,7 @@ body {
 
 /* When the checkbox is checked, add a blue background */
 .Login-container-Keep input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -400,14 +402,14 @@ body {
 
 .input-login:focus {
   border: none;
-  outline: 3px solid var(--button-color)
+  outline: 3px solid var(--button-color);
 }
 
-.login-label-input{
+.login-label-input {
   font-size: 10px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: var(--ternaire-color)
+  color: var(--ternaire-color);
 }
 
 .login-title {
@@ -450,7 +452,7 @@ body {
   margin-top: auto;
 }
 
-.login-input{
+.login-input {
   margin-top: 20px;
 }
 
@@ -572,7 +574,6 @@ body {
   margin-left: 5px;
 }
 
-
 .comments--right {
   margin-left: 10px;
 }
@@ -595,7 +596,6 @@ body {
   height: 75vh;
   padding-top: 20px;
   /* width: clamp(400px, 40vw, 600px); */
-
 }
 
 .commentaires::-webkit-scrollbar {

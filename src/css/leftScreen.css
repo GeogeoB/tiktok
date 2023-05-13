@@ -1,72 +1,73 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .Button--leftScreen {
-    background-color: var(--button-color);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 100%;
-    border-radius: 10px;
-  }
-  
+  background-color: var(--button-color);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 10px;
+}
+
 .sidebar-widget {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    padding: 20px;
-    position: absolute;
-    left: 0;
-    top: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .sidebar-button {
-    margin-bottom: 10px;
-    padding: 10px;
-    color: grey;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: grey;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .sidebar-button > div > .leftWidgetIcone {
-    fill: grey;
+  fill: grey;
 }
 
 .sidebar-button-active > div > .leftWidgetIcone {
-    fill: white;
+  fill: white;
 }
 
 .sidebar-button:hover {
-    background-color: rgb(248, 248, 248);
+  background-color: rgb(248, 248, 248);
 }
 
 .sidebar-button-active {
-    background-color: var(--button-color);
-    color: white;
+  background-color: var(--button-color);
+  color: white;
 }
 
 .sidebar-button-active:hover {
-    background-color: var(--button-color-hover);
+  background-color: var(--button-color-hover);
 }
 
 .leftWidgetIcone {
-    width: 20px;
-    margin-right: 10px;
-  }
+  width: 20px;
+  margin-right: 10px;
+}
 
-.suggested-accounts, .top-hashtags {
-    margin-top: 20px;
+.suggested-accounts,
+.top-hashtags {
+  margin-top: 20px;
 }
