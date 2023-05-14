@@ -29,7 +29,7 @@ function VideoItems({ info, setVideoInfos, k }) {
         <p>{info.nb_commentaire}</p>
       </div>
       <div className="items">
-        <ShareIcone></ShareIcone>
+        <ShareIcone videoID={info.id}></ShareIcone>
         <p>Share</p>
       </div>
     </div>
