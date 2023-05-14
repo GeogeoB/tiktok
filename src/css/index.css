@@ -755,3 +755,20 @@ body {
   width: 100%;
   aspect-ratio: 9/16;
 }
+
+.toast {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  color: var(--primary-color);
+  background-color: var(--button-color);
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+.toast.visible {
+  opacity: 1;
+}

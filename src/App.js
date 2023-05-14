@@ -8,11 +8,11 @@ import { appContext } from "./context";
 import LeftScreen from "./LeftScreen";
 import Abonnements from "./Abonnements";
 import Explorer from "./Explorer";
+import Toast from "./toast";
 
 function App() {
   let context = useContext(appContext);
   let loginOpen = context.loginOpen;
-  let commentOpen = context.commentOpen;
   let window = context.window;
 
   console.log(window);
@@ -25,6 +25,7 @@ function App() {
       {window === "Explorer" && <Explorer />}
       {loginOpen && <Login />}
       <TopLeftLayer />
+      <Toast />
     </div>
   );
 }

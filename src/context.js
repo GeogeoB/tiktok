@@ -15,6 +15,7 @@ export const MyContextProvider = ({ children }) => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [commentOpen, setcommentOpen] = useState(false);
   const [window, setWindow] = useState("PourToi");
+  const [toastOpen, setToastOpen] = useState(false);
 
   return (
     <appContext.Provider
@@ -27,6 +28,8 @@ export const MyContextProvider = ({ children }) => {
         setcommentOpen,
         window,
         setWindow,
+        toastOpen,
+        setToastOpen,
       }}
     >
       {children}

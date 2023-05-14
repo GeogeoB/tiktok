@@ -1,8 +1,16 @@
+import { useContext } from "react";
 import urlJboss from "../config";
+import { appContext } from "../context";
 
 function ShareIcone({ videoID }) {
+  let context = useContext(appContext);
+
   const onClick = () => {
-    window.open(`${urlJboss}/DataServlet?op=getVideo&id=${videoID}`, "_blank");
+    navigator.clipboard.writeText(
+      `${urlJboss}/DataServlet?op=getVideo&id=${videoID}`
+    );
+    context.setToastOpen(true);
+    setTimeout(() => context.setToastOpen(false), 4000);
   };
   return (
     <svg
