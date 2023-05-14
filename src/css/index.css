@@ -772,7 +772,7 @@ body {
   font-size: 0.8rem;
 
   animation-name: toast;
-  animation-duration: 4s;
+  animation-duration: 4.1s;
   animation-timing-function: cubic-bezier(0.38, 0.84, 0.79, 0.97);
 }
 
