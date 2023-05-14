@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { appContext } from "./context";
 import urlJboss from "./config";
 
@@ -146,10 +146,10 @@ function Login() {
           {erreur && <p className="text_erreur">{erreur}</p>}
         </div>
         <div className="loginFooter">
-          <label class="Login-container-Keep">
+          <label className="Login-container-Keep">
             <p>Keep me signed in</p>
             <input type="checkbox" />
-            <span class="checkmark"></span>
+            <span className="checkmark"></span>
           </label>
           <button className="Button" onClick={sendFormulaire}>
             {titre}

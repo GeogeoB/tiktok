@@ -234,13 +234,14 @@ function VideoPlayer(numbertoVH) {
         new URLSearchParams({
           op: "getRandomVideo",
         }),
-      { method: "GET" }
+      { method: "GET", credentials: "include" }
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         video = data.video;
+        video.liked = data.liked;
       });
 
     return video;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useRef, useContext } from "react";
 import Upload from "./icones/upload";
 import urlJboss from "./config";
 import { appContext } from "./context";
@@ -51,7 +51,7 @@ function TopLeftLayer() {
       </button>
       <div className="user_tll">
         <div className="pp">
-          <div class="circle">
+          <div className="circle">
             <img src={user.pp} alt="" />
           </div>
         </div>

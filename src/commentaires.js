@@ -83,7 +83,7 @@ function Commentaires({ idvideo }) {
     return (
       <div className="sendComment">
         <div className="pp_comments">
-          <div class="pp_comments_circle">
+          <div className="pp_comments_circle">
             <img src={user.pp} alt="" />
           </div>
         </div>
