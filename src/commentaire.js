@@ -42,7 +42,7 @@ function Commentaire({ userComments }) {
   return (
     <div className="comments">
       <div className="pp_comments">
-        <div class="pp_comments_circle">
+        <div className="pp_comments_circle">
           <img src={userComments.pp} alt="" />
         </div>
       </div>

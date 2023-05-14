@@ -32,7 +32,7 @@ function Commentaires({ idvideo }) {
       .then((data) => {
         let commentaires_ = data.message.commentaires;
 
-        let _commentaires = commentaires_.map((commentaire) => {
+        let _commentaires = commentaires_.map((commentaire, index) => {
           let userComments = {
             id: commentaire.id,
             pseudo: commentaire.compteUploader.nom,
@@ -41,7 +41,9 @@ function Commentaires({ idvideo }) {
             date: commentaire.date,
           };
 
-          return <Commentaire userComments={userComments}></Commentaire>;
+          return (
+            <Commentaire userComments={userComments} key={index}></Commentaire>
+          );
         });
 
         setCommentaires(() => _commentaires);
