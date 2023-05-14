@@ -723,10 +723,14 @@ body {
   width: 70px;
 }
 
+.abonnement-container {
+  margin: auto;
+  width: 70vw;
+}
+
 .abonnements {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
 
   margin: auto;
 
