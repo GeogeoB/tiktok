@@ -764,7 +764,7 @@ body {
 }
 
 .toast {
-  margin-right: 1rem;
+  margin: 1rem;
   padding: 1rem;
   border-radius: 10px;
   color: white;

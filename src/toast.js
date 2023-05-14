@@ -7,7 +7,7 @@ export default function Toast() {
 
   return (
     <div className="toast-container">
-      <div className={`toast`}>Lien copié dans le presse-papiers !</div>;
+      <div className={`toast`}>Lien copié dans le presse-papiers !</div>
     </div>
   );
 }
