@@ -25,7 +25,7 @@ function App() {
       {window === "Explorer" && <Explorer />}
       {loginOpen && <Login />}
       <TopLeftLayer />
-      <Toast />
+      {context.toastOpen && <Toast />}
     </div>
   );
 }

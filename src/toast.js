@@ -6,8 +6,8 @@ export default function Toast() {
   let context = useContext(appContext);
 
   return (
-    <div className={`toast ${context.toastOpen ? "visible" : ""}`}>
-      Lien copié dans le presse-papiers !
+    <div className="toast-container">
+      <div className={`toast`}>Lien copié dans le presse-papiers !</div>;
     </div>
   );
 }

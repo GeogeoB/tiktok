@@ -756,19 +756,37 @@ body {
   aspect-ratio: 9/16;
 }
 
-.toast {
+.toast-container {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 10px;
-  color: var(--primary-color);
-  background-color: var(--button-color);
-  transition: opacity 0.2s;
-  opacity: 0;
+  overflow: hidden;
 }
 
-.toast.visible {
-  opacity: 1;
+.toast {
+  margin-right: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(19, 19, 19);
+  font-size: 0.8rem;
+
+  animation-name: toast;
+  animation-duration: 4s;
+  animation-timing-function: cubic-bezier(0.38, 0.84, 0.79, 0.97);
+}
+
+@keyframes toast {
+  0% {
+    translate: 0px 100px;
+  }
+  4% {
+    translate: 0px 0px;
+  }
+  96% {
+    translate: 0px 0px;
+  }
+  100% {
+    translate: 0px 100px;
+  }
 }
