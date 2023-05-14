@@ -1,52 +1,60 @@
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
+import urlJboss from "../config";
 
 function Heart({ info, setVideoInfos, k }) {
   const heart = useRef(null);
+  const [isAnimating, setAnimating] = useState(false);
 
   const heartClick = () => {
     let k_ = ((k % 3) + 3) % 3;
+    if (!info.like) {
+      likeUnlike(true);
+      setAnimating(true);
+      setTimeout(() => {
+        setAnimating(false);
+      }, 1000);
+    } else {
+      likeUnlike(false);
+    }
 
-    if (heart != null) {
-      if (!heart.current.classList.contains("red")) {
-        heart.current.classList.add("red");
-        heart.current.classList.add("heartAnimation");
+    setVideoInfos((oldInfo) => {
+      let newInfo = [{ ...oldInfo[0] }, { ...oldInfo[1] }, { ...oldInfo[2] }];
+      let value = info.like ? -1 : 1;
 
-        setTimeout(() => {
-          heart.current.classList.remove("heartAnimation");
-        }, 1000);
-      } else {
-        heart.current.classList.remove("red");
+      if (k_ === 1) {
+        newInfo[0].like = !newInfo[0].like;
+        newInfo[0].nb_like += value;
+      } else if (k_ === 0) {
+        newInfo[1].like = !newInfo[1].like;
+        newInfo[1].nb_like += value;
+      } else if (k === 2) {
+        newInfo[2].like = !newInfo[2].like;
+        newInfo[2].nb_like += value;
       }
 
-      setVideoInfos((oldInfo) => {
-        let newInfo = [{ ...oldInfo[0] }, { ...oldInfo[1] }, { ...oldInfo[2] }];
-
-        if (k_ === 1) {
-          newInfo[0].like = !newInfo[0].like;
-        } else if (k_ === 0) {
-          newInfo[1].like = !newInfo[1].like;
-        } else if (k === 2) {
-          newInfo[2].like = !newInfo[2].like;
-        }
-
-        return newInfo;
-      });
-    }
+      return newInfo;
+    });
   };
 
-  useEffect(() => {
-    if (info.like) {
-      heart.current.classList.add("red");
-    } else {
-      heart.current.classList.remove("red");
-    }
-  }, [info.like]);
+  const likeUnlike = async (operation) => {
+    await fetch(
+      urlJboss +
+        "/DataServlet?" +
+        new URLSearchParams({
+          op: operation ? "likeVideo" : "unlikeVideo",
+          videoID: info.id,
+        }),
+      { method: "GET", credentials: "include" }
+    );
+  };
 
   return (
     <svg
       ref={heart}
       xmlns="http://www.w3.org/2000/svg"
-      className="icone"
+      className={`icone ${info.like ? "red" : ""} ${
+        isAnimating ? "heartAnimation" : ""
+      }`}
       viewBox="0 0 512 512"
       onClick={heartClick}
     >
