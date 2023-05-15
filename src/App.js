@@ -9,6 +9,7 @@ import LeftScreen from "./LeftScreen";
 import Abonnements from "./Abonnements";
 import Explorer from "./Explorer";
 import Toast from "./toast";
+import UploadVideo from "./uploadVideo";
 
 function App() {
   let context = useContext(appContext);
@@ -23,6 +24,7 @@ function App() {
       {window === "PourToi" && <VideoPlayer />}
       {window === "Abonnement" && <Abonnements />}
       {window === "Explorer" && <Explorer />}
+      {context.uploadVideo && <UploadVideo />}
       {loginOpen && <Login />}
       <TopLeftLayer />
       {context.toastOpen && <Toast />}

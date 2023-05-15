@@ -9,9 +9,10 @@ function ShareIcone({ videoID }) {
     navigator.clipboard.writeText(
       `${urlJboss}/DataServlet?op=getVideo&id=${videoID}`
     );
+    context.setToastText("Lien copié dans le presse-papiers !");
     context.setToastOpen(true);
-    setTimeout(() => context.setToastOpen(false), 4000);
   };
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,62 @@
+.ChooseVideo {
+  margin-top: 10px;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+
+  border: 2px dashed rgb(211, 211, 211);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 500;
+  color: rgb(77, 77, 77);
+  fill: rgb(77, 77, 77);
+}
+
+.ChooseVideo > p {
+  margin-top: 10px;
+}
+
+.ChooseVideo > p > label {
+  cursor: pointer;
+  color: rgb(55, 138, 216);
+}
+
+.ChooseVideo > p > label:hover {
+  color: rgb(61, 113, 161);
+}
+
+.ChooseVideo > svg {
+  width: 60px;
+}
+
+.drag {
+  background-color: rgb(117, 172, 224);
+  border: 2px solid rgb(71 131 189);
+}
+
+.hastaginput {
+  border: 2px solid rgb(211, 211, 211);
+  padding: 5px 0 5px 0;
+}
+
+.hastags {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.description {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.buttonUpload {
+  margin-top: 10px;
+}

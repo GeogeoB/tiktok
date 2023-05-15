@@ -11,11 +11,13 @@ export const MyContextProvider = ({ children }) => {
     pp: "./pp.jpg",
   };
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(true);
   const [loginOpen, setLoginOpen] = useState(false);
   const [commentOpen, setcommentOpen] = useState(false);
   const [window, setWindow] = useState("PourToi");
   const [toastOpen, setToastOpen] = useState(false);
+  const [uploadVideo, setUploadVideo] = useState(false);
+  const [toastText, setToastText] = useState("");
 
   return (
     <appContext.Provider
@@ -30,6 +32,10 @@ export const MyContextProvider = ({ children }) => {
         setWindow,
         toastOpen,
         setToastOpen,
+        uploadVideo,
+        setUploadVideo,
+        toastText,
+        setToastText,
       }}
     >
       {children}

@@ -8,7 +8,6 @@ function TopLeftLayer() {
 
   let context = useContext(appContext);
   let user = context.user;
-  let setUser = context.setUser;
   // let loginOpen  = context.loginOpen;
   let setLoginOpen = context.setLoginOpen;
 
@@ -27,20 +26,7 @@ function TopLeftLayer() {
   }
 
   const buttonUpload = () => {
-    inputUpload.current.click();
-  };
-
-  const fichierChange = async () => {
-    let formData = new FormData();
-    formData.append("file", inputUpload.current.files[0]);
-    formData.append("op", "upload");
-
-    await fetch(urlJboss + "/DataServlet", {
-      //mode: "no-cors",
-      method: "POST",
-      credentials: "include",
-      body: formData,
-    });
+    context.setUploadVideo(true);
   };
 
   return (
@@ -56,12 +42,6 @@ function TopLeftLayer() {
           </div>
         </div>
       </div>
-      <input
-        ref={inputUpload}
-        type="file"
-        style={{ display: "none" }}
-        onChange={fichierChange}
-      ></input>
     </div>
   );
 }
