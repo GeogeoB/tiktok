@@ -11,7 +11,7 @@ export const MyContextProvider = ({ children }) => {
     pp: "./pp.jpg",
   };
 
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [commentOpen, setcommentOpen] = useState(false);
   const [window, setWindow] = useState("PourToi");
