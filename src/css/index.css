@@ -725,7 +725,6 @@ body {
 
 .abonnement-container {
   margin: auto;
-  width: 70vw;
 }
 
 .abonnements {
@@ -749,14 +748,14 @@ body {
 }
 
 .videoExploration {
-  width: 60%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 10px;
   margin: auto;
   text-align: center;
   font-weight: 500;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .video-column {
@@ -816,4 +815,82 @@ body {
 
 .videoExploration-videos:hover {
   filter: brightness(0.8);
+}
+
+.App-mid {
+  width: 60%;
+  margin: auto;
+}
+
+.circle_abonnement_pres {
+  width: 300px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.video-header {
+  display: flex;
+}
+
+.item-video-pres {
+  display: flex;
+}
+
+.item-video-pres > p {
+  margin-right: 45px;
+}
+
+.video-pres-text {
+  font-weight: 400;
+  width: 100%;
+}
+
+.videopres-pseudo {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+
+.item-video-pres > p > span {
+  font-weight: 500;
+}
+
+.videoPres-desc {
+  margin-top: 20px;
+}
+
+.header-videopresentation {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.pseudo-videoPres {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ButtonAbonne {
+  background-color: var(--button-color);
+  border: none;
+  color: white;
+  text-align: center;
+  height: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.ButtonAbonne:hover {
+  background-color: var(--button-color-hover);
+  cursor: pointer;
+}
+
+.Abonnee {
+  background-color: rgb(163, 163, 163);
 }

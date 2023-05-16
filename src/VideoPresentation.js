@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import "./css/index.css";
+import { appContext } from "./context";
 
 function VideoPresentation() {
   let videos = [<video src={"info.src"} className="video" controls></video>];
@@ -8,37 +10,104 @@ function VideoPresentation() {
     nb_vue: 200,
   };
 
+  let context = useContext(appContext);
+  let videoPresentationInfo = context.videoPresentationInfo;
+  let setVideoPresentationInfo = context.setVideoPresentationInfo;
+
   return (
-    <div className="videoExploration">
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
+    <>
+      <div className="header-videopresentation">
+        <div className="video-header">
+          <div className="circle_abonnement_pres pp_comments_circle">
+            <img src="pp.jpg" alt="profile of the user" />
+          </div>
+          <div className="video-pres-text">
+            <div className="pseudo-videoPres">
+              <p className="videopres-pseudo">{videoPresentationInfo.pseudo}</p>
+              <button
+                className={
+                  setVideoPresentationInfo.isAbonne
+                    ? "ButtonAbonne"
+                    : "Abonnee ButtonAbonne"
+                }
+              >
+                {setVideoPresentationInfo.isAbonne ? "s'abonné" : "abonné"}
+              </button>
+            </div>
+            <div className="item-video-pres">
+              <p>
+                <span>{videoPresentationInfo.nb_publi}</span> publications
+              </p>
+              <p>
+                <span>{videoPresentationInfo.nb_followers}</span> followers
+              </p>
+            </div>
+            <p className="videoPres-desc">
+              {videoPresentationInfo.description}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
+
+      <div className="videoExploration">
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
+        <div className="videoExploration-videos">
+          <p className="infoVue">{info.nb_vue}</p>
+          <video
+            src={info.src}
+            className="video-column"
+            autoPlay={false}
+          ></video>
+        </div>
       </div>
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
-      </div>
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
-      </div>
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
-      </div>
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
-      </div>
-      <div className="videoExploration-videos">
-        <p className="infoVue">{info.nb_vue}</p>
-        <video src={info.src} className="video-column" autoPlay={false}></video>
-      </div>
-    </div>
+    </>
   );
 }
 

@@ -68,7 +68,7 @@ const SidebarWidget = () => {
           <Explorer /> Explorer
         </div>
       </button>
-      <div className="suggested-accounts">
+      {/* <div className="suggested-accounts">
         {suggestedAccounts.map((account) => (
           <p key={account}>{account}</p>
         ))}
@@ -77,7 +77,7 @@ const SidebarWidget = () => {
         {topHashtags.map((hashtag) => (
           <p key={hashtag}>{hashtag}</p>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

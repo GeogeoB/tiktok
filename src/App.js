@@ -21,9 +21,12 @@ function App() {
   return (
     <div className="App">
       <LeftScreen />
-      {window === "PourToi" && <VideoPlayer />}
-      {window === "Abonnement" && <Abonnements />}
-      {window === "Explorer" && <VideoPresentation />}
+      <div className="App-mid">
+        {window === "PourToi" && <VideoPlayer />}
+        {window === "Abonnement" && <Abonnements />}
+        {window === "Explorer" && <VideoPresentation />}
+        {window === "VideoPresentation" && <VideoPresentation />}
+      </div>
       {context.uploadVideo && <UploadVideo />}
       {loginOpen && <Login />}
       <TopLeftLayer />

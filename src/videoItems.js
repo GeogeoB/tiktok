@@ -12,9 +12,13 @@ function VideoItems({ info, setVideoInfos, k }) {
     setcommentOpen(true);
   };
 
+  const ppClick = () => {
+    context.setWindow("VideoPresentation");
+  };
+
   return (
     <div className="videoItems">
-      <div className="items circleitem">
+      <div className="items circleitem" onClick={ppClick}>
         <div className="circle">
           <img src="./pp.jpg" alt="" />
         </div>

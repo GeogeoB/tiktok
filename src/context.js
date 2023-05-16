@@ -11,6 +11,14 @@ export const MyContextProvider = ({ children }) => {
     pp: "./pp.jpg",
   };
 
+  let videoPresentationInfoSetup = {
+    pseudo: "Geogeo",
+    nb_publi: 51,
+    nb_followers: 4900,
+    description: "lorem ipsum",
+    isAbonne: 0,
+  };
+
   const [user, setUser] = useState(userSetup);
   const [loginOpen, setLoginOpen] = useState(false);
   const [commentOpen, setcommentOpen] = useState(false);
@@ -18,6 +26,9 @@ export const MyContextProvider = ({ children }) => {
   const [toastOpen, setToastOpen] = useState(false);
   const [uploadVideo, setUploadVideo] = useState(false);
   const [toastText, setToastText] = useState("");
+  const [videoPresentationInfo, setVideoPresentationInfo] = useState(
+    videoPresentationInfoSetup
+  );
 
   return (
     <appContext.Provider
@@ -36,6 +47,8 @@ export const MyContextProvider = ({ children }) => {
         setUploadVideo,
         toastText,
         setToastText,
+        videoPresentationInfo,
+        setVideoPresentationInfo,
       }}
     >
       {children}
