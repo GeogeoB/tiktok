@@ -428,7 +428,6 @@ body {
   background-color: var(--button-color);
   cursor: pointer;
   border-radius: 100%;
-
   align-self: end;
 }
 
@@ -437,15 +436,29 @@ body {
 }
 
 .close-button:before {
-  content: "x";
+  content: " ";
   position: absolute;
-  top: 10px;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  font-weight: bold;
-  font-family: monospace;
-  color: white;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: white;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-button:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: white;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .loginFooter {
