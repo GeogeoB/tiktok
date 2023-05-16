@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { appContext } from "./context";
 import urlJboss from "./config";
 import "./css/uploadVideo.css";
@@ -6,16 +6,22 @@ import Upload from "./icones/upload";
 
 function UploadVideo() {
   let context = useContext(appContext);
-  let setLoginOpen = context.setLoginOpen;
-  let setUser = context.setUser;
 
   const [inDrag, setInDrag] = useState(false);
   const [file, setFile] = useState(null);
-  const inputUpload = useRef(null);
   const hastags = useRef(null);
   const description = useRef(null);
   const lieu = useRef(null);
   const [erreur, setErreur] = useState("");
+  const [hoverCount, setHoverCount] = useState(0);
+
+  useEffect(() => {
+    if (hoverCount > 0) {
+      setInDrag(true);
+    } else {
+      setInDrag(false);
+    }
+  }, [hoverCount]);
 
   const close = () => {
     context.setUploadVideo(false);
@@ -34,29 +40,22 @@ function UploadVideo() {
 
   const dragEnter = (e) => {
     e.preventDefault();
-    console.log("Enter");
-    setInDrag(true);
+    setHoverCount((value) => value + 1);
   };
 
   const dragLeave = (e) => {
     e.preventDefault();
-    console.log("Leave");
-    setInDrag(false);
-  };
-
-  const chooseFileCliked = () => {
-    inputUpload.current.click();
+    setHoverCount((value) => value - 1);
   };
 
   const fichierChange = (e) => {
     e.preventDefault();
-    setFile(inputUpload.current.files[0]);
+    setFile(e.target.files[0]);
   };
 
   const dd = (
     <p>
-      Drag & Drop or <label onClick={chooseFileCliked}>Choose file</label> to
-      upload
+      Drag & Drop or <label for="chooseFile">Choose file</label> to upload
     </p>
   );
 
@@ -80,7 +79,7 @@ function UploadVideo() {
     let lieuText = lieu.current.value;
 
     let formData = new FormData();
-    formData.append("file", inputUpload.current.files[0]);
+    formData.append("file", file);
     formData.append("op", "upload");
     formData.append("hashtags", hastagsText);
     formData.append("description", descriptionText);
@@ -107,7 +106,8 @@ function UploadVideo() {
       <div className="LoginView">
         <div className="close-button" onClick={close}></div>
         <div
-          className={inDrag == true ? "drag ChooseVideo" : "ChooseVideo"}
+          className={inDrag === true ? "drag ChooseVideo" : "ChooseVideo"}
+          id="dragZone"
           onDragEnter={dragEnter}
           onDragLeave={dragLeave}
           onDrop={drop}
@@ -139,9 +139,9 @@ function UploadVideo() {
       </div>
 
       <input
-        ref={inputUpload}
         type="file"
         style={{ display: "none" }}
+        id="chooseFile"
         onChange={fichierChange}
       ></input>
     </div>
