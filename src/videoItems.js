@@ -13,6 +13,7 @@ function VideoItems({ info, setVideoInfos, k }) {
   };
 
   const ppClick = () => {
+    context.setVideoPresentationInfo((old) => ({ ...old, hashtag: false }));
     context.setWindow("VideoPresentation");
   };
 

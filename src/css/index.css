@@ -761,13 +761,14 @@ body {
 
 .videoExploration {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
   gap: 10px;
   margin: auto;
   text-align: center;
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 20px;
+  justify-items: center;
 }
 
 .video-column {
@@ -814,7 +815,6 @@ body {
   background-color: grey;
   position: relative;
   cursor: pointer;
-  max-width: 230px;
 }
 
 .infoVue {
@@ -917,4 +917,25 @@ body {
   fill: white;
   color: white;
   width: 23px;
+}
+
+.hashtag-item:hover {
+  cursor: pointer;
+  color: rgb(179, 179, 179);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
 }

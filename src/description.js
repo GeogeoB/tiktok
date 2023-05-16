@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { appContext } from "./context";
 
 function Description({ info }) {
   const [descOpen, setDescOpen] = useState(false);
+  let context = useContext(appContext);
+
+  const hashtagClick = (hashtag) => {
+    context.setVideoPresentationInfo((old) => ({
+      ...old,
+      pseudo: hashtag,
+      nb_publi: 5000,
+      description: "",
+      hashtag: true,
+    }));
+
+    context.setWindow("VideoPresentation");
+  };
+
+  const ppClick = () => {
+    context.setVideoPresentationInfo((old) => ({ ...old, hashtag: false }));
+    context.setWindow("VideoPresentation");
+  };
 
   const hashtags = info.hashtags.map((hashtag, index) => (
-    <p key={index}>#{hashtag}</p>
+    <p
+      key={index}
+      className="hashtag-item"
+      onClick={() => hashtagClick(hashtag)}
+    >
+      #{hashtag}
+    </p>
   ));
 
   const ReadMore = () => {
@@ -13,7 +38,9 @@ function Description({ info }) {
 
   return (
     <div className="descriptionVideo">
-      <p className="descriptionVideo-pseudo">{info.user}</p>
+      <p className="descriptionVideo-pseudo" onClick={ppClick}>
+        {info.user}
+      </p>
       <div className="description-text">
         <p>{info.place}</p>
         <div className="hashtags">{hashtags}</div>

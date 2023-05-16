@@ -16,8 +16,6 @@ function App() {
   let loginOpen = context.loginOpen;
   let window = context.window;
 
-  console.log(window);
-
   return (
     <div className="App">
       <LeftScreen />

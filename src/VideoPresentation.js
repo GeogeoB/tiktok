@@ -15,6 +15,16 @@ function VideoPresentation() {
   let videoPresentationInfo = context.videoPresentationInfo;
   let setVideoPresentationInfo = context.setVideoPresentationInfo;
 
+  let VideoItem = () => (
+    <div className="videoExploration-videos">
+      <div className="info-video">
+        <Play></Play>
+        <p className="infoVue">{info.nb_vue}</p>
+      </div>
+      <video src={info.src} className="video-column" autoPlay={false}></video>
+    </div>
+  );
+
   return (
     <>
       <div className="header-videopresentation">
@@ -51,17 +61,13 @@ function VideoPresentation() {
       </div>
 
       <div className="videoExploration">
-        <div className="videoExploration-videos">
-          <div className="info-video">
-            <Play></Play>
-            <p className="infoVue">{info.nb_vue}</p>
-          </div>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
+        <VideoItem></VideoItem>
+        <VideoItem></VideoItem>
+        <VideoItem></VideoItem>
+        <VideoItem></VideoItem>
+        <VideoItem></VideoItem>
+        <VideoItem></VideoItem>
+        <VideoItem></VideoItem>
       </div>
     </>
   );

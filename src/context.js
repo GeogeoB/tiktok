@@ -17,9 +17,10 @@ export const MyContextProvider = ({ children }) => {
     nb_followers: 4900,
     description: "lorem ipsum",
     isAbonne: 0,
+    hashtag: false,
   };
 
-  const [user, setUser] = useState(userSetup);
+  const [user, setUser] = useState(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [commentOpen, setcommentOpen] = useState(false);
   const [window, setWindow] = useState("PourToi");
