@@ -814,15 +814,21 @@ body {
   background-color: grey;
   position: relative;
   cursor: pointer;
+  max-width: 230px;
 }
 
 .infoVue {
   color: white;
+  transition: filter var(--animation-delay) cubic-bezier(0.38, 0.84, 0.79, 0.97);
+}
+
+.info-video {
   position: absolute;
   bottom: 5px;
   left: 5px;
-
-  transition: filter var(--animation-delay) cubic-bezier(0.38, 0.84, 0.79, 0.97);
+  display: flex;
+  fill: white;
+  align-items: center;
 }
 
 .videoExploration-videos:hover {
@@ -905,4 +911,10 @@ body {
 
 .Abonnee {
   background-color: rgb(163, 163, 163);
+}
+
+.icone-play {
+  fill: white;
+  color: white;
+  width: 23px;
 }

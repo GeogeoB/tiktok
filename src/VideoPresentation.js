@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import "./css/index.css";
 import { appContext } from "./context";
+import Play from "./icones/play";
 
 function VideoPresentation() {
   let videos = [<video src={"info.src"} className="video" controls></video>];
@@ -51,55 +52,10 @@ function VideoPresentation() {
 
       <div className="videoExploration">
         <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
-        <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
-        <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
-        <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
-        <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
-        <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
-          <video
-            src={info.src}
-            className="video-column"
-            autoPlay={false}
-          ></video>
-        </div>
-        <div className="videoExploration-videos">
-          <p className="infoVue">{info.nb_vue}</p>
+          <div className="info-video">
+            <Play></Play>
+            <p className="infoVue">{info.nb_vue}</p>
+          </div>
           <video
             src={info.src}
             className="video-column"
