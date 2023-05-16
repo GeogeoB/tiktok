@@ -131,7 +131,10 @@ function UploadVideo() {
         ></input>
 
         <p className="hastags login-label-input">Description</p>
-        <textarea ref={description} className="description"></textarea>
+        <textarea
+          ref={description}
+          className="hastaginput input-login description"
+        ></textarea>
         {erreur && <p className="text_erreur">{erreur}</p>}
         <button className="buttonUpload Button" onClick={upload}>
           Upload

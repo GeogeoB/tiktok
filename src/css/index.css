@@ -401,7 +401,6 @@ body {
 }
 
 .input-login:focus {
-  border: none;
   outline: 3px solid var(--button-color);
 }
 
