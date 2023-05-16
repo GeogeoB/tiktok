@@ -148,6 +148,32 @@ body {
   z-index: 10;
 }
 
+.littleCircle:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: white;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}
+
+.littleCircle:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: white;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
 /* Définition de l'animation */
 @keyframes rotate360 {
   0% {
