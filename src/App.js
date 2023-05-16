@@ -7,7 +7,7 @@ import TopLeftLayer from "./topLeftLayer";
 import { appContext } from "./context";
 import LeftScreen from "./LeftScreen";
 import Abonnements from "./Abonnements";
-import Explorer from "./Explorer";
+import VideoPresentation from "./VideoPresentation";
 import Toast from "./toast";
 import UploadVideo from "./uploadVideo";
 
@@ -23,7 +23,7 @@ function App() {
       <LeftScreen />
       {window === "PourToi" && <VideoPlayer />}
       {window === "Abonnement" && <Abonnements />}
-      {window === "Explorer" && <Explorer />}
+      {window === "Explorer" && <VideoPresentation />}
       {context.uploadVideo && <UploadVideo />}
       {loginOpen && <Login />}
       <TopLeftLayer />

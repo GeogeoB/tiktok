@@ -729,14 +729,12 @@ body {
 }
 
 .abonnements {
-  display: flex;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
   margin: auto;
-
   text-align: center;
   font-weight: 500;
-
   margin-top: 10px;
 }
 
@@ -750,9 +748,15 @@ body {
   background-color: red;
 }
 
-.explorer {
-  display: flex;
+.videoExploration {
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
   margin: auto;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
 .video-column {
@@ -793,4 +797,23 @@ body {
   100% {
     translate: 0px 100px;
   }
+}
+
+.videoExploration-videos {
+  background-color: grey;
+  position: relative;
+  cursor: pointer;
+}
+
+.infoVue {
+  color: white;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+
+  transition: filter var(--animation-delay) cubic-bezier(0.38, 0.84, 0.79, 0.97);
+}
+
+.videoExploration-videos:hover {
+  filter: brightness(0.8);
 }
