@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
 }
 
 body {
@@ -989,5 +990,5 @@ body {
   flex-direction: column;
   height: 100vh;
   position: sticky;
-  top: 0; 
+  top: 0;
 }

@@ -20,7 +20,7 @@ export const MyContextProvider = ({ children }) => {
     hashtag: false,
   };
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(userSetup);
   const [loginOpen, setLoginOpen] = useState(false);
   const [commentOpen, setcommentOpen] = useState(false);
   const [window, setWindow] = useState("PourToi");

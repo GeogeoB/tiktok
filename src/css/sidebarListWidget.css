@@ -1,15 +1,20 @@
 .sidebar-list-widget {
-    display: flex;
-    flex-direction: column;
-    padding: auto;
-    position: fixed;
-    bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: auto;
 }
 
 .account-list-item {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.account-list-item:hover {
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
 }
 
 .profile-picture {
@@ -19,9 +24,11 @@
   margin-right: 10px;
 }
 
-.accounts-widget, .hashtags-widget {
+.accounts-widget,
+.hashtags-widget {
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 1em 1em 1em;
 }
 
@@ -51,12 +58,18 @@
   padding-right: 1em;
 }
 
+.hashtags-list > p:hover {
+  color: var(--button-color);
+  cursor: pointer;
+}
+
 .searchBar {
   position: relative;
   display: flex;
+  margin-bottom: 10px;
 }
 
-.icons-search{
+.icons-search {
   position: absolute;
   right: 5px;
   top: 40%;
@@ -73,4 +86,36 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-bottom: 5px;
+}
+
+hr {
+  width: 90%;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.accounts-list,
+.hashtags-list {
+  scrollbar-width: thin;
+}
+
+.accounts-list::-webkit-scrollbar,
+.hashtags-list::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+}
+
+.accounts-list::-webkit-scrollbar-track,
+.hashtags-list::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.accounts-list::-webkit-scrollbar-thumb,
+.hashtags-list::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
 }

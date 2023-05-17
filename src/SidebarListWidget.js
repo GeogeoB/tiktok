@@ -89,7 +89,7 @@ const SubscribedAccountsWidget = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <Search className="icons-search"/>
+        <Search className="icons-search" />
       </div>
       <div className="accounts-list">
         {filteredAccounts.map((account) => (
@@ -126,12 +126,12 @@ const TopHashtagsWidget = () => {
       <h3>Découvrir</h3>
       <div className="searchBar">
         <input
-        type="text"
-        placeholder="Search..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <Search className="icons-search"/>
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <Search className="icons-search" />
       </div>
       <div className="hashtags-list">
         {filteredHashtags.map((hashtag) => (
@@ -151,6 +151,7 @@ function SidebarListWidget() {
   } else {
     return (
       <div className="sidebar-list-widget">
+        <hr />
         <SubscribedAccountsWidget />
         <TopHashtagsWidget />
       </div>
