@@ -6,12 +6,13 @@ function Abonnement({ user }) {
   let context = useContext(appContext);
 
   const clic_pp = () => {
+    context.setVideoPresentationInfo((old) => ({ ...old, hashtag: false }));
     context.setWindow("VideoPresentation");
   };
 
   return (
-    <div className="abonnement" onClick={clic_pp}>
-      <div className="circle_abonnement pp_comments_circle">
+    <div className="abonnement">
+      <div className="circle_abonnement pp_comments_circle" onClick={clic_pp}>
         <img src="pp.jpg" alt="profile of the user" />
       </div>
       <p>{user.name}</p>

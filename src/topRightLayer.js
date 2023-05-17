@@ -1,19 +1,40 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Upload from "./icones/upload";
 import urlJboss from "./config";
 import { appContext } from "./context";
 
 function TopRightLayer() {
-  const inputUpload = useRef(null);
-
   let context = useContext(appContext);
   let user = context.user;
   // let loginOpen  = context.loginOpen;
   let setLoginOpen = context.setLoginOpen;
+  let setUser = context.setUser;
 
   const loginChange = () => {
     setLoginOpen((old) => !old);
   };
+
+  useEffect(() => {
+    const data = new URLSearchParams({
+      op: "login",
+    });
+
+    fetch(urlJboss + "/AuthenticationServlet?" + data, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const compte = data.compte;
+        let userSetup = {
+          id: compte.id,
+          pseudo: compte.surnom,
+          pp: "./pp.jpg",
+        };
+        setUser(userSetup);
+      });
+  }, [setUser]);
 
   if (!user) {
     return (

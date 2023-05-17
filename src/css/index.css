@@ -148,6 +148,32 @@ body {
   z-index: 10;
 }
 
+.littleCircle:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: white;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}
+
+.littleCircle:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: white;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
 /* Définition de l'animation */
 @keyframes rotate360 {
   0% {
@@ -703,6 +729,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  left: 0;
 }
 
 .dontaccount {
@@ -761,13 +788,14 @@ body {
 
 .videoExploration {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
   gap: 10px;
   margin: auto;
   text-align: center;
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 20px;
+  justify-items: center;
 }
 
 .video-column {
@@ -814,7 +842,6 @@ body {
   background-color: grey;
   position: relative;
   cursor: pointer;
-  max-width: 230px;
 }
 
 .infoVue {
@@ -917,6 +944,44 @@ body {
   fill: white;
   color: white;
   width: 23px;
+}
+
+.hashtag-item:hover {
+  cursor: pointer;
+  color: rgb(179, 179, 179);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
+}
+
+.video-video-presentation {
+  background-color: grey;
+  z-index: 100;
+  height: 100vh;
+  width: auto;
+  translate: none;
+  aspect-ratio: 3/6;
+  margin: auto;
+}
+
+.video-close {
+  z-index: 1000;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .App-left {
