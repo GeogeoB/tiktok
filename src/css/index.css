@@ -659,7 +659,7 @@ body {
   right: 0;
 }
 
-.topleftLayer {
+.topRightLayer {
   position: absolute;
   display: flex;
   height: fit-content;
@@ -917,4 +917,12 @@ body {
   fill: white;
   color: white;
   width: 23px;
+}
+
+.App-left {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0; 
 }

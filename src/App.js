@@ -3,9 +3,10 @@ import "./css/root.css";
 import "./css/index.css";
 import VideoPlayer from "./videoPlayer";
 import Login from "./login";
-import TopLeftLayer from "./topLeftLayer";
+import TopRightLayer from "./topRightLayer";
 import { appContext } from "./context";
-import LeftScreen from "./LeftScreen";
+import SidebarButtonWidget from "./SidebarButtonWidget";
+import SidebarListWidget from "./SidebarListWidget";
 import Abonnements from "./Abonnements";
 import VideoPresentation from "./VideoPresentation";
 import Toast from "./toast";
@@ -20,7 +21,10 @@ function App() {
 
   return (
     <div className="App">
-      <LeftScreen />
+      <div className="App-left">
+        <SidebarButtonWidget />
+        <SidebarListWidget />
+      </div>
       <div className="App-mid">
         {window === "PourToi" && <VideoPlayer />}
         {window === "Abonnement" && <Abonnements />}
@@ -29,7 +33,7 @@ function App() {
       </div>
       {context.uploadVideo && <UploadVideo />}
       {loginOpen && <Login />}
-      <TopLeftLayer />
+      <TopRightLayer />
       {context.toastOpen && <Toast />}
     </div>
   );
