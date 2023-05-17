@@ -3,7 +3,7 @@ import Upload from "./icones/upload";
 import urlJboss from "./config";
 import { appContext } from "./context";
 
-function TopLeftLayer() {
+function TopRightLayer() {
   const inputUpload = useRef(null);
 
   let context = useContext(appContext);
@@ -17,7 +17,7 @@ function TopLeftLayer() {
 
   if (!user) {
     return (
-      <div className="topleftLayer">
+      <div className="topRightLayer">
         <button className="Button redButton" onClick={loginChange}>
           Se connecter
         </button>
@@ -30,7 +30,7 @@ function TopLeftLayer() {
   };
 
   return (
-    <div className="topleftLayer">
+    <div className="topRightLayer">
       <button className="Button ButtonUpload" onClick={buttonUpload}>
         <Upload></Upload>
         Upload
@@ -46,4 +46,4 @@ function TopLeftLayer() {
   );
 }
 
-export default TopLeftLayer;
+export default TopRightLayer;
