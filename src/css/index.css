@@ -989,6 +989,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  position: sticky;
+  position: absolute;
   top: 0;
 }
