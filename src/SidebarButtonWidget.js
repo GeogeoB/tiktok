@@ -55,17 +55,6 @@ const SidebarButtonWidget = () => {
           </div>
         </button>
       )}
-      <button
-        className={
-          (window === "Explorer" && "sidebar-button-active") +
-          " Button sidebar-button"
-        }
-        onClick={handleExplorerClick}
-      >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Explorer /> Explorer
-        </div>
-      </button>
     </div>
   );
 };

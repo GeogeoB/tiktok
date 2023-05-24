@@ -144,8 +144,8 @@ const TopHashtagsWidget = () => {
         <Search className="icons-search" />
       </div>
       <div className="hashtags-list">
-        {filteredHashtags.map((hashtag) => (
-          <p key={hashtag}>{hashtag}</p>
+        {filteredHashtags.map((hashtag, index) => (
+          <p key={index}>{hashtag}</p>
         ))}
       </div>
     </div>

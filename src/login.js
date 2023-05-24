@@ -84,7 +84,7 @@ function Login() {
       password: mdp,
     });
 
-    fetch(urlJboss + "/AuthenticationServlet?" + data, { method: "POST" }).then(
+    fetch(urlJboss + "/AuthenticationServlet?" + data, { method: "POST",  credentials: "include"}).then(
       (response) => {
         if (!response.ok) {
           setErreur("Il y a eu un probleme");

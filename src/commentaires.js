@@ -36,6 +36,7 @@ function Commentaires({ idvideo }) {
           let userComments = {
             id: commentaire.id,
             pseudo: commentaire.compteUploader.nom,
+            surnom : commentaire.compteUploader.surnom,
             pp: "./pp.jpg",
             comments: commentaire.text,
             date: commentaire.date,
@@ -62,18 +63,26 @@ function Commentaires({ idvideo }) {
     e.preventDefault();
     let comment = inputComment.current.value;
 
-    console.log(comment);
-
     const data = new URLSearchParams({
       op: "addCommentaire",
       videoID: idvideo,
       text: comment,
     });
 
-    fetch(urlJboss + "/DataServlet?" + data, { method: "POST" }).then(
+    fetch(urlJboss + "/DataServlet?" + data, { method: "POST",  credentials: "include" }).then(
       (response) => {
         if (!response.ok) {
           setErreur("Il y a eu une erreur");
+        } else {
+          let userComments = {
+            id: 0,
+            pseudo: context.user.pseudo,
+            pp: "./pp.jpg",
+            comments: comment,
+            date: new Date(),
+          };
+
+          setCommentaires((old) => [...old, <Commentaire userComments={userComments}></Commentaire>]);
         }
       }
     );

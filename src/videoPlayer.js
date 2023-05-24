@@ -14,7 +14,6 @@ function VideoPlayer(numbertoVH) {
 
     document.getElementById("Slider").className =
       "videoSlider videoSliderTranslate";
-    console.log(numbertoVH);
     document.documentElement.style.setProperty(
       "--animation-translate",
       numbertoVH
@@ -48,6 +47,9 @@ function VideoPlayer(numbertoVH) {
               desc: k_ === 2 ? video.description : oldInfo[0].desc,
               place: k_ === 2 ? video.lieu : oldInfo[0].place,
               hashtags: k_ === 2 ? hashtags : oldInfo[0].hashtags,
+              idUploader: k_ === 2 ? video.compteUploader.id : oldInfo[0].idUploader,
+              Userdesc: k_ === 2 ? video.compteUploader.bio : oldInfo[0].Userdesc,
+              abonned: k_ === 2 ? video.compteUploader.abonne : oldInfo[0].abonned,
             },
             {
               ...oldInfo[1],
@@ -67,6 +69,9 @@ function VideoPlayer(numbertoVH) {
               desc: k_ === 1 ? video.description : oldInfo[1].desc,
               place: k_ === 1 ? video.lieu : oldInfo[1].place,
               hashtags: k_ === 1 ? hashtags : oldInfo[1].hashtags,
+              idUploader: k_ === 1 ? video.compteUploader.id : oldInfo[1].idUploader,
+              Userdesc: k_ === 1 ? video.compteUploader.bio : oldInfo[1].Userdesc,
+              abonned: k_ ===1 ? video.compteUploader.abonne : oldInfo[1].abonned,
             },
             {
               ...oldInfo[2],
@@ -86,6 +91,9 @@ function VideoPlayer(numbertoVH) {
               desc: k_ === 0 ? video.description : oldInfo[2].desc,
               place: k_ === 0 ? video.lieu : oldInfo[2].place,
               hashtags: k_ === 0 ? hashtags : oldInfo[2].hashtags,
+              idUploader: k_ === 0 ? video.compteUploader.id : oldInfo[2].idUploader,
+              Userdesc: k_ === 0 ? video.compteUploader.bio : oldInfo[2].Userdesc,
+              abonned: k_ ===0 ? video.compteUploader.abonne : oldInfo[2].abonned,
             },
           ]);
         });
@@ -114,6 +122,9 @@ function VideoPlayer(numbertoVH) {
               desc: k_ === 0 ? video.description : oldInfo[0].desc,
               place: k_ === 0 ? video.lieu : oldInfo[0].place,
               hashtags: k_ === 0 ? hashtags : oldInfo[0].hashtags,
+              idUploader: k_ === 0 ? video.compteUploader.id : oldInfo[0].idUploader,
+              Userdesc: k_ === 0 ? video.compteUploader.bio : oldInfo[0].Userdesc,
+              abonned: k_ ===0 ? video.compteUploader.abonne : oldInfo[0].abonned,
             },
             {
               ...oldInfo[1],
@@ -133,6 +144,9 @@ function VideoPlayer(numbertoVH) {
               desc: k_ === 2 ? video.description : oldInfo[1].desc,
               place: k_ === 2 ? video.lieu : oldInfo[1].place,
               hashtags: k_ === 2 ? hashtags : oldInfo[1].hashtags,
+              idUploader: k_ === 2 ? video.compteUploader.id : oldInfo[1].idUploader,
+              Userdesc: k_ === 2 ? video.compteUploader.bio : oldInfo[1].Userdesc,
+              abonned: k_ ===2 ? video.compteUploader.abonne : oldInfo[1].abonned,
             },
             {
               ...oldInfo[2],
@@ -152,6 +166,9 @@ function VideoPlayer(numbertoVH) {
               desc: k_ === 1 ? video.description : oldInfo[2].desc,
               place: k_ === 1 ? video.lieu : oldInfo[2].place,
               hashtags: k_ === 1 ? hashtags : oldInfo[2].hashtags,
+              idUploader: k_ === 1 ? video.compteUploader.id : oldInfo[2].idUploader,
+              Userdesc: k_ === 1 ? video.compteUploader.bio : oldInfo[2].Userdesc,
+              abonned: k_ ===1 ? video.compteUploader.abonne : oldInfo[2].abonned,
             },
           ]);
         });
@@ -169,8 +186,11 @@ function VideoPlayer(numbertoVH) {
         "--position-video3",
         (((k_ + 2) * 100) % 300) + "vh"
       );
-
-      document.getElementById("Slider").className = "videoSlider";
+      
+      try {
+        document.getElementById("Slider").className = "videoSlider";
+      } catch (error) {
+      }
 
       document.documentElement.style.setProperty(
         "--animation-translate",
@@ -200,6 +220,9 @@ function VideoPlayer(numbertoVH) {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
       nb_like: 500,
       nb_commentaire: 500,
+      idUploader: 1,
+      Userdesc: "lorem ipsum",
+      abonned: false,
     },
     {
       src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
@@ -214,6 +237,9 @@ function VideoPlayer(numbertoVH) {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
       nb_like: 500,
       nb_commentaire: 500,
+      idUploader: 1,
+      Userdesc: "lorem ipsum",
+      abonned: false,
     },
     {
       src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/couscous.mp4",
@@ -228,6 +254,9 @@ function VideoPlayer(numbertoVH) {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
       nb_like: 500,
       nb_commentaire: 500,
+      idUploader: 1,
+      Userdesc: "lorem ipsum",
+      abonned: false,
     },
   ]);
 
@@ -247,7 +276,7 @@ function VideoPlayer(numbertoVH) {
       })
       .then((data) => {
         video = data.video;
-        video.liked = data.liked;
+        video.liked = data.video.liked;
       });
 
     return video;
@@ -267,6 +296,8 @@ function VideoPlayer(numbertoVH) {
           desc: video.description,
           hashtags: video.hashtags.map((h) => h.hashTagName),
           place: video.lieu,
+          Userdesc: video.compteUploader.bio,
+          abonned : video.compteUploader.abonne,
         },
         { ...oldInfo[1] },
         { ...oldInfo[2] },
@@ -287,6 +318,8 @@ function VideoPlayer(numbertoVH) {
           desc: video.description,
           hashtags: video.hashtags.map((h) => h.hashTagName),
           place: video.lieu,
+          Userdesc: video.compteUploader.bio,
+          abonned : video.compteUploader.abonne,
         },
         { ...oldInfo[2] },
       ]);
@@ -307,6 +340,8 @@ function VideoPlayer(numbertoVH) {
           desc: video.description,
           hashtags: video.hashtags.map((h) => h.hashTagName),
           place: video.lieu,
+          Userdesc: video.compteUploader.bio,
+          abonned : video.compteUploader.abonne,
         },
       ]);
     });

@@ -34,11 +34,6 @@ function Commentaire({ userComments }) {
     }
   }
 
-  const diff = getReadableTimeDiff(
-    new Date("2023-04-04T15:30:45.500Z"),
-    new Date()
-  );
-
   return (
     <div className="comments">
       <div className="pp_comments">
@@ -48,8 +43,8 @@ function Commentaire({ userComments }) {
       </div>
       <div className="comments--right">
         <div className="comments--pseudo--date">
-          <p className="comment-pseudo">{userComments.pseudo}</p>
-          <p className="comment-date">{"il y a " + diff}</p>
+          <p className="comment-pseudo">{userComments.surnom}</p>
+          <p className="comment-date">{"il y a " + getReadableTimeDiff(new Date(userComments.date), new Date())}</p>
         </div>
         <p>{userComments.comments}</p>
       </div>
