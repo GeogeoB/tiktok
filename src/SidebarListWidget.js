@@ -114,6 +114,16 @@ const TopHashtagsWidget = () => {
     "#AliensStoleMyLunch",
     "#UnicornRiding101",
     "#MyCatThinksHesADog",
+    "#PourToi",
+    "#ToujoursDebout",
+    "#DenonceTonPorc",
+    "#WhyDidTheChicken",
+    "#BananaPeelSlipUps",
+    "#AccidentalSuperhero",
+    "#DontPushTheRedButton",
+    "#AliensStoleMyLunch",
+    "#UnicornRiding101",
+    "#MyCatThinksHesADog",
   ]);
   const [searchQuery, setSearchQuery] = useState("");
 
