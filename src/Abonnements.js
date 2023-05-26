@@ -11,7 +11,10 @@ function Abonnements() {
       op: "getAbonnements",
     });
 
-    fetch(urlJboss + "/DataServlet?" + data, { method: "GET" })
+    fetch(urlJboss + "/DataServlet?" + data, {
+      method: "GET",
+      credentials: "include",
+    })
       .then((response) => {
         return response.json();
       })
