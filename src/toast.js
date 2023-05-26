@@ -7,7 +7,7 @@ export default function Toast() {
 
   useEffect(() => {
     setTimeout(() => context.setToastOpen(false), 4000);
-  }, []);
+  }, [context]);
 
   return (
     <div className="toast-container">

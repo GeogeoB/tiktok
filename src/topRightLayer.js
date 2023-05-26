@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Upload from "./icones/upload";
 import urlJboss from "./config";
 import { appContext } from "./context";
+import Logout from "./icones/logout";
 
 function TopRightLayer() {
   let context = useContext(appContext);
@@ -50,8 +51,22 @@ function TopRightLayer() {
     context.setUploadVideo(true);
   };
 
+  const buttonLogout = () => {
+    context.setUser(null);
+    fetch(urlJboss + "/AuthenticationServlet?op=logout", {
+      method: "GET",
+      credentials: "include",
+    });
+    context.setToastText("Déconnecté !");
+    context.setToastOpen(true);
+  };
+
   return (
     <div className="topRightLayer">
+      <button className="Button ButtonUpload" onClick={buttonLogout}>
+        <Logout />
+        Logout
+      </button>
       <button className="Button ButtonUpload" onClick={buttonUpload}>
         <Upload></Upload>
         Upload
