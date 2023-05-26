@@ -7,12 +7,11 @@ import Abonnement from "./Abonnement";
 import urlJboss from "./config";
 
 function VideoPresentation() {
-
   let context = useContext(appContext);
   let videoPresentationInfo = context.videoPresentationInfo;
   let setVideoPresentationInfo = context.setVideoPresentationInfo;
 
-  console.log(videoPresentationInfo)
+  console.log(videoPresentationInfo);
 
   let [videoViewerOpen, setvideoViewerOpen] = useState(false);
 
@@ -36,15 +35,21 @@ function VideoPresentation() {
   };
 
   let VideoItem = (info) => {
-    console.log("test", info, info.src)
+    console.log("test", info, info.src);
 
-    return (<div className="videoExploration-videos" onClick={videoClickekd}>
-      <div className="info-video">
-        <Play></Play>
-        <p className="infoVue">200</p>
+    return (
+      <div className="videoExploration-videos" onClick={videoClickekd}>
+        <div className="info-video">
+          <Play></Play>
+          <p className="infoVue">200</p>
+        </div>
+        <video
+          src={info.info.src}
+          className="video-column"
+          autoPlay={false}
+        ></video>
       </div>
-      <video src={info.info.src} className="video-column" autoPlay={false}></video>
-    </div>)
+    );
   };
 
   const info = {
@@ -63,7 +68,7 @@ function VideoPresentation() {
     idUploader: 1,
   };
 
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const data = new URLSearchParams({
@@ -77,9 +82,6 @@ function VideoPresentation() {
       })
       .then((data) => {
         let videos = data.videos.map((video) => {
-
-          console.log(video)
-
           let info = {
             src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
             play: false,
@@ -96,13 +98,12 @@ function VideoPresentation() {
             idUploader: 1,
           };
 
-          return <VideoItem info={info}></VideoItem>
-        })
+          return <VideoItem info={info}></VideoItem>;
+        });
 
         setVideos(videos);
       });
-  }, [])
-
+  }, []);
 
   const VideoViewer = () => (
     <div className="loginbg">
@@ -125,12 +126,14 @@ function VideoPresentation() {
     });
 
     setVideoPresentationInfo((old) => {
-      return {...old, abonned : !old.abonned}
-    })
+      return { ...old, abonned: !old.abonned };
+    });
 
-    context.setToastText(videoPresentationInfo.abonned ? "désabonnée" : "abonné");
+    context.setToastText(
+      videoPresentationInfo.abonned ? "désabonnée" : "abonné"
+    );
     context.setToastOpen(true);
-  }
+  };
 
   return (
     <>
@@ -149,7 +152,6 @@ function VideoPresentation() {
                     ? "Abonnee ButtonAbonne"
                     : "ButtonAbonne"
                 }
-
                 onClick={setAbonnement}
               >
                 {videoPresentationInfo.abonned ? "abonné" : "s'abonner"}
@@ -163,16 +165,12 @@ function VideoPresentation() {
                 <span>{videoPresentationInfo.nb_followers}</span> followers
               </p>
             </div>
-            <p className="videoPres-desc">
-              {videoPresentationInfo.Userdesc}
-            </p>
+            <p className="videoPres-desc">{videoPresentationInfo.Userdesc}</p>
           </div>
         </div>
       </div>
 
-      <div className="videoExploration">
-        {videos}
-      </div>
+      <div className="videoExploration">{videos}</div>
     </>
   );
 }

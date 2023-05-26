@@ -6,7 +6,7 @@ function Abonnement({ user }) {
   let context = useContext(appContext);
 
   const clic_pp = () => {
-    context.setVideoPresentationInfo((old) => ({ ...old, hashtag: false }));
+    context.setVideoPresentationInfo((old) => ({ ...old, ...user }));
     context.setWindow("VideoPresentation");
   };
 
