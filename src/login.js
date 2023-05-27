@@ -74,20 +74,24 @@ function Login() {
     fetch(urlJboss + "/AuthenticationServlet?" + data, {
       method: "GET",
       credentials: "include",
-    }).then((response) => {
-      if (!response.ok) {
-        setErreur("Login ou Mot de passe invalide");
-      } else {
+    })
+      .then((response) => {
+        if (!response.ok) {
+          setErreur("Login ou Mot de passe invalide");
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
         let userSetup = {
-          id: 0,
-          pseudo: pseudo,
+          id: data.compte.id,
+          pseudo: surnom,
           pp: "./pp.jpg",
         };
 
         setUser(userSetup);
         setLoginOpen(false);
-      }
-    });
+      });
   };
 
   const registerlog = async () => {
@@ -102,22 +106,24 @@ function Login() {
     fetch(urlJboss + "/AuthenticationServlet?" + data, {
       method: "POST",
       credentials: "include",
-    }).then((response) => {
-      if (!response.ok) {
-        setErreur("Il y a eu un probleme");
-      } else {
-        let rep = response.json();
-
+    })
+      .then((response) => {
+        if (!response.ok) {
+          setErreur("Il y a eu un probleme");
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
         let userSetup = {
-          id: 0,
-          pseudo: pseudo,
+          id: data.compte.id,
+          pseudo: surnom,
           pp: "./pp.jpg",
         };
 
         setUser(userSetup);
         setLoginOpen(false);
-      }
-    });
+      });
   };
 
   return (
@@ -156,10 +162,10 @@ function Login() {
                 />
               </div>
               <div className="login-box">
-                <p className="login-label-input">BIODESCRIPTION</p>
+                <p className="login-label-input">DESCRIPTION</p>
                 <input
                   type="text"
-                  placeholder="biodescription "
+                  placeholder="description "
                   className="input-login"
                   onChange={changeBio}
                 />
