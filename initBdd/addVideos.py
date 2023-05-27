@@ -6,7 +6,7 @@ from datas import hashtags
 import os
 
 N = 10
-url = "https://192.168.1.94:8443/TiktokBackend/AuthenticationServlet"
+url = "https://192.168.1.94:8443/TiktokBackend/DataServlet"
 
 dossier = "./videos"
 
