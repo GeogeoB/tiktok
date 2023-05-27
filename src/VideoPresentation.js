@@ -90,7 +90,7 @@ function VideoPresentation() {
         return response.json();
       })
       .then((data) => {
-        let videos = data.videos.map((video) => {
+        let videos_ = data.videos.map((video) => {
           let info = {
             src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
             play: false,
@@ -100,7 +100,7 @@ function VideoPresentation() {
             id: video.id,
             pos: 0,
             place: video.lieu,
-            hashtags: info.hashtags,
+            hashtags: video.hashtags,
             desc: video.description,
             nb_like: video.nbLikes,
             nb_commentaire: video.commentaires.length,
@@ -110,7 +110,7 @@ function VideoPresentation() {
           return <VideoItem info={info}></VideoItem>;
         });
 
-        setVideos(videos);
+        setVideos(videos_);
       });
   }, []);
 
