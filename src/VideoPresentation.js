@@ -25,7 +25,10 @@ function VideoPresentation() {
     }
   }
 
-  let videoClickekd = () => {
+  const [info, setinfo] = useState({});
+
+  let videoClickekd = (info) => {
+    setinfo(info);
     setvideoViewerOpen(true);
     scrollToTop();
   };
@@ -38,7 +41,10 @@ function VideoPresentation() {
     console.log("test", info, info.src);
 
     return (
-      <div className="videoExploration-videos" onClick={videoClickekd}>
+      <div
+        className="videoExploration-videos"
+        onClick={() => videoClickekd(info)}
+      >
         <div className="info-video">
           <Play></Play>
           <p className="infoVue">200</p>
