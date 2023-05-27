@@ -9,7 +9,6 @@ N = 10
 url = "https://192.168.1.94:8443/TiktokBackend/DataServlet"
 
 dossier = "./videos"
-headers = {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'}
 
 fichiers = [
     fichier
@@ -30,7 +29,7 @@ for fichier in fichiers:
     cookies = {"loginID": str(loginID)}
     files = {"file": open("./videos/" + fichier, "rb")}
 
-    response = requests.post(url, data=data, verify=False, files=files, cookies=cookies, headers=headers)
+    response = requests.post(url, data=data, verify=False, files=files, cookies=cookies)
 
     # Vérification du code de statut de la réponse
     if response.status_code == 200:
