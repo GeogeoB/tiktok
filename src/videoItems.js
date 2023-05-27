@@ -15,6 +15,7 @@ function VideoItems({ info, setVideoInfos, k }) {
 
   const ppClick = () => {
     context.setVideoPresentationInfo((old) => ({
+      hashtag: false,
       ...old,
       hashtag: false,
       idUploader: info.idUploader,
