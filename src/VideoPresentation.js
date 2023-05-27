@@ -76,25 +76,27 @@ function VideoPresentation() {
         return response.json();
       })
       .then((data) => {
-        let videos_ = data.videos.map((video) => {
-          let info = {
-            src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
-            play: false,
-            user: video.compteUploader.surnom,
-            userPicture: video.compteUploader.pp,
-            like: false,
-            id: video.id,
-            pos: 0,
-            place: video.lieu,
-            hashtags: video.hashtags,
-            desc: video.description,
-            nb_like: video.nbLikes,
-            nb_commentaire: video.commentaires.length,
-            idUploader: video.compteUploader.id,
-          };
+        let videos_ = data.videos
+          ? data.videos.map((video) => {
+              let info = {
+                src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
+                play: false,
+                user: video.compteUploader.surnom,
+                userPicture: video.compteUploader.pp,
+                like: false,
+                id: video.id,
+                pos: 0,
+                place: video.lieu,
+                hashtags: video.hashtags,
+                desc: video.description,
+                nb_like: video.nbLikes,
+                nb_commentaire: video.commentaires.length,
+                idUploader: video.compteUploader.id,
+              };
 
-          return <VideoItem info={info}></VideoItem>;
-        });
+              return <VideoItem info={info}></VideoItem>;
+            })
+          : [];
 
         setVideos(videos_);
       });
