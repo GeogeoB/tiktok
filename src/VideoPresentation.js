@@ -11,8 +11,6 @@ function VideoPresentation() {
   let videoPresentationInfo = context.videoPresentationInfo;
   let setVideoPresentationInfo = context.setVideoPresentationInfo;
 
-  console.log(videoPresentationInfo);
-
   let [videoViewerOpen, setvideoViewerOpen] = useState(false);
 
   function scrollToTop() {
@@ -38,8 +36,6 @@ function VideoPresentation() {
   };
 
   let VideoItem = (info) => {
-    console.log("test", info, info.src);
-
     return (
       <div
         className="videoExploration-videos"
