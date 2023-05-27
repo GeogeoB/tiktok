@@ -133,33 +133,38 @@ function VideoPresentation() {
       {videoViewerOpen && <VideoViewer />}
       <div className="header-videopresentation">
         <div className="video-header">
-          <div className="circle_abonnement_pres pp_comments_circle">
-            {!videoPresentationInfo.hashtag && (
+          {!videoPresentationInfo.hashtag && (
+            <div className="circle_abonnement_pres pp_comments_circle">
+              {" "}
               <img src={videoPresentationInfo.pp} alt="profile of the user" />
-            )}
-          </div>
+            </div>
+          )}
           <div className="video-pres-text">
             <div className="pseudo-videoPres">
               <p className="videopres-pseudo">{videoPresentationInfo.pseudo}</p>
-              <button
-                className={
-                  videoPresentationInfo.abonned
-                    ? "Abonnee ButtonAbonne"
-                    : "ButtonAbonne"
-                }
-                onClick={setAbonnement}
-              >
-                {videoPresentationInfo.abonned ? "abonné" : "s'abonner"}
-              </button>
+              {!videoPresentationInfo.hashtag && (
+                <button
+                  className={
+                    videoPresentationInfo.abonned
+                      ? "Abonnee ButtonAbonne"
+                      : "ButtonAbonne"
+                  }
+                  onClick={setAbonnement}
+                >
+                  {videoPresentationInfo.abonned ? "abonné" : "s'abonner"}
+                </button>
+              )}
             </div>
-            <div className="item-video-pres">
-              <p>
-                <span>{videoPresentationInfo.nbVideos}</span> publications
-              </p>
-              <p>
-                <span>{videoPresentationInfo.nbAbonnes}</span> followers
-              </p>
-            </div>
+            {!videoPresentationInfo.hashtag && (
+              <div className="item-video-pres">
+                <p>
+                  <span>{videoPresentationInfo.nbVideos}</span> publications
+                </p>
+                <p>
+                  <span>{videoPresentationInfo.nbAbonnes}</span> followers
+                </p>
+              </div>
+            )}
             <p className="videoPres-desc">{videoPresentationInfo.Userdesc}</p>
           </div>
         </div>
