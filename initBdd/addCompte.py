@@ -9,6 +9,8 @@ url = "https://192.168.1.94:8443/TiktokBackend/AuthenticationServlet"
 
 # Données à envoyer avec la requête POST
 
+headers = {"Content-type": "text/plain; charset=utf-8"}
+
 for personne in tqdm(personnes):
     data = {
         "op": "createCompte",
@@ -20,7 +22,7 @@ for personne in tqdm(personnes):
     }
 
     # Envoi de la requête POST
-    response = requests.post(url, data=data, verify=False)
+    response = requests.post(url, data=data, verify=False, headers=headers)
 
     # Vérification du code de statut de la réponse
     if response.status_code == 200:
