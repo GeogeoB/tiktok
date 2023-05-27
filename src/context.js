@@ -4,13 +4,6 @@ export const appContext = createContext();
 
 export const MyContextProvider = ({ children }) => {
   // Définissez ici les données et les fonctions à partager via le contexte
-
-  let userSetup = {
-    id: 0,
-    pseudo: "geogeo",
-    pp: "./pp.jpg",
-  };
-
   let videoPresentationInfoSetup = {
     idUploader: 1,
     hashtag: false,

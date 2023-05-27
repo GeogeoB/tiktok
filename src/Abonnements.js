@@ -25,14 +25,16 @@ function Abonnements() {
           let user = {
             hashtag: false,
             idUploader: abo.id,
-            pseudo: abo.surnom,
+            pseudo: abo.nom,
+            surnom: abo.surnom,
             Userdesc: abo.bio,
             nb_publi: abo.nbVideos,
             abonned: abo.abonne,
             nb_followers: abo.nbAbonnes,
+            pp: `./avatars/avatar${abo.profilePic}.png`,
           };
 
-          return <Abonnement user={user}></Abonnement>;
+          return <Abonnement user={user} key={index}></Abonnement>;
         });
 
         setAbonnements(_abonnements);

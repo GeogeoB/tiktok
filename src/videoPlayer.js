@@ -53,6 +53,10 @@ function VideoPlayer(numbertoVH) {
                 k_ === 2 ? video.compteUploader.bio : oldInfo[0].Userdesc,
               abonned:
                 k_ === 2 ? video.compteUploader.abonne : oldInfo[0].abonned,
+              pp:
+                k_ === 2
+                  ? `./avatars/avatar${video.compteUploader.profilePic}.png`
+                  : oldInfo[0].pp,
             },
             {
               ...oldInfo[1],
@@ -78,6 +82,10 @@ function VideoPlayer(numbertoVH) {
                 k_ === 1 ? video.compteUploader.bio : oldInfo[1].Userdesc,
               abonned:
                 k_ === 1 ? video.compteUploader.abonne : oldInfo[1].abonned,
+              pp:
+                k_ === 1
+                  ? `./avatars/avatar${video.compteUploader.profilePic}.png`
+                  : oldInfo[1].pp,
             },
             {
               ...oldInfo[2],
@@ -103,6 +111,10 @@ function VideoPlayer(numbertoVH) {
                 k_ === 0 ? video.compteUploader.bio : oldInfo[2].Userdesc,
               abonned:
                 k_ === 0 ? video.compteUploader.abonne : oldInfo[2].abonned,
+              pp:
+                k_ === 0
+                  ? `./avatars/avatar${video.compteUploader.profilePic}.png`
+                  : oldInfo[2].pp,
             },
           ]);
         });
@@ -137,6 +149,10 @@ function VideoPlayer(numbertoVH) {
                 k_ === 0 ? video.compteUploader.bio : oldInfo[0].Userdesc,
               abonned:
                 k_ === 0 ? video.compteUploader.abonne : oldInfo[0].abonned,
+              pp:
+                k_ === 0
+                  ? `./avatars/avatar${video.compteUploader.profilePic}.png`
+                  : oldInfo[0].pp,
             },
             {
               ...oldInfo[1],
@@ -162,6 +178,10 @@ function VideoPlayer(numbertoVH) {
                 k_ === 2 ? video.compteUploader.bio : oldInfo[1].Userdesc,
               abonned:
                 k_ === 2 ? video.compteUploader.abonne : oldInfo[1].abonned,
+              pp:
+                k_ === 2
+                  ? `./avatars/avatar${video.compteUploader.profilePic}.png`
+                  : oldInfo[1].pp,
             },
             {
               ...oldInfo[2],
@@ -187,6 +207,10 @@ function VideoPlayer(numbertoVH) {
                 k_ === 1 ? video.compteUploader.bio : oldInfo[2].Userdesc,
               abonned:
                 k_ === 1 ? video.compteUploader.abonne : oldInfo[2].abonned,
+              pp:
+                k_ === 1
+                  ? `./avatars/avatar${video.compteUploader.profilePic}.png`
+                  : oldInfo[2].pp,
             },
           ]);
         });
@@ -315,6 +339,7 @@ function VideoPlayer(numbertoVH) {
           place: video.lieu,
           Userdesc: video.compteUploader.bio,
           abonned: video.compteUploader.abonne,
+          pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
         },
         { ...oldInfo[1] },
         { ...oldInfo[2] },
@@ -337,6 +362,7 @@ function VideoPlayer(numbertoVH) {
           place: video.lieu,
           Userdesc: video.compteUploader.bio,
           abonned: video.compteUploader.abonne,
+          pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
         },
         { ...oldInfo[2] },
       ]);
@@ -359,6 +385,7 @@ function VideoPlayer(numbertoVH) {
           place: video.lieu,
           Userdesc: video.compteUploader.bio,
           abonned: video.compteUploader.abonne,
+          pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
         },
       ]);
     });

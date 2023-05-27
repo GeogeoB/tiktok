@@ -31,7 +31,7 @@ function TopRightLayer() {
         let userSetup = {
           id: compte.id,
           pseudo: compte.surnom,
-          pp: "./pp.jpg",
+          pp: `./avatars/avatar${compte.profilePic}.png`,
         };
         setUser(userSetup);
       });

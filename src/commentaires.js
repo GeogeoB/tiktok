@@ -36,8 +36,8 @@ function Commentaires({ idvideo }) {
           let userComments = {
             id: commentaire.id,
             pseudo: commentaire.compteUploader.nom,
-            surnom : commentaire.compteUploader.surnom,
-            pp: "./pp.jpg",
+            surnom: commentaire.compteUploader.surnom,
+            pp: `./avatars/avatar${commentaire.compteUploader.profilePic}.png`,
             comments: commentaire.text,
             date: commentaire.date,
           };
@@ -51,14 +51,6 @@ function Commentaires({ idvideo }) {
       });
   }, [idvideo]);
 
-  let userComments = {
-    id: 0,
-    pseudo: "geogeo",
-    pp: "./pp.jpg",
-    comments: "Je suis Geogeo le Rigolo",
-    date: "2023-04-04T15:30:45.500Z",
-  };
-
   const commentSubmit = (e) => {
     e.preventDefault();
     let comment = inputComment.current.value;
@@ -69,23 +61,27 @@ function Commentaires({ idvideo }) {
       text: comment,
     });
 
-    fetch(urlJboss + "/DataServlet?" + data, { method: "POST",  credentials: "include" }).then(
-      (response) => {
-        if (!response.ok) {
-          setErreur("Il y a eu une erreur");
-        } else {
-          let userComments = {
-            id: 0,
-            pseudo: context.user.pseudo,
-            pp: "./pp.jpg",
-            comments: comment,
-            date: new Date(),
-          };
+    fetch(urlJboss + "/DataServlet?" + data, {
+      method: "POST",
+      credentials: "include",
+    }).then((response) => {
+      if (!response.ok) {
+        setErreur("Il y a eu une erreur");
+      } else {
+        let userComments = {
+          id: 0,
+          pseudo: context.user.pseudo,
+          pp: context.user.pp,
+          comments: comment,
+          date: new Date(),
+        };
 
-          setCommentaires((old) => [...old, <Commentaire userComments={userComments}></Commentaire>]);
-        }
+        setCommentaires((old) => [
+          ...old,
+          <Commentaire userComments={userComments}></Commentaire>,
+        ]);
       }
-    );
+    });
   };
 
   const UserInput = () => {

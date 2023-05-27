@@ -9,6 +9,7 @@ function Login() {
   const [mdp, setmdp] = useState("");
   const [surnom, setSurnom] = useState("");
   const [bio, setBio] = useState("");
+  const [pp, setPP] = useState(0);
 
   let context = useContext(appContext);
   let setLoginOpen = context.setLoginOpen;
@@ -42,6 +43,10 @@ function Login() {
 
   const changeBio = (e) => {
     setBio(e.target.value);
+  };
+
+  const changePP = (i) => {
+    setPP(i);
   };
 
   const sendFormulaire = () => {
@@ -86,7 +91,7 @@ function Login() {
         let userSetup = {
           id: data.compte.id,
           pseudo: surnom,
-          pp: "./pp.jpg",
+          pp: `./avatars/avatar${data.compte.profilePic}.png`,
         };
 
         setUser(userSetup);
@@ -101,6 +106,7 @@ function Login() {
       password: mdp,
       surnom: surnom,
       bio: bio,
+      pp: pp,
     });
 
     fetch(urlJboss + "/AuthenticationServlet?" + data, {
@@ -118,7 +124,7 @@ function Login() {
         let userSetup = {
           id: data.compte.id,
           pseudo: surnom,
-          pp: "./pp.jpg",
+          pp: `./avatars/avatar${pp}.png`,
         };
 
         setUser(userSetup);
@@ -169,6 +175,25 @@ function Login() {
                   className="input-login"
                   onChange={changeBio}
                 />
+              </div>
+              <p className="login-label-input">Choisis ton avatar:</p>
+              <div className="avatarsGrid">
+                {(() => {
+                  const avatars = [];
+                  for (let i = 0; i < 9; i++) {
+                    avatars.push(
+                      <div
+                        className="items circleitem"
+                        onClick={() => setPP(i)}
+                      >
+                        <div className={`circle ${pp === i ? "active" : ""}`}>
+                          <img src={`./avatars/avatar${i}.png`} alt="" />
+                        </div>
+                      </div>
+                    );
+                  }
+                  return avatars;
+                })()}
               </div>
             </>
           )}

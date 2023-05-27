@@ -93,7 +93,7 @@ const SubscribedAccountsWidget = () => {
               id: account.id,
               name: account.nom,
               surname: account.surnom,
-              profilePicture: "pp.jpg",
+              profilePicture: `./avatars/avatar${account.profilePic}.png`,
             };
           })
         );

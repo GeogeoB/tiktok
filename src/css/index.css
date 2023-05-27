@@ -992,3 +992,20 @@ body {
   position: absolute;
   top: 0;
 }
+
+.avatarsGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.avatarsGrid .circle {
+  max-width: 50px;
+  border: solid 1px grey;
+}
+
+.circle.active {
+  max-width: 50px;
+  border: solid 2px var(--button-color);
+}
