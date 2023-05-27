@@ -3,7 +3,6 @@ import "./css/index.css";
 import { appContext } from "./context";
 import Play from "./icones/play";
 import Video from "./Video";
-import Abonnement from "./Abonnement";
 import urlJboss from "./config";
 
 function VideoPresentation() {
@@ -36,6 +35,7 @@ function VideoPresentation() {
   };
 
   let VideoItem = (info) => {
+    info = info.info;
     return (
       <div
         className="videoExploration-videos"
@@ -45,11 +45,7 @@ function VideoPresentation() {
           <Play></Play>
           <p className="infoVue">200</p>
         </div>
-        <video
-          src={info.info.src}
-          className="video-column"
-          autoPlay={false}
-        ></video>
+        <video src={info.src} className="video-column" autoPlay={false}></video>
       </div>
     );
   };
@@ -82,7 +78,7 @@ function VideoPresentation() {
                 src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
                 play: false,
                 user: video.compteUploader.surnom,
-                userPicture: video.compteUploader.pp,
+                pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
                 like: false,
                 id: video.id,
                 pos: 0,
@@ -102,14 +98,16 @@ function VideoPresentation() {
       });
   }, []);
 
-  const VideoViewer = () => (
-    <div className="loginbg">
-      <div className="videoSlider video-video-presentation">
-        <div className="video-close close-button" onClick={close}></div>
-        <Video info={info}></Video>
+  const VideoViewer = () => {
+    return (
+      <div className="loginbg">
+        <div className="videoSlider video-video-presentation">
+          <div className="video-close close-button" onClick={close}></div>
+          <Video info={info}></Video>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const setAbonnement = () => {
     const data = new URLSearchParams({

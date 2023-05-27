@@ -8,6 +8,7 @@ import urlJboss from "./config";
 function VideoItems({ info, setVideoInfos, k }) {
   let context = useContext(appContext);
   let setcommentOpen = context.setcommentOpen;
+  console.log(info);
 
   const openComment = () => {
     setcommentOpen(true);
@@ -15,7 +16,6 @@ function VideoItems({ info, setVideoInfos, k }) {
 
   const ppClick = () => {
     context.setVideoPresentationInfo((old) => ({
-      hashtag: false,
       ...old,
       hashtag: false,
       idUploader: info.compteUploader.id,

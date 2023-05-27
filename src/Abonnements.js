@@ -20,7 +20,6 @@ function Abonnements() {
       })
       .then((data) => {
         let abonnements_ = data.abonnements;
-
         let _abonnements = abonnements_.map((abo, index) => {
           let user = {
             hashtag: false,
