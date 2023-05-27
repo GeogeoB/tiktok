@@ -6,7 +6,6 @@ from datas import hashtags
 import os
 
 N = 10
-cookies = {"loginID": random.randint(0, N)}
 url = "https://192.168.1.94:8443/TiktokBackend/AuthenticationServlet"
 
 dossier = "./videos"
@@ -25,6 +24,7 @@ data = {
 }
 
 for fichier in fichiers:
+    cookies = {"loginID": random.randint(0, N)}
     files = {"files": open(fichier, "rb")}
 
     response = requests.post(url, data=data, verify=False, files=files)
