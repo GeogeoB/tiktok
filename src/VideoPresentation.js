@@ -73,7 +73,7 @@ function VideoPresentation() {
   useEffect(() => {
     let data = {};
 
-    if (!videoPresentationInfo.hashtags) {
+    if (!videoPresentationInfo.hashtag) {
       data = new URLSearchParams({
         op: "getCompteVideos",
         compteID: videoPresentationInfo.idUploader,
@@ -94,17 +94,17 @@ function VideoPresentation() {
           let info = {
             src: urlJboss + "/DataServlet?op=getVideo&id=" + video.id,
             play: false,
-            user: "@mia.aroundtheworld",
-            userPicture: "",
+            user: video.compteUploader.surnom,
+            userPicture: video.compteUploader.pp,
             like: false,
-            id: 0,
+            id: video.id,
             pos: 0,
-            place: "Eiffel Tower View, Paris, France",
+            place: video.lieu,
             hashtags: ["France", "Paris", "Architecture"],
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
-            nb_like: 500,
-            nb_commentaire: 500,
-            idUploader: 1,
+            desc: video.description,
+            nb_like: video.nbLikes,
+            nb_commentaire: video.commentaires.length,
+            idUploader: video.compteUploader.id,
           };
 
           return <VideoItem info={info}></VideoItem>;
@@ -150,7 +150,7 @@ function VideoPresentation() {
       <div className="header-videopresentation">
         <div className="video-header">
           <div className="circle_abonnement_pres pp_comments_circle">
-            {!videoPresentationInfo.hashtags && (
+            {!videoPresentationInfo.hashtag && (
               <img src="pp.jpg" alt="profile of the user" />
             )}
           </div>

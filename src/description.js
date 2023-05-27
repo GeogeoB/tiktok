@@ -9,8 +9,6 @@ function Description({ info }) {
     context.setVideoPresentationInfo((old) => ({
       ...old,
       pseudo: hashtag,
-      nb_publi: 5000,
-      description: "",
       hashtag: true,
     }));
 
