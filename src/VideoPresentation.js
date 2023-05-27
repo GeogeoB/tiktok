@@ -52,22 +52,6 @@ function VideoPresentation() {
     );
   };
 
-  const info = {
-    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    play: false,
-    user: "@mia.aroundtheworld",
-    userPicture: "",
-    like: false,
-    id: 0,
-    pos: 0,
-    place: "Eiffel Tower View, Paris, France",
-    hashtags: ["France", "Paris", "Architecture"],
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident corrupti fuga quae, beatae cum deleniti maiores. Maiores unde rem vel esse velit dolorem dolore, labore, reiciendis delectus necessitatibus omnis",
-    nb_like: 500,
-    nb_commentaire: 500,
-    idUploader: 1,
-  };
-
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
