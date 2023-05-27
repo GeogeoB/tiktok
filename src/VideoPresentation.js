@@ -150,7 +150,9 @@ function VideoPresentation() {
       <div className="header-videopresentation">
         <div className="video-header">
           <div className="circle_abonnement_pres pp_comments_circle">
-            <img src="pp.jpg" alt="profile of the user" />
+            {!videoPresentationInfo.hashtags && (
+              <img src="pp.jpg" alt="profile of the user" />
+            )}
           </div>
           <div className="video-pres-text">
             <div className="pseudo-videoPres">
