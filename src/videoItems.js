@@ -19,6 +19,9 @@ function VideoItems({ info, setVideoInfos, k }) {
       hashtag: false,
       idUploader: info.idUploader,
       pseudo: info.user,
+      pp: info.pp,
+      nbAbonnes: info.compteUploader.nbAbonnes,
+      nbVideos: info.compteUploader.nbVideos,
       ...info,
     }));
     context.setWindow("VideoPresentation");

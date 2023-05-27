@@ -100,7 +100,7 @@ function VideoPresentation() {
             id: video.id,
             pos: 0,
             place: video.lieu,
-            hashtags: ["France", "Paris", "Architecture"],
+            hashtags: info.hashtags,
             desc: video.description,
             nb_like: video.nbLikes,
             nb_commentaire: video.commentaires.length,
@@ -151,7 +151,7 @@ function VideoPresentation() {
         <div className="video-header">
           <div className="circle_abonnement_pres pp_comments_circle">
             {!videoPresentationInfo.hashtag && (
-              <img src="pp.jpg" alt="profile of the user" />
+              <img src={videoPresentationInfo.pp} alt="profile of the user" />
             )}
           </div>
           <div className="video-pres-text">
@@ -170,10 +170,10 @@ function VideoPresentation() {
             </div>
             <div className="item-video-pres">
               <p>
-                <span>{videoPresentationInfo.nb_publi}</span> publications
+                <span>{videoPresentationInfo.nbVideos}</span> publications
               </p>
               <p>
-                <span>{videoPresentationInfo.nb_followers}</span> followers
+                <span>{videoPresentationInfo.nbAbonnes}</span> followers
               </p>
             </div>
             <p className="videoPres-desc">{videoPresentationInfo.Userdesc}</p>

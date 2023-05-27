@@ -57,6 +57,8 @@ function VideoPlayer(numbertoVH) {
                 k_ === 2
                   ? `./avatars/avatar${video.compteUploader.profilePic}.png`
                   : oldInfo[0].pp,
+              compteUploader:
+                k_ === 2 ? video.compteUploader : oldInfo[0].compteUploader,
             },
             {
               ...oldInfo[1],
@@ -86,6 +88,8 @@ function VideoPlayer(numbertoVH) {
                 k_ === 1
                   ? `./avatars/avatar${video.compteUploader.profilePic}.png`
                   : oldInfo[1].pp,
+              compteUploader:
+                k_ === 1 ? video.compteUploader : oldInfo[1].compteUploader,
             },
             {
               ...oldInfo[2],
@@ -115,6 +119,8 @@ function VideoPlayer(numbertoVH) {
                 k_ === 0
                   ? `./avatars/avatar${video.compteUploader.profilePic}.png`
                   : oldInfo[2].pp,
+              compteUploader:
+                k_ === 0 ? video.compteUploader : oldInfo[2].compteUploader,
             },
           ]);
         });
@@ -153,6 +159,8 @@ function VideoPlayer(numbertoVH) {
                 k_ === 0
                   ? `./avatars/avatar${video.compteUploader.profilePic}.png`
                   : oldInfo[0].pp,
+              compteUploader:
+                k_ === 0 ? video.compteUploader : oldInfo[0].compteUploader,
             },
             {
               ...oldInfo[1],
@@ -182,6 +190,8 @@ function VideoPlayer(numbertoVH) {
                 k_ === 2
                   ? `./avatars/avatar${video.compteUploader.profilePic}.png`
                   : oldInfo[1].pp,
+              compteUploader:
+                k_ === 2 ? video.compteUploader : oldInfo[1].compteUploader,
             },
             {
               ...oldInfo[2],
@@ -211,6 +221,8 @@ function VideoPlayer(numbertoVH) {
                 k_ === 1
                   ? `./avatars/avatar${video.compteUploader.profilePic}.png`
                   : oldInfo[2].pp,
+              compteUploader:
+                k_ === 1 ? video.compteUploader : oldInfo[2].compteUploader,
             },
           ]);
         });
@@ -340,6 +352,7 @@ function VideoPlayer(numbertoVH) {
           Userdesc: video.compteUploader.bio,
           abonned: video.compteUploader.abonne,
           pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
+          compteUploader: video.compteUploader,
         },
         { ...oldInfo[1] },
         { ...oldInfo[2] },
@@ -363,6 +376,7 @@ function VideoPlayer(numbertoVH) {
           Userdesc: video.compteUploader.bio,
           abonned: video.compteUploader.abonne,
           pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
+          compteUploader: video.compteUploader,
         },
         { ...oldInfo[2] },
       ]);
@@ -386,6 +400,7 @@ function VideoPlayer(numbertoVH) {
           Userdesc: video.compteUploader.bio,
           abonned: video.compteUploader.abonne,
           pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
+          compteUploader: video.compteUploader,
         },
       ]);
     });
