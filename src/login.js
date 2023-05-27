@@ -7,6 +7,8 @@ function Login() {
   const [titre, settitre] = useState("Login");
   const [pseudo, setpseudo] = useState("");
   const [mdp, setmdp] = useState("");
+  const [surnom, setSurnom] = useState("");
+  const [bio, setBio] = useState("");
 
   let context = useContext(appContext);
   let setLoginOpen = context.setLoginOpen;
@@ -16,8 +18,13 @@ function Login() {
     setLoginOpen((old) => !old);
   };
 
-  const register = () => {
+  const toRegister = () => {
     settitre("Register");
+    setErreur("");
+  };
+
+  const toLogin = () => {
+    settitre("Login");
     setErreur("");
   };
 
@@ -29,8 +36,15 @@ function Login() {
     setmdp(e.target.value);
   };
 
+  const changeSurnom = (e) => {
+    setSurnom(e.target.value);
+  };
+
+  const changeBio = (e) => {
+    setBio(e.target.value);
+  };
+
   const sendFormulaire = () => {
-    console.log("test");
     if (pseudo === "") {
       setErreur("Votre Pseudo est vide");
       return;
@@ -70,7 +84,6 @@ function Login() {
           pp: "./pp.jpg",
         };
 
-        console.log(response.cookie);
         setUser(userSetup);
         setLoginOpen(false);
       }
@@ -82,40 +95,29 @@ function Login() {
       op: "createCompte",
       name: pseudo,
       password: mdp,
+      surnom: surnom,
+      bio: bio,
     });
 
-    fetch(urlJboss + "/AuthenticationServlet?" + data, { method: "POST",  credentials: "include"}).then(
-      (response) => {
-        if (!response.ok) {
-          setErreur("Il y a eu un probleme");
-        } else {
-          const datalog = new URLSearchParams({
-            op: "login",
-            name: pseudo,
-            password: mdp,
-          });
+    fetch(urlJboss + "/AuthenticationServlet?" + data, {
+      method: "POST",
+      credentials: "include",
+    }).then((response) => {
+      if (!response.ok) {
+        setErreur("Il y a eu un probleme");
+      } else {
+        let rep = response.json();
 
-          fetch(urlJboss + "/AuthenticationServlet?" + datalog, {
-            method: "GET",
-          }).then((response) => {
-            if (!response.ok) {
-              setErreur("Login ou Mot de passe invalide");
-            } else {
-              let rep = response.json();
+        let userSetup = {
+          id: 0,
+          pseudo: pseudo,
+          pp: "./pp.jpg",
+        };
 
-              let userSetup = {
-                id: 0,
-                pseudo: pseudo,
-                pp: "./pp.jpg",
-              };
-
-              setUser(userSetup);
-              setLoginOpen(false);
-            }
-          });
-        }
+        setUser(userSetup);
+        setLoginOpen(false);
       }
-    );
+    });
   };
 
   return (
@@ -142,6 +144,28 @@ function Login() {
               onChange={changeMdp}
             />
           </div>
+          {titre === "Register" && (
+            <>
+              <div className="login-box">
+                <p className="login-label-input">SURNOM</p>
+                <input
+                  type="text"
+                  placeholder="surnom "
+                  className="input-login"
+                  onChange={changeSurnom}
+                />
+              </div>
+              <div className="login-box">
+                <p className="login-label-input">BIODESCRIPTION</p>
+                <input
+                  type="text"
+                  placeholder="biodescription "
+                  className="input-login"
+                  onChange={changeBio}
+                />
+              </div>
+            </>
+          )}
 
           {erreur && <p className="text_erreur">{erreur}</p>}
         </div>
@@ -157,8 +181,16 @@ function Login() {
           {titre === "Login" && (
             <p className="dontaccount">
               Don't have account?{" "}
-              <b className="Signup" onClick={register}>
+              <b className="Signup" onClick={toRegister}>
                 Sign Up
+              </b>
+            </p>
+          )}
+          {titre === "Register" && (
+            <p className="dontaccount">
+              Already have account ?{" "}
+              <b className="Signup" onClick={toLogin}>
+                Sign in
               </b>
             </p>
           )}
