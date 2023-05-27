@@ -76,29 +76,20 @@ const SubscribedAccountsWidget = () => {
 // TopHashtagsWidget component
 const TopHashtagsWidget = () => {
   // simulate the hashtags data
-  const [hashtags, setHashtags] = useState([
-    "#PourToi",
-    "#ToujoursDebout",
-    "#DenonceTonPorc",
-    "#WhyDidTheChicken",
-    "#BananaPeelSlipUps",
-    "#AccidentalSuperhero",
-    "#DontPushTheRedButton",
-    "#AliensStoleMyLunch",
-    "#UnicornRiding101",
-    "#MyCatThinksHesADog",
-    "#PourToi",
-    "#ToujoursDebout",
-    "#DenonceTonPorc",
-    "#WhyDidTheChicken",
-    "#BananaPeelSlipUps",
-    "#AccidentalSuperhero",
-    "#DontPushTheRedButton",
-    "#AliensStoleMyLunch",
-    "#UnicornRiding101",
-    "#MyCatThinksHesADog",
-  ]);
+  const [hashtags, setHashtags] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const context = useContext(appContext);
+
+  const hashtagClick = (hashtag) => {
+    context.setVideoPresentationInfo((old) => ({
+      ...old,
+      pseudo: hashtag,
+      hashtag: true,
+    }));
+
+    context.setWindow("VideoPresentation");
+  };
 
   useEffect(() => {
     const data = new URLSearchParams({
@@ -133,7 +124,9 @@ const TopHashtagsWidget = () => {
       </div>
       <div className="hashtags-list">
         {filteredHashtags.map((hashtag, index) => (
-          <p key={index}>#{hashtag}</p>
+          <p key={index} onClick={() => hashtagClick(hashtag)}>
+            #{hashtag}
+          </p>
         ))}
       </div>
     </div>

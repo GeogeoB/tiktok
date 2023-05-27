@@ -67,7 +67,10 @@ function VideoPresentation() {
       });
     }
 
-    fetch(urlJboss + "/DataServlet?" + data, { method: "GET" })
+    fetch(urlJboss + "/DataServlet?" + data, {
+      method: "GET",
+      credentials: "include",
+    })
       .then((response) => {
         return response.json();
       })
@@ -89,6 +92,7 @@ function VideoPresentation() {
                 nb_commentaire: video.commentaires.length,
                 idUploader: video.compteUploader.id,
                 compteUploader: video.compteUploader,
+                abonned: video.compteUploader.abonne,
               };
 
               return <VideoItem info={info}></VideoItem>;
@@ -97,7 +101,7 @@ function VideoPresentation() {
 
         setVideos(videos_);
       });
-  }, []);
+  }, [videoPresentationInfo.hashtag, videoPresentationInfo.idUploader]);
 
   const VideoViewer = () => {
     return (
