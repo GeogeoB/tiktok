@@ -789,7 +789,7 @@ body {
 
 .videoExploration {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20%, 50%));
+  grid-template-columns: repeat(auto-fit, minmax(20%, auto));
   gap: 10px;
   margin: auto;
   text-align: center;
@@ -843,7 +843,7 @@ body {
   background-color: grey;
   position: relative;
   cursor: pointer;
-  max-width: 90%;
+  max-width: 200px;
 }
 
 .infoVue {
