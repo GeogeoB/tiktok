@@ -353,6 +353,7 @@ function VideoPlayer(numbertoVH) {
           abonned: video.compteUploader.abonne,
           pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
           compteUploader: video.compteUploader,
+          idUploader: video.compteUploader.id,
         },
         { ...oldInfo[1] },
         { ...oldInfo[2] },
@@ -377,6 +378,7 @@ function VideoPlayer(numbertoVH) {
           abonned: video.compteUploader.abonne,
           pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
           compteUploader: video.compteUploader,
+          idUploader: video.compteUploader.id,
         },
         { ...oldInfo[2] },
       ]);
@@ -401,6 +403,7 @@ function VideoPlayer(numbertoVH) {
           abonned: video.compteUploader.abonne,
           pp: `./avatars/avatar${video.compteUploader.profilePic}.png`,
           compteUploader: video.compteUploader,
+          idUploader: video.compteUploader.id,
         },
       ]);
     });
