@@ -445,7 +445,6 @@ function VideoPlayer(numbertoVH) {
       );
 
     if (Math.abs(diff) > window.innerHeight * 0.2) {
-      console.log("oui");
       if (diff > 0) {
         animationSlide(-2 * window.innerHeight + "px", "Up");
       } else {

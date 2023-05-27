@@ -6,8 +6,23 @@ import urlJboss from "./config";
 
 // AccountListItem component
 const AccountListItem = ({ account }) => {
+  const context = useContext(appContext);
+
+  const ppClick = () => {
+    context.setVideoPresentationInfo((old) => ({
+      ...old,
+      hashtag: false,
+      idUploader: account.id,
+      pseudo: account.name,
+      pp: account.profilePicture,
+      nbAbonnes: account.nbAbonnes,
+      nbVideos: account.nbVideos,
+      ...account,
+    }));
+    context.setWindow("VideoPresentation");
+  };
   return (
-    <div className="account-list-item">
+    <div className="account-list-item" onClick={ppClick}>
       <img
         src={account.profilePicture}
         alt={account.name}
@@ -24,80 +39,11 @@ const AccountListItem = ({ account }) => {
 // SubscribedAccountsWidget component
 const SubscribedAccountsWidget = () => {
   // simulate the accounts data
-  const [accounts, setAccounts] = useState([
-    {
-      id: 1,
-      name: "ngaud1",
-      surname: "Natchica",
-      profilePicture: "profile-pic.png",
-    },
-    {
-      id: 2,
-      name: "gbrenne1",
-      surname: "Geogeo Le Rigolo",
-      profilePicture: "pp.jpg",
-    },
-    {
-      id: 3,
-      name: "ngaud2",
-      surname: "Natchica",
-      profilePicture: "profile-pic.png",
-    },
-    {
-      id: 4,
-      name: "gbrenne2",
-      surname: "Geogeo Le Rigolo",
-      profilePicture: "pp.jpg",
-    },
-    {
-      id: 5,
-      name: "ngaud3",
-      surname: "Natchica",
-      profilePicture: "profile-pic.png",
-    },
-    {
-      id: 6,
-      name: "gbrenne3",
-      surname: "Geogeo Le Rigolo",
-      profilePicture: "pp.jpg",
-    },
-    {
-      id: 7,
-      name: "ngaud4",
-      surname: "Natchica",
-      profilePicture: "profile-pic.png",
-    },
-    {
-      id: 8,
-      name: "gbrenne4",
-      surname: "Geogeo Le Rigolo",
-      profilePicture: "pp.jpg",
-    },
-  ]);
+  const context = useContext(appContext);
+  const accounts = context.abonnements;
 
   useEffect(() => {
-    const data = new URLSearchParams({
-      op: "getAbonnements",
-    });
-    fetch(urlJboss + "/DataServlet?" + data, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setAccounts(
-          data.abonnements.map((account) => {
-            return {
-              id: account.id,
-              name: account.nom,
-              surname: account.surnom,
-              profilePicture: `./avatars/avatar${account.profilePic}.png`,
-            };
-          })
-        );
-      });
+    context.refreshAbonnements();
   }, []);
 
   const [searchQuery, setSearchQuery] = useState("");

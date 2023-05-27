@@ -8,7 +8,6 @@ import urlJboss from "./config";
 function VideoItems({ info, setVideoInfos, k }) {
   let context = useContext(appContext);
   let setcommentOpen = context.setcommentOpen;
-  console.log(info);
 
   const openComment = () => {
     setcommentOpen(true);
@@ -37,7 +36,7 @@ function VideoItems({ info, setVideoInfos, k }) {
     fetch(urlJboss + "/DataServlet?" + data, {
       method: "POST",
       credentials: "include",
-    });
+    }).then((data) => context.refreshAbonnements());
 
     let k_ = ((k % 3) + 3) % 3;
 

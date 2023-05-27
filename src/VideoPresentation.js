@@ -88,6 +88,7 @@ function VideoPresentation() {
                 nb_like: video.nbLikes,
                 nb_commentaire: video.commentaires.length,
                 idUploader: video.compteUploader.id,
+                compteUploader: video.compteUploader,
               };
 
               return <VideoItem info={info}></VideoItem>;
@@ -118,7 +119,7 @@ function VideoPresentation() {
     fetch(urlJboss + "/DataServlet?" + data, {
       method: "POST",
       credentials: "include",
-    });
+    }).then((data) => context.refreshAbonnements());
 
     setVideoPresentationInfo((old) => {
       return { ...old, abonned: !old.abonned };

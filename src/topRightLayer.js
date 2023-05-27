@@ -26,7 +26,6 @@ function TopRightLayer() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const compte = data.compte;
         let userSetup = {
           id: compte.id,
