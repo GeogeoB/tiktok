@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./css/sidebarListWidget.css";
 import { appContext } from "./context";
 import Search from "./icones/search";
+import urlJboss from "./config";
 
 // AccountListItem component
 const AccountListItem = ({ account }) => {
@@ -73,6 +74,32 @@ const SubscribedAccountsWidget = () => {
       profilePicture: "pp.jpg",
     },
   ]);
+
+  useEffect(() => {
+    const data = new URLSearchParams({
+      op: "getAbonnements",
+    });
+    fetch(urlJboss + "/DataServlet?" + data, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setAccounts(
+          data.abonnements.map((account) => {
+            return {
+              id: account.id,
+              name: account.nom,
+              surname: account.surnom,
+              profilePicture: "pp.jpg",
+            };
+          })
+        );
+      });
+  }, []);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredAccounts = accounts.filter((account) =>
@@ -127,6 +154,21 @@ const TopHashtagsWidget = () => {
   ]);
   const [searchQuery, setSearchQuery] = useState("");
 
+  useEffect(() => {
+    const data = new URLSearchParams({
+      op: "getAllHashtags",
+    });
+    fetch(urlJboss + "/DataServlet?" + data, {
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setHashtags(data.hashtags);
+      });
+  }, []);
+
   const filteredHashtags = hashtags.filter((hashtag) =>
     hashtag.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -145,7 +187,7 @@ const TopHashtagsWidget = () => {
       </div>
       <div className="hashtags-list">
         {filteredHashtags.map((hashtag, index) => (
-          <p key={index}>{hashtag}</p>
+          <p key={index}>#{hashtag}</p>
         ))}
       </div>
     </div>
