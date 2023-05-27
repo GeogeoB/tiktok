@@ -71,10 +71,19 @@ function VideoPresentation() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    const data = new URLSearchParams({
-      op: "getCompteVideos",
-      compteID: videoPresentationInfo.idUploader,
-    });
+    let data = {};
+
+    if (!videoPresentationInfo.hashtags) {
+      data = new URLSearchParams({
+        op: "getCompteVideos",
+        compteID: videoPresentationInfo.idUploader,
+      });
+    } else {
+      data = new URLSearchParams({
+        op: "getHashtagVideos",
+        hashtag: videoPresentationInfo.pseudo,
+      });
+    }
 
     fetch(urlJboss + "/DataServlet?" + data, { method: "GET" })
       .then((response) => {

@@ -18,7 +18,14 @@ function Description({ info }) {
   };
 
   const ppClick = () => {
-    context.setVideoPresentationInfo((old) => ({ ...old, hashtag: false, idUploader: info.idUploader, pseudo:info.user, description:info.Userdesc, ...info }));
+    context.setVideoPresentationInfo((old) => ({
+      ...old,
+      hashtag: false,
+      idUploader: info.idUploader,
+      pseudo: info.user,
+      description: info.Userdesc,
+      ...info,
+    }));
     context.setWindow("VideoPresentation");
   };
 
