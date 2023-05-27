@@ -24,10 +24,10 @@ data = {
 }
 
 for fichier in fichiers:
-    cookies = {"loginID": random.randint(0, N)}
+    cookies = {"loginID": str(random.randint(0, N))}
     files = {"files": open("./videos/" + fichier, "rb")}
 
-    response = requests.post(url, data=data, verify=False, files=files)
+    response = requests.post(url, data=data, verify=False, files=files, cookies=cookies)
 
     # Vérification du code de statut de la réponse
     if response.status_code == 200:
@@ -36,3 +36,4 @@ for fichier in fichiers:
     else:
         # Requête échouée
         print("La requête POST a échoué. Code de statut:", response.status_code)
+        print(response.text)
