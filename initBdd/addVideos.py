@@ -24,7 +24,8 @@ data = {
 }
 
 for fichier in fichiers:
-    cookies = {"loginID": str(random.randint(0, N))}
+    loginID = random.randint(1, N)
+    cookies = {"loginID": str(loginID)}
     files = {"file": open("./videos/" + fichier, "rb")}
 
     response = requests.post(url, data=data, verify=False, files=files, cookies=cookies)
