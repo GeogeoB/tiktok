@@ -18,7 +18,7 @@ function VideoItems({ info, setVideoInfos, k }) {
       hashtag: false,
       ...old,
       hashtag: false,
-      idUploader: info.idUploader,
+      idUploader: info.compteUploader.id,
       pseudo: info.user,
       pp: info.pp,
       nbAbonnes: info.compteUploader.nbAbonnes,
