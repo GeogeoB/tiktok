@@ -26,15 +26,14 @@ function Description({ info }) {
     }));
     context.setWindow("VideoPresentation");
   };
-  console.log("ouioui: " + info.hashtags);
 
   const hashtags = info.hashtags.map((hashtag, index) => (
     <p
       key={index}
       className="hashtag-item"
-      onClick={() => hashtagClick(hashtag.hashTagName)}
+      onClick={() => hashtagClick(hashtag)}
     >
-      #{hashtag.hashTagName}
+      #{hashtag}
     </p>
   ));
 

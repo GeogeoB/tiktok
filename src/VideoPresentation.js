@@ -83,7 +83,7 @@ function VideoPresentation() {
                 id: video.id,
                 pos: 0,
                 place: video.lieu,
-                hashtags: video.hashtags,
+                hashtags: video.hashtags.map((h) => h.hashTagName),
                 desc: video.description,
                 nb_like: video.nbLikes,
                 nb_commentaire: video.commentaires.length,
@@ -158,16 +158,20 @@ function VideoPresentation() {
               )}
             </div>
             {!videoPresentationInfo.hashtag && (
-              <div className="item-video-pres">
-                <p>
-                  <span>{videoPresentationInfo.nbVideos}</span> publications
+              <>
+                <div className="item-video-pres">
+                  <p>
+                    <span>{videoPresentationInfo.nbVideos}</span> publications
+                  </p>
+                  <p>
+                    <span>{videoPresentationInfo.nbAbonnes}</span> followers
+                  </p>
+                </div>
+                <p className="videoPres-desc">
+                  {videoPresentationInfo.Userdesc}
                 </p>
-                <p>
-                  <span>{videoPresentationInfo.nbAbonnes}</span> followers
-                </p>
-              </div>
+              </>
             )}
-            <p className="videoPres-desc">{videoPresentationInfo.Userdesc}</p>
           </div>
         </div>
       </div>
