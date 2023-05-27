@@ -23,12 +23,16 @@ data = {
     "lieu": "Toulouse",
 }
 
+headers = {"Content-Type": "application/json; charset=utf-8"}
+
 for fichier in fichiers:
     loginID = random.randint(1, N)
     cookies = {"loginID": str(loginID)}
     files = {"file": open("./videos/" + fichier, "rb")}
 
-    response = requests.post(url, data=data, verify=False, files=files, cookies=cookies)
+    response = requests.post(
+        url, data=data, verify=False, files=files, cookies=cookies, headers=headers
+    )
 
     # Vérification du code de statut de la réponse
     if response.status_code == 200:
