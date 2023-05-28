@@ -295,6 +295,29 @@ personnes = [
     },
 ]
 
+descriptions_videos = [
+    "Dans cette vidéo, nous explorons la magnifique ville de Paris.",
+    "Apprenez à jouer de la guitare avec ce tutoriel étape par étape.",
+    "Découvrez les merveilles de la nature dans ce documentaire époustouflant sur la faune.",
+    "Rejoignez-nous pour passer en revue les derniers gadgets technologiques dans cette vidéo.",
+    "Dans ce tutoriel, nous vous montrons comment créer une application web en Python.",
+    "Découvrez les coulisses de la création d'un film lors de cette interview avec le réalisateur.",
+    "Plongez dans le monde de la cuisine française avec ces délicieuses recettes.",
+    "Explorez les secrets de l'univers dans cette fascinante vidéo sur l'astronomie.",
+    "Découvrez les plus beaux paysages du monde lors de cette aventure en pleine nature.",
+    "Suivez-nous lors de cette visite guidée des musées les plus célèbres du monde.",
+    "Dans cette vidéo, nous partageons des conseils pratiques pour améliorer votre productivité.",
+    "Découvrez les techniques de base de la photographie dans ce tutoriel complet.",
+    "Dans cette vidéo, nous vous présentons les meilleurs exercices pour garder la forme.",
+    "Assistez à cette conférence inspirante sur le développement personnel et la motivation.",
+    "Découvrez l'histoire fascinante de l'art moderne à travers cette visite virtuelle d'une galerie.",
+    "Dans ce tutoriel, nous vous montrons comment réaliser de superbes effets spéciaux.",
+    "Rejoignez-nous pour une démonstration en direct de ce nouveau produit révolutionnaire.",
+    "Dans cette vidéo, nous partageons nos astuces pour voyager à petit budget.",
+    "Découvrez les secrets du succès entrepreneurial dans cette conversation avec un fondateur de startup.",
+    "Apprenez à danser le tango avec ce cours complet pour débutants.",
+]
+
 hashtags = [
     "#nature",
     "#photography",
@@ -316,6 +339,33 @@ hashtags = [
     "#friends",
     "#instagood",
     "#life",
+]
+
+lieux = [
+    "Paris",
+    "New York",
+    "Tokyo",
+    "Rome",
+    "Sydney",
+    "Le Caire",
+    "Rio de Janeiro",
+    "Moscou",
+    "Cape Town",
+    "Vancouver",
+    "Londres",
+    "Berlin",
+    "Buenos Aires",
+    "Marrakech",
+    "Hawaï",
+    "Amsterdam",
+    "Barcelone",
+    "Istanbul",
+    "Dubai",
+    "Auckland",
+    "Bangkok",
+    "Séoul",
+    "Helsinki",
+    "Nairobi",
 ]
 
 commentaires = [
