@@ -101,7 +101,11 @@ function VideoPresentation() {
 
         setVideos(videos_);
       });
-  }, [videoPresentationInfo.hashtag, videoPresentationInfo.idUploader]);
+  }, [
+    videoPresentationInfo.hashtag,
+    videoPresentationInfo.idUploader,
+    videoPresentationInfo.pseudo,
+  ]);
 
   const VideoViewer = () => {
     return (
