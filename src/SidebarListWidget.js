@@ -9,6 +9,7 @@ const AccountListItem = ({ account }) => {
   const context = useContext(appContext);
 
   const ppClick = () => {
+    console.log(account);
     context.setVideoPresentationInfo((old) => ({
       ...old,
       hashtag: false,
@@ -17,6 +18,7 @@ const AccountListItem = ({ account }) => {
       pp: account.profilePicture,
       nbAbonnes: account.nbAbonnes,
       nbVideos: account.nbVideos,
+      Userdesc: account.Userdesc,
       ...account,
     }));
     context.setWindow("VideoPresentation");

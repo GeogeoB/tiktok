@@ -29,19 +29,17 @@ const SidebarButtonWidget = () => {
 
   return (
     <div className="sidebar-widget">
-      {isLoggedIn && (
-        <button
-          className={
-            (window === "PourToi" && "sidebar-button-active") +
-            " Button sidebar-button"
-          }
-          onClick={handlePourToiClick}
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Home /> Pour toi
-          </div>
-        </button>
-      )}
+      <button
+        className={
+          (window === "PourToi" && "sidebar-button-active") +
+          " Button sidebar-button"
+        }
+        onClick={handlePourToiClick}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Home /> Pour toi
+        </div>
+      </button>
       {isLoggedIn && (
         <button
           className={

@@ -43,6 +43,7 @@ export const MyContextProvider = ({ children }) => {
               profilePicture: `./avatars/avatar${account.profilePic}.png`,
               nbAbonnes: account.nbAbonnes,
               nbVideos: account.nbVideos,
+              Userdesc: account.bio,
             };
           })
         );
