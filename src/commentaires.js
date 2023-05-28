@@ -41,11 +41,9 @@ function Commentaires({ idvideo }) {
             comments: commentaire.text,
             date: commentaire.date,
           };
-
-          return (
-            <Commentaire userComments={userComments} key={index}></Commentaire>
-          );
+          return userComments;
         });
+        _commentaires.sort((a, b) => (a.date < b.date ? 1 : -1));
 
         setCommentaires(() => _commentaires);
       });
@@ -76,10 +74,10 @@ function Commentaires({ idvideo }) {
           date: new Date(),
         };
 
-        setCommentaires((old) => [
-          ...old,
-          <Commentaire userComments={userComments}></Commentaire>,
-        ]);
+        setCommentaires((old) => {
+          const newComments = [userComments, ...old];
+          return newComments;
+        });
       }
     });
   };
@@ -119,7 +117,9 @@ function Commentaires({ idvideo }) {
           <div className="close-button" onClick={closeCommentaire}></div>
         </div>
         {user && <UserInput></UserInput>}
-        {commentaires}
+        {commentaires.map((userComments, index) => (
+          <Commentaire userComments={userComments} key={index}></Commentaire>
+        ))}
       </div>
     </div>
   );
