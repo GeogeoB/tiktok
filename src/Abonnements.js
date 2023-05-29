@@ -27,9 +27,9 @@ function Abonnements() {
             pseudo: abo.nom,
             surnom: abo.surnom,
             Userdesc: abo.bio,
-            nb_publi: abo.nbVideos,
+            nbVideos: abo.nbVideos,
             abonned: abo.abonne,
-            nb_followers: abo.nbAbonnes,
+            nbAbonnes: abo.nbAbonnes,
             pp: `./avatars/avatar${abo.profilePic}.png`,
           };
 
