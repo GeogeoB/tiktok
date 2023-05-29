@@ -152,7 +152,10 @@ function VideoPresentation() {
           )}
           <div className="video-pres-text">
             <div className="pseudo-videoPres">
-              <p className="videopres-pseudo">{videoPresentationInfo.pseudo}</p>
+              <p className="videopres-pseudo">
+                {(videoPresentationInfo.hashtag ? "#" : "") +
+                  videoPresentationInfo.pseudo}
+              </p>
               {!videoPresentationInfo.hashtag && (
                 <button
                   className={
