@@ -29,8 +29,12 @@ function TopRightLayer() {
         const compte = data.compte;
         let userSetup = {
           id: compte.id,
-          pseudo: compte.surnom,
+          pseudo: compte.nom,
           pp: `./avatars/avatar${compte.profilePic}.png`,
+          hashtag: false,
+          idUploader: compte.id,
+          nbAbonnes: compte.nbAbonnes,
+          nbVideos: compte.nbVideos,
         };
         setUser(userSetup);
       });
@@ -60,6 +64,20 @@ function TopRightLayer() {
     context.setToastOpen(true);
   };
 
+  const ppClick = () => {
+    context.setVideoPresentationInfo((old) => ({
+      ...old,
+      hashtag: false,
+      idUploader: user.id,
+      pseudo: user.user,
+      pp: user.pp,
+      nbAbonnes: user.nbAbonnes,
+      nbVideos: user.nbVideos,
+      ...user,
+    }));
+    context.setWindow("VideoPresentation");
+  };
+
   return (
     <div className="topRightLayer">
       <button className="Button ButtonUpload" onClick={buttonLogout}>
@@ -70,7 +88,7 @@ function TopRightLayer() {
         <Upload></Upload>
         Upload
       </button>
-      <div className="user_tll">
+      <div className="user_tll" onClick={ppClick}>
         <div className="pp">
           <div className="circle">
             <img src={user.pp} alt="" />
