@@ -11,8 +11,8 @@ function Abonnement({ user }) {
   };
 
   return (
-    <div className="abonnement">
-      <div className="circle_abonnement pp_comments_circle" onClick={clic_pp}>
+    <div className="abonnement" onClick={clic_pp}>
+      <div className="circle_abonnement pp_comments_circle">
         <img src={user.pp} alt="profile of the user" />
       </div>
       <p>{user.pseudo}</p>
