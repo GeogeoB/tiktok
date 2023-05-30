@@ -18,7 +18,11 @@ function Video({ info, animationSlide, setVideoInfos, id, k }) {
     <div
       className={className}
       id={id}
-      onEnded={() => animationSlide(-2 * window.innerHeight + "px", "Up")}
+      onEnded={() =>
+        animationSlide
+          ? animationSlide(-2 * window.innerHeight + "px", "Up")
+          : ""
+      }
     >
       <div className="blur blurRadial"></div>
       <div className="blur blurVertical"></div>
