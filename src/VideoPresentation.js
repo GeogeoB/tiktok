@@ -43,7 +43,7 @@ function VideoPresentation() {
       >
         <div className="info-video">
           <Play></Play>
-          <p className="infoVue">200</p>
+          <p className="infoVue">{info.nbVues}</p>
         </div>
         <video src={info.src} className="video-column" autoPlay={false}></video>
       </div>
@@ -93,6 +93,7 @@ function VideoPresentation() {
                 idUploader: video.compteUploader.id,
                 compteUploader: video.compteUploader,
                 abonned: video.compteUploader.abonne,
+                nbVues: video.nbVues,
               };
 
               return <VideoItem info={info}></VideoItem>;
